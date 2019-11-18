@@ -1,6 +1,7 @@
 \chapter{Wstęp}
 
-%TODO Tutaj poszę jednak kilka ogólnych zdań o ADAS (co to jest), pojazdach autonomicznych i roli algorytmów wizyjnych.
+
+Każdego roku ma premierę kilkanaście modeli samochodów różnych producentów. Od kilku lat zauważalny jest trend ku autonomizacji jazdy samochodem. Ma to na celu wyeliminowanie czynnika, który jest najczęstszą przyczyną wypadków - człowieka. Systemy, które wspomagają lub wręcz wyręczają kierowcę z obowiązku kierowania uwagi na samochoód i jego otoczenie noszą miano ADAS (\textit{•Advanced Driver Assistance Systems} - zaawansowane Systemy Wspomagania kierowcy). Znaczny udział w systemach wspomagających kierowce mają te oparte na analizie obrazu. Przykładowe systemy korzystające z przetwarzania obrazów to detekcja pasa ruchu lub wykrywanie zmęczenia kierowcy. Bardzo popularne jest stosowanie fuzji danych. Polega ona na jednoczesnym przetwarzaniu danych z kamery i radaru, co zapewnia lepszą skuteczność algorytmu. Z obrazów i danych z radaru korzystają systemy aktywnego tempomatu lub detekcji pieszych.
 
 
 \section{Cele i założenia}
@@ -9,19 +10,19 @@ Celem niniejszej pracy było stworzenie aplikacji umożliwiającej testowanie al
 Rozwiązanie to mogłaby być wykorzystane w ramach ćwiczeń laboratoryjnych poruszających problematyką systemów wizyjnych stosowanych w pojazdach autonomicznych prowadzonych w ramach kierunku Automatyka i Robotyka na Akademii Górniczo-Hutniczej.
 
 \section{Istniejące systemy}
-%TODO To też jest zbyt "skrome"
 Aplikacje służące do testowania algorytmów wizyjnych są używane w przemyśle. 
 Obecnie produkowane samochody są wyposażone w systemy, które bazując na widoku z kamery pomagają prowadzić samochód. 
 Testowanie tych algorytmów jest niezwykle istotne, ponieważ niewykrycie błędów może prowadzić do katastrofalnych skutków, w tym potencjalnej śmierci człowieka. 
-Przykładowo niewystarczające testowanie algorytmów w komercyjnym samochodzie Tesla 3 doprowadziło do śmiertelnego wypadku, ponieważ tzw. ,,autopilot'' nie wykryły poprawnie naczepy ciężarówki.
-%TODO Tu nieco zmieniłem, bo wbrew temu co się mówi Tesla w dokumentach nie twierdzi, że to rozwiazanie autonomiczne, tylko autopilot (zabawka, którą trzba nadzorować)
+Przykładowo niewystarczające testowanie algorytmów w komercyjnym samochodzie Tesla 3 doprowadziło do śmiertelnego wypadku, ponieważ tzw. ,,autopilot'' nie wykrył poprawnie naczepy ciężarówki.
+
+Popularne jest podejście do testowania SIL (ang. System in the loop - system w pętli), gdzie algorytm nie jest testowany w rzeczywistym pojeździe, lecz w oparciu o wcześniej nagrany przejazd samochodem testowym. Ocenie podlegają decyzje podejmowane przez algorytm w oparciu o nagranie video. Jest to rozwiązanie bezpieczniejsze oraz zdecydowanie tańsze. Wolumeny nagrań w bazach firm zajmujących się systemami ADAS sięgają milionów kilometrów jazd testowych.
 
 \section{Zawartość pracy}
 
 Rozdział drugi rozpoczyna się opisem poziomów autonomiczności samochodów. 
-Zawarte w nim jest porównanie w odniesieniu do stosowanych systemów wizyjnych i innych asystentów jazdy. %TODO styl. "porównanie" w odniesieniu..
-Następnie opisane są wybrane algorytmy cyfrowego przetwarzania obrazów takie jak: detekcja pasa ruchu, detekcja świateł drogowych, wykrywanie znaków oraz detekcja samochodu poprzedzającego. %TODO to raczej są systemy wizyjne dla PA/ADAS.
-Opis jest oparty na uznanych w świecie naukowym artykułach. %TODO może Opracowano go na podstawie przeglądu publikacji naukowych.
+Ukazuje czym powinien charakteryzować się samochód, który znajduje się na określonym poziomie.
+Następnie opisane są wybrane systemy wizyjne używane w branży automotive takie jak: detekcja pasa ruchu, detekcja świateł drogowych, wykrywanie znaków oraz detekcja samochodu poprzedzającego.
+Opis jest opracowany na podstawie przeglądu publikacji naukowych.
 Rozdział kończy krótki opis podstawowych operacji cyfrowego przetwarzania obrazów, których wyjaśnienie uznano za istotne z uwagi na ich częste stosowanie w systemach wizyjnych pojazdów autonomicznych.
 
 Następny rozdział zawiera opis zrealizowanego systemu. 
@@ -35,7 +36,7 @@ Ostatni rozdział zawiera krótkie podsumowanie oraz ocenę przydatności aplika
 %TODO Koniec sprawdzania TK
 
 \chapter{Systemy wizyjne w pojazdach autonomicznych}
-Współczesne pojazdy autonomiczne wykorzystują w szerokim zakresie systemy wizyjne do analizy otoczenia. Jednym z pierwszych zastosowań algorytmów cyfrowego przetwarzania obrazów była detekcja pasa ruchu, która nie służyła do sterowania samochodem, lecz miała za zadanie wspomagać kierowcę w sytuacjach zmęczenia lub utraty koncentracji. Wraz z rozwojem technologii pojazdów autonomicznych, zaawansowanie systemów wizyjnych rosło od wspomnianej kontroli pasa ruchu, poprzez rozpoznawanie znaków drogowych i świateł ulicznych, na detekcji pieszych kończąc. Ważnym elementem o którym należy wspomnieć, że istotne znaczenie, oprócz algorytmów detekcji, ma sposób interpretacji danych odczytanych z otoczenia. W kolejnych podrozdziałach zostaną opisane algorytmy wizyjne, które mogłyby być zastosowane w systemach w pojazdach autonomicznych. 
+Współczesne pojazdy autonomiczne wykorzystują w szerokim zakresie systemy wizyjne do analizy otoczenia. Jednym z pierwszych zastosowań algorytmów cyfrowego przetwarzania obrazów była detekcja pasa ruchu, która nie służyła do sterowania samochodem, lecz miała za zadanie wspomagać kierowcę w sytuacjach zmęczenia lub utraty koncentracji. Wraz z rozwojem technologii pojazdów autonomicznych, zaawansowanie systemów wizyjnych rosło od wspomnianej kontroli pasa ruchu, poprzez rozpoznawanie znaków drogowych i świateł ulicznych, na detekcji pieszych kończąc. Ważnym elementem o którym należy wspomnieć jest fakt, że istotne znaczenie, oprócz algorytmów detekcji, ma sposób interpretacji danych odczytanych z otoczenia. W kolejnych podrozdziałach zostaną opisane algorytmy wizyjne, które mogłyby być zastosowane w systemach w pojazdach autonomicznych. 
 
 \section{Poziomy autonomiczności}
 
@@ -191,42 +192,41 @@ Do ostatecznego wykrycia linii prostych należy użyć zmodyfikowanej transfomat
   \includegraphics[width=7cm]{img/prehough.png}
   \caption{Wynik algorytmu detekcji linii\cite{T3}}
   \label{fig:result}
-  % https://pl.wikipedia.org/wiki/Tesla_Model_S#/media/Plik:2014_Tesla_Motors_Model_S_(rear_view)_Netherlands.jpg
 \end{figure}
 
-\subsection{Detekcja zakrętów}
-Podobnym zadaniem jest detekcja pasa ruchu w zakręcie. Kształt zakrzywionej linii może być opisany za pomocą paraboli z równania \ref{eq:ld_1}. Zauważono, że fragment drogi bliżej samochodu z reguły jest prosty, zakrzywienie widać powyżej pewnej odległości, a na obrazie powyżej pewnej wysokości. Równanie \ref{eq:ld2} pokazuje model pasa ruchu, gdzie $y_m$ to współrzędna punktu, w którym prosta przechodzi w krzywą.
-\begin{equation}
-x=a+by+cy^{2}
-\end{equation}
-
-\begin{equation}
-x=\begin{cases}
-a+by,\qquad\qquad y\leq y_{m}\\ c+dy+ey^{2},\qquad y > y_{m} \end{cases}
-\end{equation}
-
-gdzie ponadto:
-\begin{itemize}
-\item $a,b$ -- parametry linii
-\item $c,d,e$ -- parametry krzywej
-\end{itemize}
-
-Linie prosta i krzywa powinny spotykać się w jedym punkcie, którego współrzędna wysokościowa jest równa $y_m$. Po pewnych przekształceniach otrzymano równanie \ref{eq:ld_3} i \ref{eq:ld_4}.
-
-\begin{equation}
-a+by_{m}=c+dy_{m}+ey_{m}^{2}
-\end{equation}
-
-\begin{equation}
-b = d+2ey_m
-\end{equation}
-
-Ostatecznie uzyskano zależność \ref{eq:ld_5} pomiędzy parametrami krzywych.
-
-\begin{equation}
-\begin{cases} c=a+\frac{y_{m}}{2}(b-d) \\
-e=\frac{1}{2y_{m}}(b-d) \end{cases}
-\end{equation}
+%\subsection{Detekcja zakrętów}
+%Podobnym zadaniem jest detekcja pasa ruchu w zakręcie. Kształt zakrzywionej linii może być opisany za pomocą paraboli z równania \ref{eq:ld_1}. Zauważono, że fragment drogi bliżej samochodu z reguły jest prosty, zakrzywienie widać powyżej pewnej odległości, a na obrazie powyżej pewnej wysokości. Równanie \ref{eq:ld2} pokazuje model pasa ruchu, gdzie $y_m$ to współrzędna punktu, w którym prosta przechodzi w krzywą.
+%\begin{equation}
+%x=a+by+cy^{2}
+%\end{equation}
+%
+%\begin{equation}
+%x=\begin{cases}
+%a+by,\qquad\qquad y\leq y_{m}\\ c+dy+ey^{2},\qquad y > y_{m} \end{cases}
+%\end{equation}
+%
+%gdzie ponadto:
+%\begin{itemize}
+%\item $a,b$ -- parametry linii
+%\item $c,d,e$ -- parametry krzywej
+%\end{itemize}
+%
+%Linie prosta i krzywa powinny spotykać się w jedym punkcie, którego współrzędna wysokościowa jest równa $y_m$. Po pewnych przekształceniach otrzymano równanie \ref{eq:ld_3} i \ref{eq:ld_4}.
+%
+%\begin{equation}
+%a+by_{m}=c+dy_{m}+ey_{m}^{2}
+%\end{equation}
+%
+%\begin{equation}
+%b = d+2ey_m
+%\end{equation}
+%
+%Ostatecznie uzyskano zależność \ref{eq:ld_5} pomiędzy parametrami krzywych.
+%
+%\begin{equation}
+%\begin{cases} c=a+\frac{y_{m}}{2}(b-d) \\
+%e=\frac{1}{2y_{m}}(b-d) \end{cases}
+%\end{equation}
 
 
 \section{Detekcja znaków drogowych}
