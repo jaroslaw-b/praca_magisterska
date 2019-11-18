@@ -1,17 +1,38 @@
 \chapter{Wstęp}
+
+%TODO Tutaj poszę jednak kilka ogólnych zdań o ADAS (co to jest), pojazdach autonomicznych i roli algorytmów wizyjnych.
+
+
 \section{Cele i założenia}
-Niniejsza praca powstała w celu stworzenia faplikacji umożliwiającej testowanie algorytmów wizyjnych za pomocą symulatora ciężarówki, która mogłaby być wykorzystana w ramach zajęć z Systemów Wizyjnych w Pojazdach Autonomicznych prowadzonych w ramach kierunku Automatyka i Robotyka na Akademii Górniczo-Hutniczej.
+
+Celem niniejszej pracy było stworzenie aplikacji umożliwiającej testowanie algorytmów wizyjnych za pomocą symulatora ciężarówki.
+Rozwiązanie to mogłaby być wykorzystane w ramach ćwiczeń laboratoryjnych poruszających problematyką systemów wizyjnych stosowanych w pojazdach autonomicznych prowadzonych w ramach kierunku Automatyka i Robotyka na Akademii Górniczo-Hutniczej.
 
 \section{Istniejące systemy}
-Aplikacje służące do testowania algorytmów wizyjnych są używane w przemyśle. Obecnie produkowane samochody są wyposażone w pewne asysty, które bazując na widoku z kamery pomagają prowadzić samochód. Testowanie tych algorytmów jest niezwykle istotne, ponieważ niewykrycie błędu prowadzi do katastrofalnych skutków, w tym potencjalnej śmierci człowieka. Niewystarczające testowanie algorytmów w komercyjnym samochodzie Tesla 3 doprowadziło do śmiertelnego wypadku, ponieważ systemy jazdy autonomicznej nie wykryły poprawnie naczepy ciężarówki.
+%TODO To też jest zbyt "skrome"
+Aplikacje służące do testowania algorytmów wizyjnych są używane w przemyśle. 
+Obecnie produkowane samochody są wyposażone w systemy, które bazując na widoku z kamery pomagają prowadzić samochód. 
+Testowanie tych algorytmów jest niezwykle istotne, ponieważ niewykrycie błędów może prowadzić do katastrofalnych skutków, w tym potencjalnej śmierci człowieka. 
+Przykładowo niewystarczające testowanie algorytmów w komercyjnym samochodzie Tesla 3 doprowadziło do śmiertelnego wypadku, ponieważ tzw. ,,autopilot'' nie wykryły poprawnie naczepy ciężarówki.
+%TODO Tu nieco zmieniłem, bo wbrew temu co się mówi Tesla w dokumentach nie twierdzi, że to rozwiazanie autonomiczne, tylko autopilot (zabawka, którą trzba nadzorować)
 
 \section{Zawartość pracy}
 
-Praca składa się z następujących części. Rozdział drugi rozpoczyna się opisem poziomów autonomiczności samochodów. Zawarte w nim jest porównanie w odniesieniu do stosowanych systemów wyzyjnych i innych asystentów jazdy. Następnie opisane są wybrane algorytmy cyfrowego przetwarzania obrazów takie jak: detekcja pasa ruchu, detekcja świateł drogowych, wykrywanie znaków oraz detekcja samochodu poprzedającego. Opis jest oparty na uznanych w świecie naukowym artykułach. Rozdział kończy krótki opis podstawowych operacji cyfrowego przetwarzania obrazów, których wyjaśnienie uznano za istotne z uwagi na częste stosowanie w systemach wizyjneych w pojazdach autonomicznych.
+Rozdział drugi rozpoczyna się opisem poziomów autonomiczności samochodów. 
+Zawarte w nim jest porównanie w odniesieniu do stosowanych systemów wizyjnych i innych asystentów jazdy. %TODO styl. "porównanie" w odniesieniu..
+Następnie opisane są wybrane algorytmy cyfrowego przetwarzania obrazów takie jak: detekcja pasa ruchu, detekcja świateł drogowych, wykrywanie znaków oraz detekcja samochodu poprzedzającego. %TODO to raczej są systemy wizyjne dla PA/ADAS.
+Opis jest oparty na uznanych w świecie naukowym artykułach. %TODO może Opracowano go na podstawie przeglądu publikacji naukowych.
+Rozdział kończy krótki opis podstawowych operacji cyfrowego przetwarzania obrazów, których wyjaśnienie uznano za istotne z uwagi na ich częste stosowanie w systemach wizyjnych pojazdów autonomicznych.
 
-Następny rozdział zawiera opis realizacji projektu. Na początku dokonana jest ewaluacja dostępnych symulatorów jazdy wraz z uzasadnieniem wyboru Euro Truck Simulator 2. Kolejno jest opisana architektura zaimplementowanej aplikacji. Następna część mówi o przykładowych algorytmach zaimplementowanych w celu przetestowania i weryfikacji aplikacji stworzonej w ramach pracy. Końcowa część to sprawdzenie wydajności aplikacji w różnych sytuacjach.
+Następny rozdział zawiera opis zrealizowanego systemu. 
+Na początku dokonana jest ewaluacja dostępnych symulatorów jazdy wraz z uzasadnieniem wyboru Euro Truck Simulator 2. 
+Kolejno opisana została architektura zaimplementowanej aplikacji. 
+W~następnej części omówiono przykładowe algorytmy zaimplementowane w celu przetestowania i weryfikacji aplikacji stworzonej w ramach pracy. 
+Końcowa część to sprawdzenie wydajności aplikacji w różnych sytuacjach.
 
-Ostatni rozdział zawiera krótkie podsumowanie oraz ocenę przydatności aplikacji do prowadzenia zajęć dydatktycznych.
+Ostatni rozdział zawiera krótkie podsumowanie oraz ocenę przydatności aplikacji do prowadzenia zajęć dydaktycznych.
+
+%TODO Koniec sprawdzania TK
 
 \chapter{Systemy wizyjne w pojazdach autonomicznych}
 Współczesne pojazdy autonomiczne wykorzystują w szerokim zakresie systemy wizyjne do analizy otoczenia. Jednym z pierwszych zastosowań algorytmów cyfrowego przetwarzania obrazów była detekcja pasa ruchu, która nie służyła do sterowania samochodem, lecz miała za zadanie wspomagać kierowcę w sytuacjach zmęczenia lub utraty koncentracji. Wraz z rozwojem technologii pojazdów autonomicznych, zaawansowanie systemów wizyjnych rosło od wspomnianej kontroli pasa ruchu, poprzez rozpoznawanie znaków drogowych i świateł ulicznych, na detekcji pieszych kończąc. Ważnym elementem o którym należy wspomnieć, że istotne znaczenie, oprócz algorytmów detekcji, ma sposób interpretacji danych odczytanych z otoczenia. W kolejnych podrozdziałach zostaną opisane algorytmy wizyjne, które mogłyby być zastosowane w systemach w pojazdach autonomicznych. 
