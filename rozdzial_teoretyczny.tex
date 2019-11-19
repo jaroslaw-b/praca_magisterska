@@ -1,6 +1,7 @@
 \chapter{Wstęp}
 
 
+<<<<<<< HEAD
 %TODO to bym pominał. ok
 Od kilku lat zauważalny jest trend ku autonomizacji jazdy samochodem.  
 Ma to na celu wyeliminowanie czynnika, który jest najczęstszą przyczyną wypadków -- człowieka. Dodatkowym aspektem, który wpływa na rozwój przemysłu automotive, są koszty transportu. Zastosowanie autonomicznych ciężarówek poruszających się w konwojach znacząco zmniejszyłoby koszty logistyki dla firm spedycyjnych. %TODO mógłby Pan poszukać i dopisać też inne motywacje - ekonomia dzielenia itp.
@@ -14,6 +15,19 @@ Polega ona na jednoczesnym przetwarzaniu danych z dwóch lub więcej czujników,
 Na danych pozyskanych z kamery i radaru korzystają na przykład systemy aktywnego tempomatu lub detekcji pieszych.
 
 %TODO A ogólnie to mógłby się Pan bardziej postarać :) :)
+=======
+Każdego roku ma premierę kilkanaście modeli samochodów różnych producentów. %TODO to bym pominał.
+Od kilku lat zauważalny jest trend ku autonomizacji jazdy samochodem.  
+Ma to na celu wyeliminowanie czynnika, który jest najczęstszą przyczyną wypadków -- człowieka. %TODO mógłby Pan poszukać i dopisać też inne motywacje - ekonomia dzielenia itp.
+Systemy, które wspomagają lub wręcz wyręczają kierowcę z obowiązku kierowania uwagi na samochód i jego otoczenie noszą miano ADAS (\textit{Advanced Driver Assistance Systems} -- zaawansowane systemy wspomagania kierowcy). 
+Znaczny udział w systemach wspomagających kierowce mają te oparte na analizie obrazu. %TODO Inaczej. Opisać jakie czujniki się stosuje (krótko) i potem przejść do wizji.
+Przykładowe systemy korzystające z przetwarzania obrazów to detekcja pasa ruchu lub wykrywanie zmęczenia kierowcy. 
+Bardzo popularne jest stosowanie fuzji danych. 
+Polega ona na jednoczesnym przetwarzaniu danych z kamery i radaru, co zapewnia lepszą skuteczność algorytmu. %TODO to jest przykład - może być też fuzja z lidar albo 3 w 1.
+Z obrazów i danych z radaru korzystają systemy aktywnego tempomatu lub detekcji pieszych.
+
+%TODO A ogólnie to mógłby się Pan bardziej postarać :)
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 \section{Cele i założenia}
 
@@ -49,12 +63,21 @@ Ostatni rozdział zawiera krótkie podsumowanie oraz ocenę przydatności aplika
 
 Współczesne pojazdy autonomiczne wykorzystują w~szerokim zakresie systemy wizyjne do analizy otoczenia. 
 Jednym z pierwszych zastosowań algorytmów cyfrowego przetwarzania obrazów była detekcja pasa ruchu, która nie służyła do sterowania samochodem, lecz miała za zadanie wspomagać kierowcę w sytuacjach zmęczenia lub utraty koncentracji. 
+<<<<<<< HEAD
 Wraz z rozwojem technologii pojazdów autonomicznych, zaawansowanie systemów wizyjnych rosło od wspomnianej kontroli pasa ruchu, poprzez rozpoznawanie obiektów, które można spotkać na drogach: pieszych, pojazdów i rowerzystów, a także elementy infrastuktury: znaków i świateł drogowych.
 %TODO ująłbym szerzej, że obiektów: pieszych, rowerzystów, pojazdów itp. OK
 %TODO styl. zbyt zamotane zdanie. OK - usunięte
 W kolejnych podrozdziałach zostaną opisane czujniki stosowane w przemyśle motoryzacyjnym. Następnie zawarty jest krótki opis poziomów autonomiczności pojazdów. Rozdział kończy opis działania algorytmów wizyjnych w samochodach.
 
 %TODO dodałbym podrozdzialik o czujnikach zbudowany wokół analizy rysunku 2.1. (brakuje tej treści) OK - zrobione niżej
+=======
+Wraz z rozwojem technologii pojazdów autonomicznych, zaawansowanie systemów wizyjnych rosło od wspomnianej kontroli pasa ruchu, poprzez rozpoznawanie znaków drogowych i świateł ulicznych, na detekcji pieszych kończąc.
+%TODO ująłbym szerzej, że obiektów: pieszych, rowerzystów, pojazdów itp.
+Ważnym elementem, o~którym należy wspomnieć jest fakt, że istotne znaczenie, oprócz algorytmów detekcji, ma sposób interpretacji danych odczytanych z otoczenia. %TODO styl. zbyt zamotane zdanie.
+W kolejnych podrozdziałach zostaną opisane algorytmy wizyjne, które mogłyby być zastosowane w systemach w pojazdach autonomicznych. 
+
+%TODO dodałbym podrozdzialik o czujnikach zbudowany wokół analizy rysunku 2.1. (brakuje tej treści)
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 %TODO Inna sprawa, że w kolejnych podrozdziałch... to trzeba wymienić, że te czujniki, potem poziomy, a potem systemy wizyjne.
 
 \section{Poziomy autonomiczności}
@@ -70,6 +93,7 @@ Aby usystematyzować i podzielić poziom wpływu systemów na sterowanie pojazde
   % https://aindustryreports.com/2019/05/23/advanced-driver-assistance-system-sensor-market-technological-innovations-in-north-america-to-boost-regional-market-attractiveness-through-2026/
 \end{figure}
 
+<<<<<<< HEAD
 Na rysunku \ref{fig:kamery_i_radary} daje się zauważyć znaczna liczba kamer i radarów wspomagająca kierowcę. Z przodu i tyłu pojazdu umieszczone są czujniki ultradźwiękowe (oznaczone na czerwono), których zadaniem jest wspomaganie procesu parkowania samochodu poprzed wykrywanie obiektów w bliskim otoczeniu pojazdu.
 Pozostając przy parkowaniu, kamera umieszczona z tyłu pojazdu również wspomaga parkowanie. Co raz popularniejsze są systemy czterech kamer po jednej na każdą krawędź samochodu. Na podstawie obrazu pochodzącego z nich generowany jest obraz samochodu z lotu ptaka.
 Kamery są również używane w systemie asystenta pasa ruchu i detekcji i rozpoznawania znaków drogowych.
@@ -104,6 +128,35 @@ Oznacza zaawansowanych asystentów jazdy. %TODO asysty j.w do ew. zmiany OK
 Samochód może sam kontrolować zarówno kierunek jazdy i przyspieszanie oraz hamowanie. %TODO tu może zamiast sterowanie - kierunek jazdy, bo kontrolować sterowanie średnio brzmi  OK
 Jest w stanie jechać samodzielnie, lecz wymaga ciągłej obecności kierowcy za kierownicą, który może w~każdej chwili przejąć kontrolę nad samochodem. 
 Obecnie stosowane systemy jazdy autonomicznej takie jak np. Tesla Autopilot montowane w samochodach marki Tesla (rys. \ref{fig:teslas}) kwalifikują się jako poziom drugi.
+=======
+Na rysunku \ref{fig:kamery_i_radary} daje się zauważyć znaczna liczba kamer i radarów wspomagająca kierowcę. Powszechną techniką jest stosowanie redundancji w krytycznych systemach, co jest regulowane poprzez normy ADAS (Advanced Driver Assistance Systems).
+%TODO uwaga j.w. + nie byłbym przekonany, że istnieje coś takiego jak normy ADAS. Są oczywiście normy bezpieczeństwa systemów - słynne ISO 26262
+
+%TODO Przydałoby się podać na podstawie czego opracowana została ta klasyfikacja SAE - źródło
+
+\subsection{Poziom zerowy -- brak autonomiczności}
+
+Obecnie większość samochodów na drodze zawiera się w tym poziomie. %TODO zaliczanych jest do tego poziomu ?
+Człowiek wpływa na jazdę, chociaż mogą pojawiać się proste systemy, które mogą pomóc kierowcy np. system awaryjnego hamowania. 
+Dopóki nie wpływa on na tor jazdy, nie jest to system autonomiczny. 
+Innym przykładem jest system ABS, który również nie jest systemem, który zapewniałby autonomiczność pojazdowi. %TODO rozwinąc skrót ABS, powt system
+Służy on poprawie bezpieczeństwa i jego działanie opiera się tylko na odczycie danych z czujników niezależnie od aktualnej sytuacji na drodze i wokół pojazdu. %TODO może Pan bardziej konkretnie napisać o tym (treść)
+
+\subsection{Poziom pierwszy -- asysty kierowcy}
+%TODO używa Pan słowa "asysta", a mi ono nie pasuje: https://sjp.pwn.pl/sjp/asysta;2441704.html
+%TODO wspomaganie ? 
+
+Jest to najniższy poziom autonomiczności. 
+Auto posiada pojedynczy system wspomagania kierowcy, taki jak sterowanie lub przyspieszanie (tempomat). 
+%TODO tutaj to słowo "sterowanie" jest mylące. Proszę to jakoś inaczej ująć. Albo podać przykład, bo asystet pasa ruchu chyba też się tu mieści
+Adaptacyjny tempomat, czyli system, który zachowuje bezpieczny dystans od poprzedzającego pojazdu kwalifikuje się jako poziom pierwszy, ponieważ człowiek kontroluje pozostałe aspekty jazdy samochodem takie jak kierowanie i hamowanie. %TODO przerobić na przykładem....
+
+\subsection{Poziom drugi -- częściowa automatyzacja jazdy samochodem}
+Oznacza zaawansowane asysty kierowcy. %TODO asysty
+Samochód może sam kontrolować zarówno sterowanie i przyspieszanie oraz hamowanie. %TODO tu może zamiast sterowanie - kierunek jazdy, bo kontrolować sterowanie średnio brzmi 
+Jest w stanie jechać samodzielnie, lecz wymaga ciągłej obecności kierowcy za kierownicą, który może w~każdej chwili przejąć kontrolę nad samochodem. 
+Obecnie stosowane systemy jazdy autonomicznej takie jak np. Tesla Autopilot kwalifikują się jako poziom drugi.
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 \begin{figure}
   \centering
@@ -112,6 +165,7 @@ Obecnie stosowane systemy jazdy autonomicznej takie jak np. Tesla Autopilot mont
   \label{fig:teslas}
   % https://pl.wikipedia.org/wiki/Tesla_Model_S#/media/Plik:2014_Tesla_Motors_Model_S_(rear_view)_Netherlands.jpg
 \end{figure}
+<<<<<<< HEAD
 %TODO odniesnie do rysunku w tekście. OK
 
 \subsection{Poziom trzeci}
@@ -129,6 +183,25 @@ Na rynku europejskim samochód pojawił się z zaimplementowaną funkcjonalnośc
 
 Poziom czwarty zapewnia poprawną reakcję samochodu w nagłych sytuacjach takich jak np. wypadek lub pęknięcie opony. %TODO trochę niejasne -OK
 Pojazdy nie wymagają ingerencji człowieka w znakomitej większości sytuacji, jednak kierowca zawsze powinien być w stanie przejąć kontrolę. 
+=======
+%TODO odniesnie do rysunku w tekście.
+
+\subsection{Poziom trzeci}
+
+Różnica w~stosunku do poziomu drugiego jest subtelna. %TODO styl. jakoś inaczej trzeba tą myśl ująć, bo to źle wygląda jako początek zdania.
+Samochód posiada możliwość detekcji otaczającego go środowiska i~na podstawie zgromadzonych informacji samodzielnie podejmować decyzje. %TODO detekcji - percepcji
+System jest jednak wciąż zależny od człowieka, który musi pozostać czujny i być w stanie zareagować, gdy system nie będzie w stanie podjąć decyzji. 
+W~2019r. Audi wprowadziło model A8, który zapowiadano jako pierwszy samochód poziomu trzeciego. 
+System \textit{Traffic Jam Pilot} bazując na danych z lidaru oraz kamer zapewniał autonomiczną jazdę w korkach. 
+Problemem okazało się nieprzygotowanie prawne. %TODO może brak odpowiednich regulacji prawnych
+W Stanach Zjednoczonych stosowanie tego systemu było zabronione, więc samochód w okrojonej wersji sprzedawano jako pojazd autonomiczny drugiego poziomu. 
+W Europie samochód pojawił się z zaimplementowaną funkcjonalnością asystenta jazdy w korku. %TODO sprawdzał Pan w jakich krajach ?
+
+\subsection{Poziom czwarty}
+
+Poziom czwarty zapewnia to czego brakowało na niższych poziomach, a więc może interweniować jeśli coś pójdzie nie tak (np. nagły wypadek, pęknięcie opony). %TODO trochę niejasne 
+Te samochody nie wymagają ingerencji człowieka w znakomitej większości sytuacji, jednak człowiek zawsze jest w stanie przejąć kontrolę. 
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 Podobnie jak w poziomie trzecim problemem okazały się ograniczenia prawne. 
 Samochody te mogą z reguły poruszać się na ograniczonym obszarze. 
 Obecnie w fazie testów są samochody takie jak Waymo lub NAVYA.
@@ -137,6 +210,7 @@ Obecnie w fazie testów są samochody takie jak Waymo lub NAVYA.
 Samochody nie wymagają ingerencji ze strony człowieka. 
 Najprawdopodobniej nie będą wyposażone w kierownicę ani pedały. 
 Będą w stanie jechać gdziekolwiek, system sterowania będzie działał na poziomie doświadczonego kierowcy. 
+<<<<<<< HEAD
 Samochody te są obecnie w stanie wczesnych testów, jednak można się spodziewać, że w ciągu najbliższych kilkunastu lat pierwsze w pełni autonomiczne samochody będą pojawiać się na drogach.
 %TODO tu akurat byłbym ostrożny,., -W stanach były z tego co kojarzę autonomiczne UBERy, któryś miał wypadek nawet. A ostatnio Aptiv miał mieć przejazd samochodu po A4 z kierowcą tylko ze względów prawych.. ale nie wyszło też ze względów prawnych.
 
@@ -145,6 +219,16 @@ Samochody te są obecnie w stanie wczesnych testów, jednak można się spodziew
 Warto zaznaczyć, że ważnym polem do zastosowania systemów autonomicznej jazdy jest transport ciężarowy. %TODO konkretniej, bo transport to też auta osobowe OK
 Systemy wspomagające kierowcę pojawiają się w samochodach ciężarowych analogicznie do samochodów osobowych. %TODO ale niejasne gdzie  OK
 W najbliższych latach planuje się rozwijanie koncepcji autonomicznych samochodów ciężarowych poprzez tworzenie konwojów, w których kierowca znajduje się tylko w pierwszym samochodzie (źródło: \cite{W4})%TODO powt. ciężarówek - lepiej sam. ciężarowy. Przydałoby się źródło (choćby on-line). OK
+=======
+Samochody te są obecnie w stanie wczesnych testów, jednak można się spodziewać, że w ciągu najbliższych lat pierwsze w pełni autonomiczne samochody będą pojawiać się na drogach.
+%TODO tu akurat byłbym ostrożny,.,
+
+\subsection{Autonomiczne samochody ciężarowe}
+
+Warto zaznaczyć, że ważnym polem do zastosowania systemów autonomicznej jazdy jest transport. %TODO konkretniej, bo transport to też auta osobowe
+Systemy wspomagające kierowcę pojawiają się analogicznie do samochodów osobowych. %TODO ale niejasne gdzie 
+W najbliższych latach planuje się rozwijanie koncepcji autonomicznych ciężarówek poprzez tworzenie konwojów ciężarówek, w których kierowca znajduje się tylko w pierwszym samochodzie. %TODO powt. ciężarówek - lepiej sam. ciężarowy. Przydałoby się źródło (choćby on-line).
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 Kolejnym krokiem będzie autonomiczna jazda na dystansie trasy ze wsparciem kierowcy podczas załadunku i rozładunku. 
 Ostatnim krokiem, podobnie jak w przypadku samochodów osobowych, będzie w pełni autonomiczna jazda bez udziału człowieka.
 
@@ -155,6 +239,7 @@ Systemy wizyjne stosowane w ciężarówkach nie odbiegają sposobem pracy od tyc
 
 %TODO Tak sobie jeszcze myślę, że oprócz metody konkruencyjnej dobrze by było opisać przykład metody deep AI. Bez istotnych szczegółów, ale pokazać, że tak też się ten problem rozwiązauje.
 
+<<<<<<< HEAD
 
 \section{Algorytmy wizyjne w pojazdach autonomicznych}
 W~kolejnych podrozdziałach zostaną opisane algorytmy wizyjne, których zadaniem jest analiza otoczenia samochodu. %TODO detekcja otoczenia dziwnie brzmi. OK
@@ -168,11 +253,27 @@ W niektórych metodach zostaną użyte proste techniki uczenia maszynowego.
 
 Wykrywanie pasa ruchu było jednym z pierwszych algorytmów implementowanych w samochodach komenrcyjnych. %TODO niejasne przez kogo OK
 W trakcie jazdy kluczowym elementem jest utrzymanie samochodu w pasie jezdni niezależnie od stanu nawierzchni, pogody, czy prędkości (rys. \ref{fig:inputimg1}).
+=======
+\section{Wykrywanie pasa ruchu}
+
+\label{sec:lane_detection}
+
+W~kolejnych podrozdziałach zostaną opisane algorytmy wizyjne, których zadaniem jest detekcja i analiza otoczenia samochodu. %TODO detekcja otoczenia dziwnie brzmi.
+W ostatnich latach dynamicznie rozwijającą się dziedziną w systemach wizyjnych i motoryzacji są sieci neuronowe, które są obecnie najczęściej wybierane do implementacji w samochodach. 
+Jednakże ze względu na edukacyjny charakter pracy opisane zostaną algorytmy bazujące na klasycznych metodach przetwarzania obrazach cyfrowych. %TODO mógłby Pan to nieco rozwinąć - to i wątek NN 
+W niektórych metodach zostaną użyte proste techniki uczenia maszynowego.
+%TODO To do tego wstępu rozdziału
+
+
+Wykrywanie pasa ruchu było jednym z pierwszych badanych algorytmów. %TODO niejasne przez kogo
+W trakcie jazdy kluczowym elementem jest utrzymanie samochodu w pasie jezdni niezależnie od stanu nawierzchni, pogody, czy prędkości.
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 \begin{figure}
   \centering
   \includegraphics[width=7cm]{img/input.png}
   \caption{Przykładowy obraz wejściowy algorytmu detekcji pasa ruchu}
+<<<<<<< HEAD
   \label{fig:inputimg1}
   \end{figure}
 %TODO odnośnik do rysunku + może zamiast jednego mega kilka (4) mniejsze pokazujące różne warunki.
@@ -181,6 +282,17 @@ W~najczęstszym przypadku wejściem do algorytmu jest obraz z kamery umieszczone
 W niniejszej pracy, większość przetwarzanych obrazów pochodzi z symulatora Euro Truck Simulator 2, (który dokładniej jest opisany w rozdziale \ref{sec:ets2}), gry komputerowej, która posiada zaawansowaną grafikę, która przypomina otaczającą rzeczywistość, a także udostępnia możliwości programistyczne, które ułatwią stworzenie aplikacji do testowania algorytmów wizyjnych, co jest założeniem niniejszej pracy. %TODO odnośnik to opisu tego Euro Truck z drugiej części pracy OK
 
 W niniejszym podrozdziale zostanie opisany algorytm z artykułu \cite{T3}. %TODO "sekcja" to nie jest polskie słowo na rozdział/podrozdział. OK
+=======
+  \label{fig:inputimg}
+  % https://pl.wikipedia.org/wiki/Tesla_Model_S#/media/Plik:2014_Tesla_Motors_Model_S_(rear_view)_Netherlands.jpg
+\end{figure}
+%TODO odnośnik do rysunku + może zamiast jednego mega kilka (4) mniejsze pokazujące różne warunki.
+
+W~najczęstszym przypadku wejściem do algorytmu jest obraz z kamery umieszczonej pod pewnym kątem do nawierzchni zamontowanej w okolicy przedniego zderzaka lub atrapy chłodnicy. %TODO myślę, że za luterkiem też. 
+W niniejszej pracy, większość przetwarzanych obrazów pochodzi z symulatora Euro Truck Simulator 2, gry komputerowej, która posiada zaawansowaną grafikę, która przypomina otaczającą rzeczywistość, a także udostępnia możliwości programistyczne, które ułatwią stworzenie aplikacji do testowania algorytmów wizyjnych, co jest założeniem niniejszej pracy. %TODO odnośnik to opisu tego Euro Truck z drugiej części pracy
+
+W niniejszej sekcji zostanie opisany algorytm z artykułu \cite{T3}. %TODO "sekcja" to nie jest polskie słowo na rozdział/podrozdział.
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 Autor korzysta w nim z podstawowych operacji przetwarzania obrazów. 
 
 
@@ -193,6 +305,7 @@ Autor korzysta w nim z podstawowych operacji przetwarzania obrazów.
   % artykuł
 \end{figure}
 
+<<<<<<< HEAD
 Pierwszym krokiem jest wyodrębnienie z obrazu ROI \footnote{ROI (ang.) -- \textit{Region of Interest} -- obszar obrazu poddawany analizie i dalszemu przetwarzaniu} (rys. \label{fig:roi}). %TODO odnośnik do rysunku OK
 Ma to na celu ograniczenie ilości danych poddawanych analizie, a co bardziej istotne odrzuca te fragmenty obrazu, na których na pewno nie będzie jezdni (powyżej czerwonej linii), a także te gdzie obraz linii mógłby być zakłócony. 
 Warto zauważyć, że pomiędzy liniami - czerwoną i niebieską znajduje się prawie dwa razy więcej długości drogi niż w obszarze pod niebieską linią. Obszar pod niebieską linią jest odrzucany, ponieważ na dużym obszarze obrazu znajduje się niewielki fragment jezdni, co może generować problemy z poprawną detekcją w przypadku linii przerywanej.
@@ -202,6 +315,17 @@ Kolejnym etapem jest ekstrakcja linii rozdzielającej pasy. %TODO no to nie pas�
 W większości krajów mają one kolor biały, rzadziej żółty. 
 Są to kolory, które na drodze inną funkcję niż barwa znaków poziomych, w tym linii. %TODO styl.  OK
 Mając na wejściu obraz RGB\footnote{RGB -- obraz o~trzech składowych barwnych: czerwonej (R), zielonej (G) i~niebieskiej (B)} można zauważyć, że składowe czerwona i zielona mają większe wartości tam gdzie na obrazie są linie w porównaniu do niepomalowanej nawierzchni jezdni. %TODO standardowa nawierzchnia OK
+=======
+Pierwszym krokiem jest wyodrębnienie z obrazu ROI \footnote{ROI (ang.) -- \textit{Region of Interest} -- obszar obrazu poddawany analizie i dalszemu przetwarzaniu}. %TODO odnośnik do rysunku
+Ma to na celu ograniczenie ilości danych poddawanych analizie, a co bardziej istotne odrzuca te fragmenty obrazu, na których na pewno nie będzie jezdni (powyżej czerwonej linii), a także te gdzie obraz linii mógłby być zakłócony. 
+Warto zauważyć, że pomiędzy liniami - czerwoną i niebieską znajduje się prawie dwa razy więcej długości drogi niż w obszarze pod niebieską linią.
+%TODO a jaki jest argument dlaczego nie przed niebieską ?
+
+Kolejnym etapem jest ekstrakcja pasów ruchu. %TODO no to nie pasów, tylko linii rozdzielająych pasy
+W większości krajów mają one kolor biały, rzadziej żółty. 
+Są to kolory, które na drodze można rzadko zauważyć w innej funkcji niż malowanie znaków poziomych, w tym linii. %TODO styl. 
+Mając na wejściu obraz RGB\footnote{RGB -- obraz o~trzech składowych barwnych: czerwonej (R), zielonej (G) i~niebieskiej (B)} można zauważyć, że składowe czerwona i zielona mają większe wartości tam gdzie na obrazie są linie w porównaniu do standardowej nawierzchni jezdni. %TODO standardowa nawierzchnia
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 W~omawiany artykule zaproponowano następującą metodę segmentacji linii:
 \begin{equation}
 \label{eq:IMij}
@@ -213,7 +337,11 @@ G(i,j)\geq (0.2G_{min}+0.8G_{max})
 0, & wpp.
 \end{matrix}\right.
 \end{equation}
+<<<<<<< HEAD
 %TODO u mnie ten footnote nie działa. u mnie również. Ciężko w Latex wstawiać przypisy w równaniach - może uznamy, że skrót jest powszechnie znany w środowisku?
+=======
+%TODO u mnie ten footnote nie działa.
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 \begin{equation}
 \label{eq:Gij}
@@ -274,8 +402,12 @@ Dla każdego piksela w~obrazie $IME$, który został oznaczony jako krawędź, z
 	\end{matrix}
 \end{equation}
 Jeśli jest ona spełniona, wybrany punkt na obrazie $IME$ zostaje uznany jako krawędź pasa jezdni.
+<<<<<<< HEAD
 %TODO Napisać co to oznacza w praktyce OK
 W praktyce ma to za zadanie zwiększyć skuteczność algorytmu. Linie oddzielające pasy ruchu z reguły mają na obrazie szerokość większą niż jeden piksel (a taką szerokość mają póki co na obrazie uzyskanym po detekcji krawędzi), więc jeśli choć jeden piksel z ośmiopikselowego otoczenia jest uznawany za krawędź, to rozważany piksel również jest traktowany jako element krawędzi.
+=======
+%TODO Napisać co to oznacza w praktyce
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 \begin{figure}
   \centering
@@ -286,7 +418,11 @@ W praktyce ma to za zadanie zwiększyć skuteczność algorytmu. Linie oddzielaj
 
 Do ostatecznego wykrycia linii prostych należy użyć zmodyfikowanej transformaty Hougha( \textit{constraint Hough transform}). 
 Główna różnica pomiędzy wykorzystywaną, a klasyczną transformatą Hougha polega na tym, że wartości $\rho$ i $\theta$ są skwantowane i pogrupowane. 
+<<<<<<< HEAD
 Dzięki takiej modyfikacji nieidealnie proste linie lub takie, które leżą blisko siebie nie będą wykryte wielokrotnie. %TODO styl. zdania... OK
+=======
+Dzięki takiej modyfikacji linie które leżą blisko siebie lub w przypadku nieidealnie prostej linii redukuje się prawdopodobieństwo wielokrotnej detekcji prostej. %TODO styl. zdania...
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 \begin{figure}
   \centering
@@ -296,7 +432,11 @@ Dzięki takiej modyfikacji nieidealnie proste linie lub takie, które leżą bli
 \end{figure}
 
 
+<<<<<<< HEAD
 %TODO Dlaczego zakomentowane ? Artykuł, na którym to jest oparte zawierał pewne luki i nie byłem w stanie dociec o co tak naprawdę autorom chodzi
+=======
+%TODO Dlaczego zakomentowane ?
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 %\subsection{Detekcja zakrętów}
 %Podobnym zadaniem jest detekcja pasa ruchu w zakręcie. Kształt zakrzywionej linii może być opisany za pomocą paraboli z równania \ref{eq:ld_1}. Zauważono, że fragment drogi bliżej samochodu z reguły jest prosty, zakrzywienie widać powyżej pewnej odległości, a na obrazie powyżej pewnej wysokości. Równanie \ref{eq:ld2} pokazuje model pasa ruchu, gdzie $y_m$ to współrzędna punktu, w którym prosta przechodzi w krzywą.
@@ -333,8 +473,11 @@ Dzięki takiej modyfikacji nieidealnie proste linie lub takie, które leżą bli
 %\end{equation}
 
 %TODO Dla zwiększenia objęctości
+<<<<<<< HEAD
 
 \subsection{Detekcja znaków drogowych}
+=======
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 Innym w swojej naturze zadaniem stawianym przed systemami wizyjnymi w pojazdach autonomicznych jest detekcja i rozpoznawanie znaków drogowych. %TODO i rozpoznawanie OK
 Systemy tego typu pojawiały się dość wcześnie w~samochodach pełniąc jedynie funkcję ostrzegawczo-informacyjną.
@@ -343,6 +486,7 @@ W przypadku tego zagadnienia istotnym problemem jest brak ujednoliconego zestawu
 Obecnie każdy kraj posiada swój zestaw znaków, które w ogólności są podobne, jednak różnice w szczegółach komplikują projektowanie opisywanych systemów. %TODO może komplikują projetkowanie OK
 Proponowanym rozwiązaniem jest zbudowanie odpowiednio dużej bazy wzorców znaków i~stosowanie określonego zestawu w zależności od konkretnej lokalizacji. 
 
+<<<<<<< HEAD
 Rozwiązanie proponowane w~pracy \cite{T2} składa się z dwóch etapów. 
 Pierwszy to detekcja znaku, a drugi to jego klasyfikacja. 
 Do wykrycia znaku drogowego na obrazie pochodzącym z kamery umieszczonej w samochodzie użyto metody \textit{Radial Symmetry Transform} do detekcji znaków ograniczenia prędkości. 
@@ -358,6 +502,30 @@ Opisywana metoda detekcji jest kompatybilna ze wszystkimi głównymi metodami kl
 Zaletą użycia opisywanego algorytmu jest fakt, że wraz z informacją o wykrytym znaku podawana jest skala znaku, co znacząco ułatwia klasyfikację, ponieważ niepotrzebne staje się używanie szablonów o wielu rozmiarach dla wielu różnych rozdzielczości. %TODO nie wiem czy główną, czy dodatkową. Ponadto proszę spróbować mniej słowa "metoda". OK
 
 Detektor radialnej symetrii jest wariantem transformaty Hougha dla okręgów. 
+=======
+Innym w swojej naturze zadaniem stawianym przed systemami wizyjnymi w pojazdach autonomicznych jest detekcja znaków drogowych. %TODO i rozpoznawanie
+Systemy tego typu pojawiały się dość wcześnie w~samochodach pełniąc jedynie funkcję ostrzegawczo-informacyjną.
+Coraz bardziej dynamicznie rozwijające się systemy wspomagające kierowcę wymagają od subsystemu odpowiedzialnego za detekcję znaków drogowych dużej skuteczności, ponieważ na ich detekcjach opierają decyzje o sterowaniu pojazdem. %TODO podsystem... powt. detekcja
+Istotnym problemem jest brak ujednoliconego zestawu znaków dla całego świata. %TODO w przypadku tego zagadnienia
+Obecnie każdy kraj posiada swój zestaw znaków, które w ogólności są podobne, jednak różnice w szczegółach sprawiają problemy systemom wizyjnym. %TODO może komplikują projetkowanie
+Proponowanym rozwiązaniem jest zbudowanie odpowiednio dużej bazy wzorców znaków i~stosowanie określonego zestawu w zależności od konkretnej lokalizacji. 
+
+Rozwiązanie proponowane w~pracy \cite{T2} składa się z dwóch etapów. 
+Pierwszy to detekcja znaku, a drugi to jego klasyfikacja. 
+Do wykrycia znaku drogowego na obrazie pochodzącym z kamery umieszczonej w samochodzie użyto metody \textit{Radial Symmetry Transform} do detekcji znaków ograniczenia prędkości. 
+Obecnie stosowane metody detekcji bazują na segmentacji koloru lub kształtu. %TODO zdanie niejasne
+
+\subsection{Radial Symmetry Transform}
+
+Klasyczne detektory kształtu wymagają często zamkniętych konturów. 
+Techniki odporne, takie jak transformata Hougha dla okręgów wymaga dużych nakładów obliczeniowych dla dużych obrazów. 
+Metoda \textit{\textit{fast radial symmetry detector} -- (ang. szybki radialny detektor symetrii) -- FRSD} może być używana w~czasie rzeczywistym. %TODO a to nie powinno być detektor symetrii radialnej ?
+Znakomita większość znaków z ograniczeniem prędkości to koło z czerwonym brzegiem i wartością ograniczenia w środku na białym tle. 
+Opisywana metoda detekcji jest kompatybilna ze wszystkimi głównymi metodami klasyfikacji takimi jak np. SVM (ang. \textit{Support Vector Machine} -- maszyna wektorów wspierających). 
+Główną zaletą użycia opisywanej metody jest fakt, że wraz z informacją o wykrytym znaku podawana jest skala znaku, co znacząco ułatwia klasyfikację, ponieważ niepotrzebne staje się używanie szablonów o wielu rozmiarach dla wielu różnych rozdzielczości. %TODO nie wiem czy główną, czy dodatkową. Ponadto proszę spróbować mniej słowa "metoda".
+
+Szybki radialny detektor symetrii jest wariantem transformaty Hougha dla okręgów. 
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 Jest on wykonywany w porządku $kp$, gdzie $k$ oznacza liczbę promieni, które są szukane, a~$p$ liczbę pikseli. Stanowi to różnicę w stosunku do klasycznej transformaty Hougha wykonywanej w porządku $kbp$, gdzie każdy piksel na obrazie krawędzi ,,głosuje'' dla każdego koła z dyskretnego zestawu promieni. $b$ oznacza dyskretyzację zestawu promieni okręgów, które mogą przechodzić przez aktualnie analizowany punkt.
 
 \begin{figure}
@@ -370,23 +538,38 @@ Jest on wykonywany w porządku $kp$, gdzie $k$ oznacza liczbę promieni, które 
 FRSD eliminuje czynnik $b$ poprzez pozyskanie informacji o kierunku gradientu z detektora krawędzi Sobela.
 Zamiast sprawdzania każdego możliwego kierunku promienia, sprawdzany jest jedynie kierunek prostopadły do kierunku gradientu, co jest widoczne na rysunku \ref{fig:frsd1}. 
 Powoduje to, że przestrzeń rozwiązań z~trójwymiarowej staje się dwuwymiarowa, co pozwala na używanie algorytmu w czasie rzeczywistym. 
+<<<<<<< HEAD
 Operacja detekcji symetrii radialnej może być prosto zrozumiana jako rozważenie wszystkich możliwych okręgów, których dany piksel może być częścią, jeżeli znany jest kierunek krawędzi, to okręgi są szukane tylko na linii prostopadłej do krawędzi (rys. \ref{fig:frsd1}). %TODO to może dać obok tego poprzedniego rysunku. detekcja symetrii radialnej OK
 
 
+=======
+Operacja radialnej detekcji symetrii może być prosto zrozumiana jako rozważenie wszystkich możliwych okręgów, których dany piksel może być częścią, jeżeli znany jest kierunek krawędzi, to okręgi są szukane tylko na linii prostopadłej do krawędzi (rys. \ref{fig:frsd2}). %TODO to może dać obok tego poprzedniego rysunku. detekcja symetrii radialnej
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 \begin{figure}
   \centering
   \includegraphics[width=7cm]{img/fsrd2.png}
+<<<<<<< HEAD
   \caption{Działanie FRSD dla okręgu, zauważalne przecięcie średnic skutkuje istnieniem maksimum lokalnego w środku okręgu.\cite{T2}} %TODO Zachowanie - działanie OK
+=======
+  \caption{Zachowanie FRSD dla okręgu, zauważalne przecięcie średnic skutkuje istnieniem maksimum lokalnego w środku okręgu.\cite{T2}} %TODO Zachowanie - działanie 
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
   \label{fig:frsd2}
 \end{figure}
 Na rysunku \ref{fig:frsd2} widać działanie algorytmu dla okręgu. Badanie wartości gradientu tylko na kierunku prostopadłym do orientacji gradientu implikuje istnienie maksimum w środku okręgu.
 
 
+<<<<<<< HEAD
 Praktyczna realizacja jest wykonywana na obrazie cyfrowym, więc promień jest skwantowany na kilka przedziałów długości. %TODO niejasne OK
 Istotne jest poprawne dobranie ograniczeń na długość promienia. 
 Na rysunku \ref{fig:tsd} po prawej stronie jest widoczny znak ograniczenia prędkości, który powinien zostać wykryty. 
 Daje się zauważyć, że można dobrać odpowiednie zakresy promienia dla znaków, które będą pojawiać się na obrazie z kamery. Można również wyodrębnić obszar, na którym znaki na pewno nie będą się pojawiać (jezdnia przed pojazdem, wyższa część nieba). %TODO to zdanie jest takie dziwne - pełna zgoda OK
+=======
+Praktyczna realizacja jest wykonywana na obrazie cyfrowym, więc promień jest podzielony na kilka zakresów długości. %TODO niejasne
+Istotne jest poprawne dobranie ograniczeń na długość promienia. 
+Na rysunku \ref{fig:tsd} po prawej stronie jest widoczny znak ograniczenia prędkości, który powinien zostać wykryty. 
+Daje się zauważyć, że można dobrać odpowiednie zakresy promienia dla wykrywanych znaków, a także wyodrębnić obszar na którym znaki na pewno nie będą się pojawiać, a także taki, na którym należy wykonać detekcję. %TODO to zdanie jest takie dziwne
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 \begin{figure}
   \centering
   \includegraphics[width=7cm]{img/znaki1.png}
@@ -421,6 +604,7 @@ Daje się zauważyć, że można dobrać odpowiednie zakresy promienia dla znak�
 	\caption{\label{fig:details}Wyniki detekcji, gdy zakres promieni jest zbyt mały \protect\subref{fig:znaki2} i zbyt duży \protect\subref{fig:znaki3}.\cite{T2}}
 \end{figure}
 
+<<<<<<< HEAD
 Wszystkie opisywane operacje są wykonywane na obrazach dyskretnych, więc przestrzeń możliwych długości promieni jest skwantowana. W przypadku, gdy dobrany zakres długości promieni będzie zbyt mały lub zbyt duży, detektor ma gorszą sprawność. Dzieje się tak, ponieważ ewentualne maksima są rozmyte (rys. \ref{fig:znaki2} i rys. \ref{fig:znaki3})
 %TODO Brak opisu tych rysunków. OK 
 %TODO Brak opisu rozwiązania "konkurencyjnego".
@@ -440,6 +624,26 @@ Sygnalizacja świetlna na świecie jest ustandaryzowana. %TODO światła jw. OK
 Istnieją trzy kolory: czerwony, żółty i zielony. 
 Każdy kolor niesie za sobą informację: czerwony -- stój, żółty -- przygotuj się do zmiany z zielonego na czerwony lub odwrotnie i~zielony, który oznacza jedź. 
 Jedyną znaną różnicą w stosunku do opisanego standardu jest światło pomarańczowe, występujące jako zamiennik światła żółtego w Stanach Zjednoczonych %TODO zdanie niejasne OK
+=======
+%TODO Brak opisu tych rysunków. 
+%TODO Brak opisu rozwiązania "konkurencyjnego".
+%TODO Swoją drogą komentarz co dla innych znaków.
+
+\section{Detekcja świateł drogowych}
+\label{sec:tl}
+Kolejnym istotnym elementem systemów umieszczanych w pojazdach autonomicznych jest detekcja świateł drogowych.
+%TODO tak się zastanawiam i nie wiem czy światła drogowe to dobra nazwa. Może sygnalizacja świetlna. Bo światła drogowe to w samochodach
+Informują one o możliwości przejazdu przez skrzyżowanie lub rondo i możliwości znalezienia się na trasie kolizyjnej w stosunku do innych użytkowników drogi. %TODO powt. możliwości
+Światła drogowe spotykane są głównie w miastach, lecz wraz z rozwojem infrastruktury widywane są także w~mniejszych miejscowościach. 
+Słupy z zamontowanymi światłami mogą być widoczne na prawej lub lewej krawędzi jezdni, a także nad nią.
+
+\subsection{Detekcja świateł drogowych z użyciem informacji o kolorze i krawędziach}
+
+Światła drogowe na świecie są ustandaryzowane. %TODO światła jw.
+Istnieją trzy kolory: czerwony, żółty i zielony. 
+Każdy kolor niesie za sobą informację: czerwony -- stój, żółty -- przygotuj się do zmiany z zielonego na czerwony lub odwrotnie i~zielony, który oznacza jedź. 
+Jedyną znaną odchyłką jest odpowiednik światła żółtego w Stanach Zjednoczonych, który jest pomarańczowy. %TODO zdanie niejasne
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 \begin{figure}
   \centering
@@ -489,8 +693,13 @@ gdzie:
 \end{figure}
 
 Efekt przeniesienia przestrzeni barw do znormalizowanej przestrzeni RGB jest widoczny na rysunku \ref{fig:tl_norm}.
+<<<<<<< HEAD
 Następnie, poprzez progowanie każdej ze składowych barwnych uzyskuje się obszary, w których mogą znajdować się elementy sygnalizacji świetlnej. %TODO styl. OK
 Decyzja o tym czy piksel należy lub nie do elementu sygnalizacji świetlnej jest podejmowana na podstawie poniższych warunków:
+=======
+Następnie poprzez progowanie każdej ze składowych uzyskuje się kandydatów do detekcji świateł drogowych. %TODO styl.
+Decyzja o tym czy piksel należy lub nie do światła drogowego jest podejmowana na podstawie poniższych warunków:
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 \begin{equation}
 R>200 \wedge G< 150 \wedge B<150
 \end{equation}
@@ -513,6 +722,7 @@ R<150 \wedge G>240 \wedge B>220
 Rezultat progowania jest widoczny na rysunku \ref{fig:tl_thresh}. 
 Następnym krokiem jest wykrycie krawędzi na obrazie z kandydatami do detekcji świateł. 
 Jedną z~opcji jest użycie filtru Sobela. 
+<<<<<<< HEAD
 Ostatnim etapem, jako że światła drogowe mają jasno określony kształt, jest użycie transformaty Hougha dla okręgów, by wykryć właściwe elementy sygnalizacji świetlnej. 
 W~artykule stosowana jest zmodyfikowana transformata Hougha do wyszukiwania okręgów, która polega na ustaleniu stałej długości promienia. 
 Klasyczna transformata Hougha jest opisana w podrozdziale \ref{sec:vision_algs}. %TODO sekcji ! OK
@@ -524,6 +734,19 @@ Porównanie jest zamieszczone w tabeli \ref{tab:tl_results}.
 Główną zaletą opisywanej metody detekcji sygnalizacji świetlnej jest fakt, że poprawnie odrzuca ona znaki drogowe, które również mają okrągły kształt i jednolite kolory na krawędziach. %TODO słowo "obrazy" nie pasuje OK
 Kolejnym sprawdzanym elementem jest kolor na krawędziach, który powinien być taki sam jak wewnątrz kształtu, co pozwala skutecznie odrzucić np. znaki zakazu. %TODO "bierze" - personifikacja OK
 Problemem, który napotyka algorytm są tylne światła innych pojazdów, które mają jednolity kolor (z reguły czerwony), a także kształt zbliżony do czerwonego światła sygnalizatora. %TODO kształt ? OK
+=======
+Ostatnim etapem, jako że światła drogowe mają jasno określony kształt, jest użycie transformaty Hougha dla okręgów, by wykryć właściwe światła drogowe. 
+W~artykule stosowana jest zmodyfikowana transformata Hougha do wyszukiwania okręgów, która polega na ustaleniu stałej długości promienia. 
+Klasyczna transformata Hougha jest opisana w sekcji \ref{sec:vision_algs}. %TODO sekcji !
+
+\subsection{Wnioski i rezultaty} %TODO to nie powinno być osobne, bo dotyczy tego samego algorytmu.
+
+Opisany algorytm detekcji świateł drogowych daje lepsze wyniki niż użycie standardowej przestrzeni barw i klasycznej transformaty Hougha dla okręgów. 
+Porównanie jest zamieszczone w tabeli \ref{tab:tl_results}. 
+Główną zaletą opisywanej metody detekcji świateł drogowych jest fakt, że poprawnie odrzuca ona obrazy znaków drogowych, które również mają okrągły kształt i jednolite kolory na krawędziach. %TODO słowo "obrazy" nie pasuje
+Algorytm bierze dodatkowo pod uwagę czy kolor na krawędziach jest taki sam jak wewnątrz kształtu, co pozwala skutecznie odrzucić np. znaki zakazu. %TODO "bierze" - personifikacja
+Problemem, który napotyka algorytm są tylne światła innych pojazdów, które mają jednolity kolor (z reguły czerwony), a także kształt zbliżony do czerwonego. %TODO kształt ?
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 Przykładowy błąd detekcji jest ukazany na rysunku \ref{fig:tl_err}.
 
 \begin{figure}
@@ -535,7 +758,11 @@ Przykładowy błąd detekcji jest ukazany na rysunku \ref{fig:tl_err}.
 
 \begin{table}[]
 \centering
+<<<<<<< HEAD
 \caption{Porównanie klasycznego algorytmu detekcji świateł i opisanego w pracy\cite{T4}} %TODO W pracy X OK
+=======
+\caption{Porównanie klasycznego algorytmu detekcji świateł i opisanego w tej pracy\cite{T4}} %TODO W pracy X
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 \begin{tabular}{lllll}
 \cline{1-3}
 \multicolumn{1}{|l|}{}                           & \multicolumn{1}{l|}{Algorytm klasyczny} & \multicolumn{1}{l|}{Algorytm opisany w tym rozdziale} &  &  \\ \cline{1-3}
@@ -546,11 +773,18 @@ Przykładowy błąd detekcji jest ukazany na rysunku \ref{fig:tl_err}.
 \label{tab:tl_results}
 \end{table}
 %TODO a to co jest alg. klasyczy.
+<<<<<<< HEAD
+=======
+
+%TODO konkurencyjna metoda
+%TODO NN - są fajnie prace, łatwo Pan znajdzie.
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 %TODO konkurencyjna metoda
 %TODO NN - są fajnie prace, łatwo Pan znajdzie.
 
 
+<<<<<<< HEAD
 
 \subsection{Detekcja samochodu poprzedzającego}
 \label{sec:car_general}
@@ -575,6 +809,31 @@ Szukanie obrazu samochodu na obrazie w skali szarości jest szybsze, jednak wra�
 Dobrze sprawdza się badanie nasycenia w przestrzeni barw HSV, ponieważ uniezależnia to obraz samochodu od ogólnej jasności otoczenia i~częściowo od pogody.
 
 \subsubsection{Przebieg algorytmu bazującego na operatorze symetrii}
+=======
+\section{Detekcja samochodu poprzedzającego}
+\label{sec:car_general}
+
+Istotnym zadaniem stawianym przed algorytmami wizyjnymi stosowanymi w~pojazdach autonomicznych jest detekcja samochodów w najbliższym otoczeniu pojazdu. 
+Detekcja może być wspierana odczytami z radaru lub lidaru, jednak w~poniższej sekcji zostanie opisany algorytm bazujący jedynie na obrazie z kamer. %TODO 1. powt. detekcja, sekcja !, kamery, czy kamer
+Większość współczesnych samochodów widzianych od tyłu zachowuje symetrię względem pionowej osi przechodzącej przez środek pojazdu. 
+
+Pierwszym, wstępnym krokiem jest zbadanie możliwych pozycji samochodów na obrazie i oznaczenie ich jako ROI.
+Dla systemu z~fuzją danych wizyjnych i radarowych może to być zrobione poprzez analizę odległości i prędkości względnej, czyli danych uzyskanych z radaru. 
+Dla systemu, który posiada jedną kamerę, pozycja samochodów musi być wyznaczona tylko na podstawie ruchu samochodów na obrazie w czasie.
+
+Opisywany algorytm korzysta z detektora symetrii, który działa w następujący sposób. 
+Dla każdego piksela wyznaczana jest liczba punktów, która jest wartością bezwzględną z różnicy wartości pikseli, które są równoodległe od ustalonej osi symetrii. %TODO niejasne - rysunek
+Jest to zwykle robione z użyciem pewnego okna o z góry ustalonym rozmiarze dobieranym tak, aby pasować do rozmiaru samochodów, które mogą znajdować się na obrazie. 
+Będąc świadomym faktu, że samochód im jest dalej od kamery, tym jest mniejszy zastosowano kilka predefiniowanych rozmiarów okien. 
+Wartości wskaźnika symetrii mogą być obliczane dla każdego punktu na obrazie. 
+Piksele z dużą jego wartością są dobrymi kandydatami do należenia do osi symetrii. %TODO styl.
+Wyliczanie wskaźnika symetrii dla każdego punktu na obrazie jest bardzo czasochłonne, więc zdecydowano się na jego wyznaczanie tylko na wcześniej określonych poziomych liniach, które z grubsza pokrywają obszar, na którym mogą znajdować się samochody. %TODO styl. na dwa zdania i zgrabniej
+Do obliczania wskaźnika symetrii może być użytych kilka cech obrazu takich jak: wartości pikseli w skali szarości, obraz krawędzi, składowa S w przestrzeni barw HSV. 
+Szukanie obrazu samochodu na obrazie w skali szarości jest szybsze, jednak wrażliwe na zmiany oświetlenia (noc, deszcz). 
+Dobrze sprawdza się badanie nasycenia w przestrzeni barw HSV, ponieważ uniezależnia to obraz samochodu od ogólnej jasności otoczenia i~częściowo od pogody.
+
+\subsection{Przebieg algorytmu bazującego na operatorze symetrii}
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 %TODO To całe to powinnien być podrodział, a to ew. subsub lub paragraph.
 Pierwszym krokiem jest wygenerowanie obrazu krawędzi na podstawie obrazu w skali szarości lub składowej S przestrzeni barw HSV. 
 W~opisanym algorytmie zaproponowano detektor Canny'ego. 
@@ -592,8 +851,13 @@ Pionowe ograniczenia są ustawione tak, by odpowiadać lewemu i prawemu ogranicz
 
 Jak wspomniano w sekcji \ref{sec:car_general}, w celu zredukowania czasu obliczeń nie każdy piksel w wybranym obszarze jest analizowany. 
 Obliczenia dotyczące symetrii są przeprowadzane tylko dla 15 równoodległych linii skanu (rys. \ref{fig:car_scan_lines1}). 
+<<<<<<< HEAD
 Wejściowa rozdzielczość obrazu nie ma znaczenia dla obliczeń. %TODO no pozioma jednak ma.... - chodzi o to, że obraz może być przeskalowany do pewnej założonej rozdzielczości.
 Dzieje się tak ponieważ algorytm wykrywa tylko maksima wzdłuż linii skanu. Autorzy algorytmu zalecają przeskalowanie obrazu do niższej rozdzielczości w celu zredukowania czasu przetwarzania.
+=======
+Wejściowa rozdzielczość obrazu nie ma znaczenia dla obliczeń. %TODO no pozioma jednak ma....
+Dzieje się tak ponieważ algorytm wykrywa tylko maksima wzdłuż linii skanu.
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 \begin{figure}
   \centering
@@ -626,7 +890,11 @@ S(x,x',y')=\begin{cases}
 \end{itemize}
 
 Szerokość okna powinna być właściwie ustawiona, aby poprawnie wykrywać symetryczne obiekty o różnych rozmiarach. 
+<<<<<<< HEAD
 W~trakcie eksperymentów wykazano, że wartości dające poprawne rezultaty $W$ mieszczą się w przedziale $[8,12]$. %TODO optymalne...to nie dobre słowo po AiR w tym kontekście. OK - ciężko znaleźć właściwy wskaźnik jakości
+=======
+W~trakcie eksperymentów wykazano, że optymalne wartości $W$ mieszczą się w przedziale $[8,12]$. %TODO optymalne...to nie dobre słowo po AiR w tym kontekście.
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 \begin{figure}
   \centering
@@ -636,7 +904,11 @@ W~trakcie eksperymentów wykazano, że wartości dające poprawne rezultaty $W$ 
 \end{figure}
 
 Na rysunku \ref{fig:car_scan_lines} widać, że w niektórych punktach istnieją maksima, które wskazują, że dany punkt może należeć do osi symetrii. 
+<<<<<<< HEAD
 W kolejnym kroku wybiera się maksima i stosuje progowanie, to znaczy wartości maksimów lokalnych poniżej pewnej wartości są odrzucane. %TODO W kolejnym kroku... OK
+=======
+Wybiera się maksima i stosuje progowanie, to znaczy wartości maksimów lokalnych poniżej pewnej wartości są odrzucane. %TODO W kolejnym kroku...
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 Zwykle wartości poniżej określonego progu wskazują na małe, symetryczne elementy tła. 
 Progowanie dokonuje się według następującej formuły:
 \begin{equation}
@@ -682,14 +954,23 @@ Końcowy wynik z zaznaczonymi środkami samochodów jest widoczny na rysunku \re
 
 \section{Opis wybranych zagadnień i algorytmów przetwarzania obrazu}
 \label{sec:vision_algs}
+<<<<<<< HEAD
 W tym podrozdziale zostaną opisane podstawowe algorytmy i zagadanienia dotyczące cyfrowego przetwarzania obrazów, które są używane w zaawansowanych algorytmach wizyjnych w pojazdach autonomicznych. %TODO "sekcja". OK
+=======
+W tej sekcji zostaną opisane podstawowe algorytmy i zagadanienia dotyczące cyfrowego przetwarzania obrazów, które są używane w zaawansowanych algorytmach wizyjnych w pojazdach autonomicznych. %TODO "sekcja".
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 \subsection{Transformata Hougha dla okręgów}
 
 Systemy wizyjne w pojazdach autonomicznych często mają za zadanie wykrycie obiektów o kształcie koła. Algorytmem do tego przeznaczonym jest transformata Hougha. 
 Istnieje ona w wersji do detekcji prostych i okręgów. 
+<<<<<<< HEAD
 Pod pojęciem uogólniona transformata Hougha należy rozumieć algorytm służący do detekcji dowolnego zadanego konturu.
 %TODO "kryje się" zły styl OK
+=======
+Pod pojęciem uogólniona transformata Hougha kryje się algorytm służący do detekcji dowolnego zadanego konturu.
+%TODO "kryje się" zły styl
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 Okrąg można sparametryzować za pomocą następującego wzoru:
 \begin{equation}
@@ -729,10 +1010,17 @@ x_0 = x - rcos(\theta)
 y_0 = y - rsin(\theta)
 \end{equation}
 
+<<<<<<< HEAD
 Następnie wyznaczana jest przestrzeń Hougha. W niej akumulowane są wartości oznaczające liczbę okręgów, które przechodzą przez dany piksel na obrazie wejściowym. Ten proces nazywa się głosowaniem. 
 Wartości maksymalne w przestrzeni Hougha oznaczają wykryty okrąg.
 
 %TODO brakuje wyjaśnienia jak działa ta przestrzeń Hougha OK
+=======
+Następnie wyznaczana jest przestrzeń Hougha, w której dla każdego piksela obrazu wyznacza się liczbę możliwych okręgów do których mógłby należeć. 
+Wartości maksymalne w przestrzeni Hougha oznaczają wykryty okrąg.
+
+%TODO brakuje wyjaśnienia jak działa ta przestrzeń Hougha
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 \subsection{Przestrzenie barw}
 
@@ -759,12 +1047,21 @@ Dodatkowo, co jest ważne w przypadku systemów wizyjnych, niewielka zmiana pozi
 
 Drugą, ważną przestrzenią barw używaną w cyfrowym przetwarzaniu obrazów jest przestrzeń HSV. 
 Jest ona przedstawiona na rysunku \ref{fig:hsv} za pomocą stożka. 
+<<<<<<< HEAD
 Jej główną zaletą jest to, że przy niewielkich zmianach jasności zauważalne są niewielkie zmiany składowej S. %TODO styl. OK
 Pozwala to na uniezależnienie się w pewnym stopniu od czynników takich jak pora dnia lub pogoda.
 
 \subsection{Filtr Canny'ego}
 Podstawowym, dobrze sprawdzającym się detektorem krawędzi, jest filtr Canny'ego \cite{T5}. 
 Cechuje się następującymi właściwościami: %TODO by se przydało źródło (choćby oryginalny artykuł Cannego) OK
+=======
+Jej główną zaletą jest to, że przy niewielkich zmianach jasności są bardzo nieduże zmiany w składowej S. %TODO styl.
+Pozwala to na uniezależnienie się w pewnym stopniu od czynników takich jak pora dnia lub pogoda.
+
+\subsection{Filtr Canny'ego}
+Podstawowym, dobrze sprawdzającym się detektorem krawędzi, jest filtr Canny'ego. 
+Cechuje się następującymi właściwościami: %TODO by se przydało źródło (choćby oryginalny artykuł Cannego)
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 
 \begin{itemize}
 \item niska liczba fałszywych detekcji krawędzi,
@@ -774,7 +1071,11 @@ Cechuje się następującymi właściwościami: %TODO by se przydało źródło 
 
 Detektor krawędzi Canny'ego jest algorytmem wieloetapowym:
 \begin{enumerate}
+<<<<<<< HEAD
 \item Redukcja szumów z obrazu. Używany jest filtr Gaussa. Przykładowa macierz filtru pokazana jest na rysunku \ref{fig:canny_gauss}. %TODO to jakichkolwiek to przesada - redukcja szumu OK
+=======
+\item Usunięcie z obrazu jakichkolwiek szumów. Używany jest filtr Gaussa. Przykładowa macierz filtru pokazana jest na rysunku \ref{fig:canny_gauss}. %TODO to jakichkolwiek to przesada - redukcja szumu
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8]{img/canny_gauss.png}
@@ -791,10 +1092,17 @@ G=\sqrt{G_x^2+G_y^2}
 \begin{equation}
 \theta=arctan(\frac{G_y}{G_x})
 \end{equation}
+<<<<<<< HEAD
 Kierunek jest kwantyzowany na jeden z czterech możliwych kierunków: \ang{0}, \ang{45}, \ang{90}, \ang{135}.
 %TODO może lepiej kwantyzowany ? OK
 
 \item Wartości gradientu w kierunku prostopadłym do głównego przebiegu wykrytej krawędzi o niemaksymalnych wartościach są usuwane. %TODO dodać w jakim otoczeniu OK
+=======
+Kierunek jest zaokrąglany do jednego z czterech możliwych kierunków: \ang{0}, \ang{45}, \ang{90}, \ang{135}.
+%TODO może lepiej kwantyzowany ?
+
+\item Wartości gradientu o niemaksymalnych wartościach są usuwane. %TODO dodać w jakim otoczeniu
+>>>>>>> 57449eb83db9c2d2ed1d8c0196d4835981b8a4b1
 Ma to na celu usunięcie pikseli, które prawdopodobnie nie są elementem krawędzi. 
 W wyniku tej operacji pozostają tylko cienkie linie jako krawędzie.
 
