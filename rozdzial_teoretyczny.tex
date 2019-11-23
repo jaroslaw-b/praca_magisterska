@@ -3,7 +3,7 @@
 
 %TODO to bym pominał. ok
 Od kilku lat zauważalny jest trend ku autonomizacji jazdy samochodem.  
-Ma to na celu wyeliminowanie czynnika, który jest najczęstszą przyczyną wypadków -- człowieka. Dodatkowym aspektem, który wpływa na rozwój przemysłu automotive, są koszty transportu. Zastosowanie autonomicznych ciężarówek poruszających się w konwojach znacząco zmniejszyłoby koszty logistyki dla firm spedycyjnych. %TODO mógłby Pan poszukać i dopisać też inne motywacje - ekonomia dzielenia itp.
+Ma to na celu wyeliminowanie czynnika, który jest najczęstszą przyczyną wypadków -- człowieka. Dodatkowym aspektem, który wpływa na rozwój przemysłu automotive, są koszty transportu. Zastosowanie autonomicznych ciężarówek poruszających się w konwojach znacząco zmniejszyłoby koszty logistyki dla firm spedycyjnych. %TODO mógłby Pan poszukać i dopisać też inne motywacje - ekonomia dzielenia itp. ok
 Systemy, które wspomagają lub wręcz wyręczają kierowcę z obowiązku kierowania uwagi na samochód i jego otoczenie noszą miano ADAS (\textit{Advanced Driver Assistance Systems} -- zaawansowane systemy wspomagania kierowcy). 
 W systemach wspomagających kierowcę stosuje się różne czujniki. Korzysta się z kamer pracujących w paśmie widzialnym i podczerwieni, radarów oraz lidarów. Radar oraz lidar działają na podobnej zasadzie, lecz korzystają z fal elektromagnetycznych o różnej długości.
 Radar pracuje w paśmie mikrofal, natomiast lidar korzysta ze światła widzialnego.
@@ -49,13 +49,13 @@ Ostatni rozdział zawiera krótkie podsumowanie oraz ocenę przydatności aplika
 
 Współczesne pojazdy autonomiczne wykorzystują w~szerokim zakresie systemy wizyjne do analizy otoczenia. 
 Jednym z pierwszych zastosowań algorytmów cyfrowego przetwarzania obrazów była detekcja pasa ruchu, która nie służyła do sterowania samochodem, lecz miała za zadanie wspomagać kierowcę w sytuacjach zmęczenia lub utraty koncentracji. 
-Wraz z rozwojem technologii pojazdów autonomicznych, zaawansowanie systemów wizyjnych rosło od wspomnianej kontroli pasa ruchu, poprzez rozpoznawanie obiektów, które można spotkać na drogach: pieszych, pojazdów i rowerzystów, a także elementy infrastuktury: znaków i świateł drogowych.
+Wraz z rozwojem technologii pojazdów autonomicznych, zaawansowanie systemów wizyjnych rosło od wspomnianej kontroli pasa ruchu, poprzez rozpoznawanie obiektów, które można spotkać na drogach: pieszych, pojazdów i rowerzystów, a także elementy infrastruktury: znaków i świateł drogowych.
 %TODO ująłbym szerzej, że obiektów: pieszych, rowerzystów, pojazdów itp. OK
 %TODO styl. zbyt zamotane zdanie. OK - usunięte
 W kolejnych podrozdziałach zostaną opisane czujniki stosowane w przemyśle motoryzacyjnym. Następnie zawarty jest krótki opis poziomów autonomiczności pojazdów. Rozdział kończy opis działania algorytmów wizyjnych w samochodach.
 
 %TODO dodałbym podrozdzialik o czujnikach zbudowany wokół analizy rysunku 2.1. (brakuje tej treści) OK - zrobione niżej
-%TODO Inna sprawa, że w kolejnych podrozdziałch... to trzeba wymienić, że te czujniki, potem poziomy, a potem systemy wizyjne.
+%TODO Inna sprawa, że w kolejnych podrozdziałch... to trzeba wymienić, że te czujniki, potem poziomy, a potem systemy wizyjne. OK
 
 \section{Poziomy autonomiczności}
 
@@ -73,14 +73,15 @@ Aby usystematyzować i podzielić poziom wpływu systemów na sterowanie pojazde
 Na rysunku \ref{fig:kamery_i_radary} daje się zauważyć znaczna liczba kamer i radarów wspomagająca kierowcę. Z przodu i tyłu pojazdu umieszczone są czujniki ultradźwiękowe (oznaczone na czerwono), których zadaniem jest wspomaganie procesu parkowania samochodu poprzed wykrywanie obiektów w bliskim otoczeniu pojazdu.
 Pozostając przy parkowaniu, kamera umieszczona z tyłu pojazdu również wspomaga parkowanie. Co raz popularniejsze są systemy czterech kamer po jednej na każdą krawędź samochodu. Na podstawie obrazu pochodzącego z nich generowany jest obraz samochodu z lotu ptaka.
 Kamery są również używane w systemie asystenta pasa ruchu i detekcji i rozpoznawania znaków drogowych.
-Radary bliskiego zasięgu (jasnozielony )i lidary (ciemnoszary) znalazły zastosowanie w komponentach odpowiedzialnych za sytuacje awaryjne takie jak system unikania kolicji czy detekcja martwego pola.
+Radary bliskiego zasięgu (jasnozielony) i lidary (ciemnoszary) znalazły zastosowanie w komponentach odpowiedzialnych za sytuacje awaryjne takie jak system unikania kolizji czy detekcja martwego pola.
 Radar dalekiego zasięgu jest używany w tempomacie adaptacyjnym.
 Powszechną techniką jest stosowanie redundancji w krytycznych systemach, co jest regulowane poprzez normy bezpieczeństwa ISO 26262.
 %TODO uwaga j.w. + nie byłbym przekonany, że istnieje coś takiego jak normy ADAS. Są oczywiście normy bezpieczeństwa systemów - słynne ISO 26262 OK
 
-%TODO Przydałoby się podać na podstawie czego opracowana została ta klasyfikacja SAE - źródło
+%TODO Przydałoby się podać na podstawie czego opracowana została ta klasyfikacja SAE - źródło OK
 
 \subsection{Poziom zerowy -- brak autonomiczności}
+Klasyfikacja została opracowana na podstawie \cite{S3}.
 
 Obecnie większość samochodów na drodze zalicznanych jest do tego poziomu. %TODO zaliczanych jest do tego poziomu ? -OK
 Samochód jest w pełni kontrolowany przez człowieka, chociaż mogą pojawiać się proste systemy, które mogą pomóc kierowcy np. system awaryjnego hamowania. 
@@ -159,7 +160,7 @@ Systemy wizyjne stosowane w ciężarówkach nie odbiegają sposobem pracy od tyc
 \section{Algorytmy wizyjne w pojazdach autonomicznych}
 W~kolejnych podrozdziałach zostaną opisane algorytmy wizyjne, których zadaniem jest analiza otoczenia samochodu. %TODO detekcja otoczenia dziwnie brzmi. OK
 W ostatnich latach dynamicznie rozwijającą się dziedziną w systemach wizyjnych i motoryzacji są sieci neuronowe, które są obecnie najczęściej wybierane do implementacji w samochodach. 
-Jednakże ze względu na edukacyjny charakter pracy opisane zostaną algorytmy bazujące na klasycznych metodach przetwarzania obrazach cyfrowych. %TODO mógłby Pan to nieco rozwinąć - to i wątek NN 
+Ze względu na edukacyjny charakter pracy opisane zostaną algorytmy bazujące na klasycznych metodach przetwarzania obrazach cyfrowych oraz oparte na uczeniu głębokim. %TODO mógłby Pan to nieco rozwinąć - to i wątek NN  OK
 W niektórych metodach zostaną użyte proste techniki uczenia maszynowego.
 %TODO To do tego wstępu rozdziału OK
 \subsection{Wykrywanie pasa ruchu}
@@ -175,7 +176,7 @@ W trakcie jazdy kluczowym elementem jest utrzymanie samochodu w pasie jezdni nie
   \caption{Przykładowy obraz wejściowy algorytmu detekcji pasa ruchu}
   \label{fig:inputimg1}
   \end{figure}
-%TODO odnośnik do rysunku + może zamiast jednego mega kilka (4) mniejsze pokazujące różne warunki.
+%TODO odnośnik do rysunku + może zamiast jednego mega kilka (4) mniejsze pokazujące różne warunki. - w części praktycznej jest sporo obrazków z różnymi warunkami, nie dodawałbym na razie kolejnych.
 
 W~najczęstszym przypadku wejściem do algorytmu jest obraz z kamery umieszczonej pod pewnym kątem do nawierzchni zamontowanej w okolicy przedniego zderzaka, atrapy chłodnicy lub za lusterkiem wstecznym. %TODO myślę, że za luterkiem też. OK
 W niniejszej pracy, większość przetwarzanych obrazów pochodzi z symulatora Euro Truck Simulator 2, (który dokładniej jest opisany w rozdziale \ref{sec:ets2}), gry komputerowej, która posiada zaawansowaną grafikę, która przypomina otaczającą rzeczywistość, a także udostępnia możliwości programistyczne, które ułatwią stworzenie aplikacji do testowania algorytmów wizyjnych, co jest założeniem niniejszej pracy. %TODO odnośnik to opisu tego Euro Truck z drugiej części pracy OK
@@ -295,6 +296,94 @@ Dzięki takiej modyfikacji nieidealnie proste linie lub takie, które leżą bli
   \label{fig:result}
 \end{figure}
 
+Czas przetwarzania jednego obrazu RGB o wymiarach 640x480 wynosi 64.5ms.
+
+\subsubsection{Alternatywne podejście}
+Rozwiązanie, które w odróżnieniu do przestawionego wyżej nie korzysta z transformaty Hougha przedstawił Yue Dong w artykule \cite{T6}.
+Linie rozdzielające pasy ruchu można rozpoznać po wysokim kontraście między nimi (\ref{fig:lane_detection2_input}), a nawierzchnią jezdni. Aby dokładnie określić lokalizację pojazdu, należy dokładnie wyznaczyć pozycję linii. 
+Podobnie jak w rozwiązaniu opisywanym w podrozdziale \ref{sec:lane_detection} pierwszym krokiem jest detekcja krawędzi z użycie filtru Canny'ego (\ref{fig:lane_detection2_canny}). W dostępnych bibliotekach wartości progów mogą być dobierane automatycznie, lecz z reguły skutkuje to wykryciem dużej liczby krawędzi nieistotnych z punktu widzenia algorytmu np. samochody poprzedzające.
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.35\textwidth}
+		\centering
+		\includegraphics[width=6cm]{img/lane_detection2_input.png}
+		\subcaption{\label{fig:lane_detection2_input}}
+	\end{subfigure}
+	\begin{subfigure}{0.35\textwidth}
+		\centering
+		\includegraphics[width=6cm]{img/lane_detection2_canny.png}
+		\subcaption{\label{fig:lane_detection2_canny}}
+	\end{subfigure}
+	
+	\caption{\label{fig:details}Obraz wejściowy algorytmu \protect\subref{fig:lane_detection2_input} i obraz po detekcji krawędzi z użyciem filtru Canny'ego \protect\subref{fig:lane_detection2_canny}.\cite{T6}}
+\end{figure}
+
+Orientacja kamery względem drogi implikuje fakt, że linie będą na obrazie skośne. Następnym krokiem po detekcji krawędzi jest więc usunięcie pikseli, które stykają się z innymi pikselami w osi pionowej lub poziomej (rys. \ref{fig:lane_detection2_noise1}).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/lane_detection2_noise1.png}
+  \caption{Rezultat redukcji linii poziomych i pionowych\cite{T6}}
+  \label{fig:lane_detection2_noise1}
+\end{figure}
+
+Kolejnym etapem jest odrzucenie pojedynczych punktów, które nie mają połączenia z innymi (rys. \ref{fig:lane_detection2_noise2}).
+% Autor artykułu niestety nie podaje na jakiej zasadzie są te punkty odrzucane, a takie proste odrzucenie pojedynczych punktów to chyba za proste by było..
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/lane_detection2_noise2.png}
+  \caption{Wynik odrzucenia punktów pojedynczych, które nie mają połączenia z innymi\cite{T6}}
+  \label{fig:lane_detection2_noise2}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/lane_detection2_search_line.png}
+  \caption{Linia skanu wraz z zaznaczonym obszarem poszukiwania linii (Search area)\cite{T6}}
+  \label{fig:lane_detection2_search_area}
+\end{figure}
+
+W następnym kroku wyznaczany jest obszar oraz linia skanu (rys. \ref{fig:lane_detection2_search_area}). Na wspomnianej linii badana jest jasność pikseli (rys. \ref{fig:lane_detection2_intensity}). Zauważalne są dwa duże skoki wartości, które odpowiadają linii na jezdni.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/lane_detection2_intensity.png}
+  \caption{Widoczne dwa skoki wartości jasności oznaczjące linie pasa ruchu\cite{T6}}
+  \label{fig:lane_detection2_intensity}
+\end{figure}
+Taka sama operacja jest powtarzana dla ostatniego rzędu pikseli obrazu. Jeśli tam również istnieją dwa maksima, to na podstawie wpółrzędnych wyznaczana jest linia, która oznacza detekcję pasa ruchu (rys. \ref{fig:lane_detection2_result}).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/lane_detection2_result.png}
+  \caption{Rezultat algorytmu wykrywającego linie oddzielające pasy ruchu\cite{T6}}
+  \label{fig:lane_detection2_result}
+\end{figure}
+
+Metoda jest wrażliwa na linie przerywane lub inne znaki poziome pojawiające się na jezdni. Proponowanym rozwiązaniem jest wprowadzenie śledzenia linii lub pamiętanie poprzednich detekcji w przypadku niewykrycia pasa ruchu.
+W porównaniu do pierwszego opisanego algorytmu, ten wykonuje się szybciej (przetwarzanie obrazu RGB o wymiarach 640x480 trwa 0.12s)
+
+\subsubsection{Rozwiązanie z użyciem deep learningu}
+Rozwiązaniami konkurencyjnymi w stosunku do opartych o algorytmy wizyjne są te bazujące na sztucznej inteligencji. Większość metod klasycznych jest wrażliwa na zmiany jasności, warunki pogodowe, zakłócenia, więc zawodzą, gdy środowisko zewnętrze jest zbyt zmienne. 
+W ostatnich latach metody oparte na DCNN (ang. Deep Convolutional Neural Network - Głębokouczone konwolucyjne sieci neuronowe) przewyższają te oparte na podejściu tradycyjnym w wielu aplikacjach. Przykładem użycia sieci neuronowych jest detekcja linii oddzielających pasy ruchu. Schemat działania systemu opartego o deep learning jest umieszony na rys \ref{fig:lane_detection3_cnn_general}.
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/lane_detection3_cnn_general.png}
+  \caption{Schemat działania aplikacji opartej o DCNN\cite{T6}}
+  \label{fig:lane_detection3_cnn_general}
+\end{figure}
+ W pierwszym kroku sieć wyznacza pozycję linii na obrazie. Pozostałe dwa etapy opierają się na tradycyjnym podejściu. W typowym użyciu CNN próbkowanie jest używane między innymi w celu umożliwienia znajdowania dużych obiektów. Wadą takiego rozwiązania jest zmniejszenie szczegółowości informacji otrzymanej z sieci.
+Po segmentacji linii kolejnym etapem jest segmentacja semantyczna. Polega ona na określeniu, czym są obiekty wysegmentowane. Opisywane rozwiązanie określa trzy możliwości: linia lewa, linia prawa i nawierzchnia. Ostatnim etapem jest ewentualne grupowanie linii w przypadku elementów przerywanych.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/lane_detection3_cnn_results.png}
+  \caption{Efekty działania aplikacji opartej na DCNN. Obraz wejściowy (a), segmentacja (b), segmentacja semantyczna (c), wykryte linie(d)\cite{T6}}
+  \label{fig:lane_detection3_cnn_results}
+\end{figure}
+
+Średni czas przetwarzania jednego obrazu o wymiarach 480x360 wynosi 30ms. Jest to wynik porównywalny z algorytmami wizyjnymi.
 
 %TODO Dlaczego zakomentowane ? Artykuł, na którym to jest oparte zawierał pewne luki i nie byłem w stanie dociec o co tak naprawdę autorom chodzi
 
@@ -423,8 +512,76 @@ Daje się zauważyć, że można dobrać odpowiednie zakresy promienia dla znak�
 
 Wszystkie opisywane operacje są wykonywane na obrazach dyskretnych, więc przestrzeń możliwych długości promieni jest skwantowana. W przypadku, gdy dobrany zakres długości promieni będzie zbyt mały lub zbyt duży, detektor ma gorszą sprawność. Dzieje się tak, ponieważ ewentualne maksima są rozmyte (rys. \ref{fig:znaki2} i rys. \ref{fig:znaki3})
 %TODO Brak opisu tych rysunków. OK 
-%TODO Brak opisu rozwiązania "konkurencyjnego".
-%TODO Swoją drogą komentarz co dla innych znaków.
+%TODO Brak opisu rozwiązania "konkurencyjnego". OK
+%TODO Swoją drogą komentarz co dla innych znaków. - w konkurencyjnym rozwiązaniu - powyższy artykuł był opisany tylko dla okrągłych znaków zakazu.
+
+\subsubsection{Rozwiązanie alternatywne}
+Rozwiązanie zaproponowane przez I.M. Creusena w \cite{T7} pozwala na detekcję nie tylko znaków zakazu. Dodatkową wartością opisywanego rozwiązania jest korzystanie z dużego zbioru obrazów panoramicznych robionych w odstępach dostępnego w ramach projektu Google Maps. Każde zdjęcia ma do siebie przypisane współrzędne GPS, więc rezultaty detekcji można umieścić np. w bazie nawigacji satelitarnych.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=13cm]{img/sign_detection2_input.png}
+  \caption{Panoramiczny obraz wejściowy algorytmu detekcji znaków drogowych\cite{T7}}
+  \label{fig:sign_detection2_input}
+\end{figure}
+
+Podobnie jak w przypadku pierwszego opisywanego algorytmu dotyczącego znaków drogowych, ten również składa się z dwóch głównych etapów: detekcji i klasyfikacji.
+
+Zmiana przestrzeni barw jest przydatna w przypadku algorytmów detekcji znaków drogowych, jednak prosta zmiana przestrzeni nie jest wystarczająca, by zbudować system odporny na zmienne warunki. Problem polega na tym, że metody oparte na segmentacji koloru są wrażliwe na jasność tła. Dzieje się tak z powodu zmienności kierunku gradientu w zależności od stosunku jasności znaku do tła. W przypadku ciemnego tła kierunek gradientu jasności jest odwrotny niż w przypadku jasnego tła, chociaż charakter znaku jest identyczny (\ref{fig:sign_detection2_example}).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/sign_detection2_example.png}
+  \caption{Przykład zmienności kierunku gradientu w przypadku ciemnego i jasnego tła\cite{T7}}
+  \label{fig:sign_detection2_example}
+\end{figure}
+
+Pierwszym krokiem algorytmu jest wybór przestrzeni barw, do której zostanie przekonwertowany obraz. W opisywanym rozwiązaniu zdecydowano się na CIElab. Kolejnie ustalane są kolory odniesienia w danej przestrzeni dla zestawu znaków: czerwony, niebieski, żółty.
+Określona jest różnica pomiędzy kolorem odniesienia, a kolorem piksela obrazu:
+\begin{equation}
+p_t=\left \| \bar{p} - \bar{p_r} \right \|
+\end{equation}
+
+gdzie
+\begin{itemize}
+\item{$\bar{p}$ - oznacza wektor koloru pojedynczego piksela obrazu analizowanego w przestrzeni CIElab}
+\item{$\bar{p_r}$ - oznacza kolor odniesienia w tej samej przestrzeni}
+\end{itemize}
+
+Gdy różnica jest obliczona jest interpretowana jako współrzędne biegunowe (bez rozważania kąta), których początkiem współrzędnych jest kolor odniesienia. Rysunek \ref{fig:sign_detection2_result} pokazuje, że połączenie współrzędnych biegunowych i koloru odniesienia daje zadowalające rezultaty. Tło staje się jasne, a obwódki znaków ciemne. Dzieje się tak niezależnie od poziomu jasności tła.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/sign_detection2_result.png}
+  \caption{Przykład zmienności kierunku gradientu w przypadku ciemnego i jasnego tła\cite{T7}}
+  \label{fig:sign_detection2_result}
+\end{figure}
+
+
+\subsubsection{Rozwiązanie z użyciem deep learningu}
+Chociaż konwolucyjne sieci neuronowe mają duże możliwości, to obecne aplikacje w polu wykrywania i rozpoznawania znaków drogowych nie są liczne. Przykładem jest propozycja Canyong W. w artykule \cite{T8}. Głównym powodem małej liczby rozwiązań korzystających z SI jest brak baz danych ze znakami. Trenowanie i weryfikacja głębokouczonych konwolucyjnych sieci neuronowych wymaga dużej liczby znaków w bazie danych.
+Jednymi z najpopularniejszych baz danych znaków drogowych są: GTSRB oraz GRSDB w Niemczech oraz KUL w Belgii. W opisywanym artykule, autor do trenowania sieci neuronowej korzysta z sieci niemieckich. Bazy te zawierają obrazy znaków w różnych warunkach: obrócenie znaku, słabe oświetlenie, podobne kolory tła (rys. \ref{fig:sign_detection3_cnn_input}). 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/sign_detection3_cnn_input.png}
+  \caption{Różne typy znaków drogowych spotykanych na drogach\cite{T8}}
+  \label{fig:sign_detection3_cnn_input}
+\end{figure}
+
+Przed przetworzeniem obrazu przez sieć neuronową jest on poddawany \textit{preprocessingowi}. Polega on na normalizacji wartości pikseli, tak by znajdowały się w przedziale $[0, 0.5]$. Robi się tak, ponieważ sieci neuronowe działają lepiej, gdy surowe wartości danych wejściowych są z zakresu $[0, 1]$. 
+Zamiast konwersji do skali szarości zdecydowano, że sieć będzie działała w oparciu o pełną informację o kolorze, analogicznie do sposobu detekcji i klasyfikacji znaków przez człowieka.
+
+Sieć neuronowa zbudowana jest (rys. \ref{fig:sign_detection3_cnn_schema})z pięciu warstw konwolucyjnych, trzech warstw fully-connected i warstwy Softmax. Po przetworzeniu obrazu przez warstwy konwolucyjne obraz jest przekazywany na wejście warstwy Softmax.
+
+Po 20 tys. iteracji nauczania dokładność sieci wyniosła 96%.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/sign_detection3_cnn_schema.png}
+  \caption{Schemat sieci neuronowej do detekcji i rozpoznawania znaków drogowych\cite{T8}}
+  \label{fig:sign_detection3_cnn_schema}
+\end{figure}
 
 \subsection{Detekcja sygnalizacji świetlnej}
 \label{sec:tl}
@@ -535,7 +692,7 @@ Przykładowy błąd detekcji jest ukazany na rysunku \ref{fig:tl_err}.
 
 \begin{table}[]
 \centering
-\caption{Porównanie klasycznego algorytmu detekcji świateł i opisanego w pracy\cite{T4}} %TODO W pracy X OK
+\caption{Porównanie algorytmu detekcji świateł opartego na transformacie Hougha i opisanego w pracy\cite{T4}} %TODO W pracy X OK
 \begin{tabular}{lllll}
 \cline{1-3}
 \multicolumn{1}{|l|}{}                           & \multicolumn{1}{l|}{Algorytm klasyczny} & \multicolumn{1}{l|}{Algorytm opisany w tym rozdziale} &  &  \\ \cline{1-3}
@@ -545,10 +702,91 @@ Przykładowy błąd detekcji jest ukazany na rysunku \ref{fig:tl_err}.
 \end{tabular}
 \label{tab:tl_results}
 \end{table}
-%TODO a to co jest alg. klasyczy.
+%TODO a to co jest alg. klasyczy. OK
 
-%TODO konkurencyjna metoda
-%TODO NN - są fajnie prace, łatwo Pan znajdzie.
+%TODO konkurencyjna metoda OK
+%TODO NN - są fajnie prace, łatwo Pan znajdzie. OK
+
+\subsubsection{Alternatywne rozwiązanie}
+Inną propozycję zaprezentowano w pracy \cite{T9}. Detekcja sygnalizacji świetlnej odbywa się z użyciem cech Haara.
+Większość aplikacji jest oparta o informacje o kolorze, jednakże sprawia to, że systemy mogą nie być odporne na zmienne czynniki takie jak kąt widzenia, intensywność świecenia lub poziom jasności tła.
+Rysunek \ref{fig:traffic_light2_input} pokazuje, że obraz wejściowy mimo przekazywania takiej samej informacji może się znacząco różnić wartościami koloru.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/traffic_light2_input.png}
+  \caption{Przykład wariancji danych wejściowych\cite{T9}}
+  \label{fig:traffic_light2_input}
+\end{figure}
+
+Cechy Haara są używane aby wykryć sygnalizację świetlną. Metoda korzysta z widocznych różnic w jasności pomiędzy poszczególnymi sektorami obrazka.
+Dla określonego regionu wyznaczane są cechy Haara na podstawie masek przedstawionych na rysunku \ref{fig:maski_maseczki}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/maski_maseczki.png}
+  \caption{Maski używane do wyznaczania cech Haara\cite{T9}}
+  \label{fig:maski_maseczki}
+\end{figure}
+
+Cechy Haara zawierają informację o kształcie obiektu i używają różnicy jasności, a nie jasności samej w sobie, więc są odporne na niewielką zmianę kształtu  i pozycji na obrazie.
+
+Różnica jasności w sygnalizatorze jest z reguły taka sama. Istotne jest, aby do ROI zawierającego światła dodać tło. Jest to ważne z punktu widzenia klasyfikatora SVM, któremu dostarcza się zarówno próbek pozytywnych (obrazy ze światłami) oraz negatywnych (samo tło).
+
+Klasyfikator oparty na maszynie wektorów wspierających jest uczony w oparciu o obrazy uzyskane z detekcji za pomocą cech Haara. Zbiór treningowy zawiera zarówno próbki pozytywne i negatywne. SVM uczy się dwóch klas (rys. \ref{fig:traffic_light2_svm}).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/traffic_light2_svm.png}
+  \caption{Klasyfikator SVM\cite{T9}}
+  \label{fig:traffic_light2_svm}
+\end{figure}
+
+Na wycinku obrazu, który zawiera sygnalizację świetlną przeprowadza się operację binaryzacji. Następnie wykonywane są inne operacje morfologiczne, których celem jest redukcja szumu oraz mocniejsze zaznaczenie sygnalizatora. Seria wykonywanych operacji jest widoczna na rysunku \ref{fig:traffic_light2_morph}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/traffic_light2_morph.png}
+  \caption{Rezultat operacji morfologicznych\cite{T9}}
+  \label{fig:traffic_light2_morph}
+\end{figure}
+
+Operacja wykrywania konturów jest wykonywana na obrazie po operacjach morfologicznych. Rezultat detekcji jest umieszczony na rysunku \ref{fig:traffic_light2_result}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/traffic_light2_results.png}
+  \caption{Wykryte sygnalizatory świetlne\cite{T9}}
+  \label{fig:traffic_light2_result}
+\end{figure}
+
+\subsubsection{Rozwiązanie z użyciem deep learnigu}
+
+Kombinacja sygnalizatorów świetlnych i znaków drogowych na jezdni pomaga zapobiegać chaosowi. W przypadku samochodów autonomicznych detekcja tych elementów w połączeniu z dobrym sterowaniem nimi pozwoli na znaczne upłynnienie ruchu.
+Podobnie jak w przypadku znaków drogowych i linii pojawia się problem zmienności warunków otoczenia. 
+W przypadku tradycyjnego podejścia niewielka zmiana parametrów środowiska może powodować błędne detekcje, co jest wysoce niepożądane w przypadku opisywanego systemu.
+W pracy \cite{T10} zaproponowano rozwiązanie opierające się na konwolucyjnej sieci neuronowej.
+Treningowy zbiór danych jest utworzony na podstawie danych zebranych na indyjskich drogach. Preprocessing polega na przeskalowaniu obrazów do rozmiaru 800x600 pikseli. Wybrano pięć klas, do których mogą zostać zakwalifikowane detekcje: światło czerwone, żółte, zielone, jazda w lewo, jazda w prawo. 
+Na każdym ze zdjęć ręcznie zaznaczono typ sygnalizatora, który zawiera (rys. \ref{fig:traffic_light3_labels}).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/traffic_light3_labels.png}
+  \caption{Oznaczone sygnalizatory świetlne (po lewej) i zdjęcia wejściowe w pełnej skali (po prawej)\cite{T10}}
+  \label{fig:traffic_light3_labels}
+\end{figure}
+
+Sieć neuronową zbudowano w oparciu o \textit{transfer learning}, czyli uczenie sieci wstępnie nauczonej. Pozwoliło to na zredukowanie potrzebnego czasu i zasobów na nauczenie sieci od początku. 
+Po 120 tys. iteracji procesu uczenia sieci zakończono uczenie sieci. Przykładowy rezultat detekcji i rozpoznawania sygnalizacji drogowej jest umieszczony na rysunku \ref{fig:traffic_light3_results}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/traffic_light3_results.png}
+  \caption{Przykładowa detekcja świateł zielonych\cite{T10}}
+  \label{fig:traffic_light3_results}
+\end{figure}
+
+
 
 
 
@@ -575,7 +813,7 @@ Szukanie obrazu samochodu na obrazie w skali szarości jest szybsze, jednak wra�
 Dobrze sprawdza się badanie nasycenia w przestrzeni barw HSV, ponieważ uniezależnia to obraz samochodu od ogólnej jasności otoczenia i~częściowo od pogody.
 
 \subsubsection{Przebieg algorytmu bazującego na operatorze symetrii}
-%TODO To całe to powinnien być podrodział, a to ew. subsub lub paragraph.
+%TODO To całe to powinnien być podrodział, a to ew. subsub lub paragraph. OK
 Pierwszym krokiem jest wygenerowanie obrazu krawędzi na podstawie obrazu w skali szarości lub składowej S przestrzeni barw HSV. 
 W~opisanym algorytmie zaproponowano detektor Canny'ego. 
 Rysunek \ref{fig:car_edge} pokazuje rezultat wykrywania krawędzi dla typowego obrazu zawierającego samochód poprzedzający. 
@@ -592,7 +830,7 @@ Pionowe ograniczenia są ustawione tak, by odpowiadać lewemu i prawemu ogranicz
 
 Jak wspomniano w sekcji \ref{sec:car_general}, w celu zredukowania czasu obliczeń nie każdy piksel w wybranym obszarze jest analizowany. 
 Obliczenia dotyczące symetrii są przeprowadzane tylko dla 15 równoodległych linii skanu (rys. \ref{fig:car_scan_lines1}). 
-Wejściowa rozdzielczość obrazu nie ma znaczenia dla obliczeń. %TODO no pozioma jednak ma.... - chodzi o to, że obraz może być przeskalowany do pewnej założonej rozdzielczości.
+Obraz jest przeskalowywany do rozdzielczości 600x480, więc wejściowa rozdzielczość obrazu nie ma znaczenia dla obliczeń. %TODO no pozioma jednak ma.... - chodzi o to, że obraz może być przeskalowany do pewnej założonej rozdzielczości.
 Dzieje się tak ponieważ algorytm wykrywa tylko maksima wzdłuż linii skanu. Autorzy algorytmu zalecają przeskalowanie obrazu do niższej rozdzielczości w celu zredukowania czasu przetwarzania.
 
 \begin{figure}
@@ -674,10 +912,63 @@ Końcowy wynik z zaznaczonymi środkami samochodów jest widoczny na rysunku \re
   \label{fig:car_end}
 \end{figure}
 
-%TODO drugie podejście
-%TODO podejście NN
+\subsubsection{Alternatywne rozwiązanie}
+Na drodze oprócz detekcji samochodu poprzedzającego przydatny jest również sposób na detekcję samochodu, który znalazł się w martwym polu. W samochodach poziomu zerowego pojawiają się asystenci martwego pola, który informują, że może znajdować się tam samochód.
+Algorytm detekcji zaproponowany w \cite{T11} pozwala wykryć samochody znajdujące się w martwej strefie (rys. \ref{fig:car_detection2_blind_spot2})
 
-%TODO Proszę już nie dopisywać osobnego rodziału, ale gdzieś wspomnieć np. o detekcji pieszych, czy rowerzystów...
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/car_detection2_blind_spot.png}
+  \caption{Położenie martwego pola\cite{T11}}
+  \label{fig:car_detection2_blind_spot2}
+\end{figure}
+
+Obraz pozyskiwany jest z kamer umieszczonych w lusterkach. Następnie jest skalowany do jednej czwartej pierwotnego rozmiaru, aby zredukować czas przetwarzania. 
+Następnym krokiem jest detekcja samochodu, która wykonywana jest periodycznie. Pomiędzy detekcjami auta, wykonywane jest śledzenie z użyciem filtru Kalmana. 
+Wyznaczane jest ROI, gdzie można spodziewać się nadjeżdżającego samochodu. Wycinany jest fragment nieba oraz asfaltu blisko pojazdu.
+Na wyznaczonym obszarze wykonywana jest detekcja pojazdu z użyciem filtru kaskadowego, który jest szybszy niż klasyfikator SVM.
+Wytrenowano klasyfikator HoG (ang. Histogram of Gradients - histogram gradientów), który daje mniej fałszywych detekcji niż LPB (ang. Local Binary Pattern - lokalny wzór binarny).
+Zbiór treningowy zawierał 7500 próbek pozytywnych oraz 20000 próbek negatywnych. Okno treningowe ma rozmiar 32x32 pikseli. Wykryte pojazdy są śledzone za pomocą filtru Kalmana. Filtr inicjalizuje swój stan na podstawie detekcji samochodu i przewiduje jego pozycję w następnej klatce.
+Aby zwiększyć skuteczność algorytmu stosuje się następujące rozumowanie: jeżeli samochód był wykrywany w poprzednich klatkach, algorytm zakłada, że samochód istnieje, chociaż w aktualnej klatce w przewidywanym obszarze nie został wykryty. Działanie odwrotne jest również stosowane: jeżeli samochód w kilku poprzednich klatkach nie był wykryty, a pojawia się np. w środku ROI, to prawdopodobnie jest to fałszywa detekcja. 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/car_detection2_result.png}
+  \caption{Wynik działania algorytmu wykrywającego pojazd w martwej strefie\cite{T11}}
+  \label{fig:car_detection2_result}
+\end{figure}
+
+Średni czas przetwarzania jednej klatki (uwzględniając wykrywanie pojazdu na co piątym obrazie) wyniósł 24.5 ms. Przykładowy rezultate detekcji znajduje się na rysunku (\ref{fig:car_detection2_result}).
+W porównaniu do algorytmu opisanego we wcześniejszym podrozdziale, którego mocną wadą była niska wydajność, dobrym pomysłem wydaje się wykrywanie pojazdów i śledzenie ich na kilku kolejnych klatkach z użyciem np. filtru Kalmana.
+
+%TODO drugie podejście - ciężko o algorytm tradycyjny - opisałem detekcję blind spota, który również zawiera elementy ML
+%TODO podejście NN jw.
+
+%TODO Proszę już nie dopisywać osobnego rodziału, ale gdzieś wspomnieć np. o detekcji pieszych, czy rowerzystów... - z uwagi na "biedniejszy" rozdział o samochodach dodam podrozdział o detekcji pieszych i rowerzystów
+
+
+\subsection{Wykrywanie innych obiektów na drodze}
+Oprócz samochodów na drogach zauważalne są inne obiekty takie jak piesi, rowerzyści lub motocykliści. Aby zapobiegać licznym wypadkom z ich udziałem globalne firmy jak np. Volvo zaproponowały zaawansowane systemy wspomagania kierowcy (ADAS).
+Kamery, radary lub LIDARy są używane w celu zwizualizowania otoczenia pojazdu. Wykrywanie obiektów w czasie rzeczywistym stało się istotną rzeczą, która realnie wpływa na bezpieczeństwo kierowcy i innych użytkowników ruchu.
+Artykuł \cite{T12} sugeruje użycia \textit{SSD} (ang. Single Shot Detector), który pokonuje problemy wspomniane wcześniej, a więc umożliwia detekcję obiektów niewrażliwą na zmienne warunki środowiska.
+Działanie SSD jest oparte na głębokouczonych sieciach neuronowych. Z obrazów wejściowych generuje się macierze cech przy użyciu warstw konwolucyjnych. 
+Jak pokazano na rys. \ref{fig:pedestrian_detect_result} detekor jest w stanie wykryć różne klasy obiektów.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=7cm]{img/pedestrian_detect_result.png}
+  \caption{Wynik działania systemu opartego o SSD. Wydoczne wykryte różne klasy obiektów \cite{T11}}
+  \label{fig:pedestrian_detect_result}
+\end{figure}
+
+Słabą stroną SSD jest fakt, że korzysta on z siatki, pomijając niektóre obszary, co sprzyja pomijaniu niewielkich obiektów.
+
+Opisany system znajduje zastosowanie w systemach ADAS (na przykładzie Audi A8 z 2019 roku):
+\begin{itemize}
+\item Nightvision -- detekcja pieszych i rowerzystów przy użyciu światła podczerwonego
+\item Pedestrian Assist -- badanie pozycji pieszych wokół samochodu i ewentualne ostrzeganie o niebezpiecznej sytuacji
+\item Adaptive Cruise Control -- w połączeniu z danymi radarowymi obsługa aktywnego tempomatu
+\end{itemize}
 
 
 \section{Opis wybranych zagadnień i algorytmów przetwarzania obrazu}
@@ -707,7 +998,7 @@ gdzie:
 \caption{Linia w układzie współrzędnych określona za pomocą parametrów $(r, \theta)$}
 \label{fig:hough}
 \end{figure}
-%TODO brak odniesienia w txt
+%TODO brak odniesienia w txt ok
 
 Jeżeli promień będzie ustalony, to okrąg zostanie sparametryzowany za pomocą dwóch liczb. 
 Gdy szukamy okręgów o nieznanych promieniach, rośnie złożoność obliczeniowa, ponieważ wymiar przestrzeni parametrów zwiększa się o jeden.
