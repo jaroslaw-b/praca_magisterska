@@ -564,7 +564,7 @@ Dla systemu z~fuzją danych wizyjnych i radarowych może to być zrobione poprze
 Dla systemu, który posiada jedną kamerę, pozycja samochodów musi być wyznaczona tylko na podstawie ruchu samochodów na obrazie w czasie.
 
 Opisywany algorytm korzysta z detektora symetrii, który działa w następujący sposób. 
-Dla każdego piksela wyznaczana jest liczba punktów, która jest wartością bezwzględną z różnicy wartości pikseli, które są równoodległe od ustalonej osi symetrii(równanie {eq:sym_detect}). %TODO niejasne - rysunek - dałem odnośnik do równania w dalszej części tekstu, które lepiej obrazuje sposób działania detektora
+Dla każdego piksela wyznaczana jest liczba punktów, która jest wartością bezwzględną z różnicy wartości pikseli, które są równoodległe od ustalonej osi symetrii(równanie \ref{eq:sym_detect}). %TODO niejasne - rysunek - dałem odnośnik do równania w dalszej części tekstu, które lepiej obrazuje sposób działania detektora
 Jest to zwykle robione z użyciem pewnego okna o z góry ustalonym rozmiarze dobieranym tak, aby pasować do rozmiaru samochodów, które mogą znajdować się na obrazie. 
 Będąc świadomym faktu, że samochód im jest dalej od kamery, tym jest mniejszy zastosowano kilka predefiniowanych rozmiarów okien. 
 Wartości wskaźnika symetrii mogą być obliczane dla każdego punktu na obrazie. 
