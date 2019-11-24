@@ -380,11 +380,15 @@ Końcowy użytkownik może tradycyjnie za pomocą klawiatury lub myszki sterowa�
 
 Opracowana aplikacja zakłada, że sterowanie generowane jest na podstawie obrazu z bieżącej chwili. Nie ma żadnego elementu nadrzędnego, który koordynowałby działanie zaimplementowanych systemów.
 
+W przypadku bardziej złożonych algorytmów pojawia się problem z wydajnością. Aplikacja nie jest w stanie na bieżąco analizować obrazu i generować sterowania. Zdarzają się sytuacje, że sterowanie jest generowane dla obrazu sprzed kilkuset milisekund, co wprowadza oscylacje pojazdu w przypadku algorytmu detekcji linii.
+Proponowanym rozwiązaniem jest wprowadzenie pomijania kilku klatek przechwyconych z symulatora lub większy interwał czasowy pomiędzy klatkami.
+
 Kolejnym etapem rozwoju projektu byłoby stworzenie prostego instalatora, który pobierze i zainstaluje wszystkie potrzebne biblioteki, a także skompiluje zmodyfikowane SDK udostępnione przez twórców. 
 Możliwa jest także dalsza edycja SDK, poprzez umożliwienie odczytu pozostałych zmiennych gry oprócz aktualnej prędkości i stanu pauzy. 
 Pełna lista parametrów jest dostępna w \cite{S3}. 
 Elementem rozbudowującym aplikację byłoby także generowanie danych radarowych lub lidarowych na podstawie otoczenia samochodu w symulatorze. 
 Póki co twórcy gry nie udostępniają takiej możliwości przez SDK.
+
 
 
 %TODO radar, lidar... - nie rozumiem
