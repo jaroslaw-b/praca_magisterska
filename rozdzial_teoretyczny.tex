@@ -192,7 +192,11 @@ Autor korzysta w nim z podstawowych operacji przetwarzania obrazów.
   % artykuł
 \end{figure}
 
+<<<<<<< HEAD
 Pierwszym krokiem jest wyodrębnienie z obrazu ROI \footnote{ROI (ang.) -- \textit{Region of Interest} -- obszar obrazu poddawany analizie i dalszemu przetwarzaniu} (rys. \ref{fig:roi}). 
+=======
+Pierwszym krokiem jest wyodrębnienie z obrazu ROI \footnote{ROI (ang.) -- \textit{Region of Interest} -- obszar obrazu poddawany analizie i dalszemu przetwarzaniu} (rys. \ref{fig:roi}). %TODO odnośnik do rysunku OK
+>>>>>>> 77011bd31f411f5beed72d3e95ecdbd62bf838bd
 Ma to na celu ograniczenie ilości danych poddawanych analizie, a co bardziej istotne odrzuca te fragmenty obrazu, na których na pewno nie będzie jezdni (powyżej czerwonej linii), a także te gdzie obraz linii mógłby być zakłócony. 
 Warto zauważyć, że pomiędzy liniami -- czerwoną i niebieską znajduje się prawie dwa razy więcej długości drogi niż w obszarze pod niebieską linią. Obszar pod niebieską linią jest odrzucany, ponieważ na dużym obszarze obrazu znajduje się niewielki fragment jezdni, co może generować problemy z poprawną detekcją w przypadku linii przerywanej.
 %TODO OK, choć jak dla mnie argument dyskusyjny
@@ -297,12 +301,18 @@ Dzięki takiej modyfikacji nieidealnie proste linie lub takie, które leżą bli
 Czas przetwarzania jednego obrazu RGB o wymiarach 640x480 wynosi 64.5ms.
 
 \subsubsection{Alternatywne podejście}
+<<<<<<< HEAD
 
 Rozwiązanie, które w odróżnieniu do przestawionego wyżej nie korzysta z transformaty Hougha, przedstawił Yue Dong w artykule \cite{T6}.
 Linie rozdzielające pasy ruchu można rozpoznać po wysokim kontraście między nimi (\ref{fig:lane_detection2_input}), a nawierzchnią jezdni. 
 Aby określić lokalizację pojazdu, należy dokładnie wyznaczyć pozycję linii. 
 Podobnie jak w rozwiązaniu opisywanym w podrozdziale \ref{sec:lane_detection} pierwszym krokiem jest detekcja krawędzi z użyciem filtru Canny'ego (\ref{fig:lane_detection2_canny}). 
 W dostępnych bibliotekach wartości progów mogą być dobierane automatycznie, lecz z reguły skutkuje to wykryciem dużej liczby krawędzi nieistotnych z punktu widzenia algorytmu np. należących do samochodów poprzedzających.
+=======
+Rozwiązanie, które w odróżnieniu do przestawionego wyżej nie korzysta z transformaty Hougha przedstawił Yue Dong w artykule \cite{T6}.
+Linie rozdzielające pasy ruchu można rozpoznać po wysokim kontraście między nimi (rys. \ref{fig:lane_detection2_input}), a nawierzchnią jezdni. Aby dokładnie określić lokalizację pojazdu, należy dokładnie wyznaczyć pozycję linii. 
+Podobnie jak w rozwiązaniu opisywanym w podrozdziale \ref{sec:lane_detection} pierwszym krokiem jest detekcja krawędzi z użycie filtru Canny'ego (rys. \ref{fig:lane_detection2_canny}). W dostępnych bibliotekach wartości progów mogą być dobierane automatycznie, lecz z reguły skutkuje to wykryciem dużej liczby krawędzi nieistotnych z punktu widzenia algorytmu np. samochody poprzedzające.
+>>>>>>> 77011bd31f411f5beed72d3e95ecdbd62bf838bd
 
 \begin{figure}[h]
 	\centering
@@ -544,7 +554,7 @@ Rozwiązanie zaproponowane przez I.M. Creusena w \cite{T7} pozwala na detekcję 
 
 Podobnie jak w przypadku pierwszego opisywanego algorytmu dotyczącego znaków drogowych, ten również składa się z dwóch głównych etapów: detekcji i klasyfikacji.
 
-Zmiana przestrzeni barw jest przydatna w przypadku algorytmów detekcji znaków drogowych, jednak prosta zmiana przestrzeni nie jest wystarczająca, by zbudować system odporny na zmienne warunki. Problem polega na tym, że metody oparte na segmentacji koloru są wrażliwe na jasność tła. Dzieje się tak z powodu zmienności kierunku gradientu w zależności od stosunku jasności znaku do tła. W przypadku ciemnego tła kierunek gradientu jasności jest odwrotny niż w przypadku jasnego tła, chociaż charakter znaku jest identyczny (\ref{fig:sign_detection2_example}).
+Zmiana przestrzeni barw jest przydatna w przypadku algorytmów detekcji znaków drogowych, jednak prosta zmiana przestrzeni nie jest wystarczająca, by zbudować system odporny na zmienne warunki. Problem polega na tym, że metody oparte na segmentacji koloru są wrażliwe na jasność tła. Dzieje się tak z powodu zmienności kierunku gradientu w zależności od stosunku jasności znaku do tła. W przypadku ciemnego tła kierunek gradientu jasności jest odwrotny niż w przypadku jasnego tła, chociaż charakter znaku jest identyczny (rys. \ref{fig:sign_detection2_example}).
 
 \begin{figure}
   \centering
@@ -955,7 +965,7 @@ Aby zwiększyć skuteczność algorytmu stosuje się następujące rozumowanie: 
   \label{fig:car_detection2_result}
 \end{figure}
 
-Średni czas przetwarzania jednej klatki (uwzględniając wykrywanie pojazdu na co piątym obrazie) wyniósł 24.5 ms. Przykładowy rezultate detekcji znajduje się na rysunku (\ref{fig:car_detection2_result}).
+Średni czas przetwarzania jednej klatki (uwzględniając wykrywanie pojazdu na co piątym obrazie) wyniósł 24.5 ms. Przykładowy rezultate detekcji znajduje się na rysunku \ref{fig:car_detection2_result}.
 W porównaniu do algorytmu opisanego we wcześniejszym podrozdziale, którego mocną wadą była niska wydajność, dobrym pomysłem wydaje się wykrywanie pojazdów i śledzenie ich na kilku kolejnych klatkach z użyciem np. filtru Kalmana.
 
 %TODO drugie podejście - ciężko o algorytm tradycyjny - opisałem detekcję blind spota, który również zawiera elementy ML
