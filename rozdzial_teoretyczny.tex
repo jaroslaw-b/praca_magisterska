@@ -1,19 +1,20 @@
 \chapter{Wstęp}
 
 
-%TODO to bym pominał. ok
 Od kilku lat zauważalny jest trend ku autonomizacji jazdy samochodem.  
-Ma to na celu wyeliminowanie czynnika, który jest najczęstszą przyczyną wypadków -- człowieka. Dodatkowym aspektem, który wpływa na rozwój przemysłu automotive, są koszty transportu. Zastosowanie autonomicznych ciężarówek poruszających się w konwojach znacząco zmniejszyłoby koszty logistyki dla firm spedycyjnych. %TODO mógłby Pan poszukać i dopisać też inne motywacje - ekonomia dzielenia itp. ok
+Ma to na celu wyeliminowanie czynnika, który jest najczęstszą przyczyną wypadków -- człowieka. Dodatkowym aspektem, który wpływa na rozwój przemysłu motoryzacyjnego, są rosnące koszty transportu. 
+Zastosowanie autonomicznych ciężarówek poruszających się w konwojach znacząco zmniejszyłoby koszty logistyki dla firm spedycyjnych. 
 Systemy, które wspomagają lub wręcz wyręczają kierowcę z obowiązku kierowania uwagi na samochód i jego otoczenie noszą miano ADAS (\textit{Advanced Driver Assistance Systems} -- zaawansowane systemy wspomagania kierowcy). 
-W systemach wspomagających kierowcę stosuje się różne czujniki. Korzysta się z kamer pracujących w paśmie widzialnym i podczerwieni, radarów oraz lidarów. Radar oraz lidar działają na podobnej zasadzie, lecz korzystają z fal elektromagnetycznych o różnej długości.
-Radar pracuje w paśmie mikrofal, natomiast lidar korzysta ze światła widzialnego.
- %TODO Inaczej. Opisać jakie czujniki się stosuje (krótko) i potem przejść do wizji. OK
+W systemach wspomagających kierowcę stosuje się różne czujniki, które pozwalają monitorować przestrzeń wokół pojazdu. 
+Korzysta się z kamer pracujących w paśmie widzialnym i podczerwieni, radarów oraz lidarów. 
+Radar oraz lidar to czujniki aktywne, które działają na podobnej zasadzie, lecz korzystają z fal elektromagnetycznych o różnej długości.
+Radar pracuje w paśmie mikrofal, natomiast lidar korzysta z~pasma podczerwonego.
 Przykładowe systemy korzystające z przetwarzania obrazów to detekcja pasa ruchu lub wykrywanie zmęczenia kierowcy. 
-Bardzo popularne jest stosowanie fuzji danych. 
-Polega ona na jednoczesnym przetwarzaniu danych z dwóch lub więcej czujników, co zapewnia lepszą skuteczność algorytmu. Przykładem fuzji danych jest przetwarzanie danych z kamery i lidaru w tym samym czasie. %TODO to jest przykład - może być też fuzja z lidar albo 3 w 1.. OK
-Na danych pozyskanych z kamery i radaru korzystają na przykład systemy aktywnego tempomatu lub detekcji pieszych.
+Bardzo popularne jest również stosowanie fuzji danych. 
+Polega ona na jednoczesnym przetwarzaniu danych z dwóch lub więcej czujników, co zapewnia lepszą skuteczność algorytmu. 
+Przykładem fuzji danych jest przetwarzanie danych z kamery i lidaru w celu detekcji pieszych.
+Natomiast jednoczesna analiza danych pozyskanych z kamery i radaru używana jest w systemach aktywnego tempomatu lub detekcji pojazdów poprzedzających.
 
-%TODO A ogólnie to mógłby się Pan bardziej postarać :) :)
 
 \section{Cele i założenia}
 
@@ -44,24 +45,21 @@ Końcowa część to sprawdzenie wydajności aplikacji w różnych sytuacjach.
 
 Ostatni rozdział zawiera krótkie podsumowanie oraz ocenę przydatności aplikacji do prowadzenia zajęć dydaktycznych.
 
-%TODO Proszę tych moich "TODO" nie usuwać, a jedynie oznaczać OK lub polemizować.
 \chapter{Systemy wizyjne w pojazdach autonomicznych}
 
 Współczesne pojazdy autonomiczne wykorzystują w~szerokim zakresie systemy wizyjne do analizy otoczenia. 
 Jednym z pierwszych zastosowań algorytmów cyfrowego przetwarzania obrazów była detekcja pasa ruchu, która nie służyła do sterowania samochodem, lecz miała za zadanie wspomagać kierowcę w sytuacjach zmęczenia lub utraty koncentracji. 
-Wraz z rozwojem technologii pojazdów autonomicznych, zaawansowanie systemów wizyjnych rosło od wspomnianej kontroli pasa ruchu, poprzez rozpoznawanie obiektów, które można spotkać na drogach: pieszych, pojazdów i rowerzystów, a także elementy infrastruktury: znaków i świateł drogowych.
-%TODO ująłbym szerzej, że obiektów: pieszych, rowerzystów, pojazdów itp. OK
-%TODO styl. zbyt zamotane zdanie. OK - usunięte
+Wraz z rozwojem technologii pojazdów autonomicznych, zaawansowanie systemów wizyjnych rosło od wspomnianej kontroli pasa ruchu, poprzez rozpoznawanie obiektów, które można spotkać na drogach: pieszych, pojazdów i rowerzystów, a także elementów infrastruktury: znaków i świateł drogowych.
 W kolejnych podrozdziałach zostaną opisane czujniki stosowane w przemyśle motoryzacyjnym. Następnie zawarty jest krótki opis poziomów autonomiczności pojazdów. Rozdział kończy opis działania algorytmów wizyjnych w samochodach.
 
-%TODO dodałbym podrozdzialik o czujnikach zbudowany wokół analizy rysunku 2.1. (brakuje tej treści) OK - zrobione niżej
-%TODO Inna sprawa, że w kolejnych podrozdziałch... to trzeba wymienić, że te czujniki, potem poziomy, a potem systemy wizyjne. OK
+%TODO Dalej opis czujników nie jest w osobnym \section i tekst powyżej się nie zgadza.
 
 \section{Poziomy autonomiczności}
 
 Całość systemów, które wspomagają kierowcę w trakcie jazdy nazwano ADAS (\textit{Advanced Driver Assistance Systems}). 
 Aby usystematyzować i podzielić poziom wpływu systemów na sterowanie pojazdem wprowadzono poziomy autonomiczności jazdy.
 
+%TODO to do osobnego section
 \begin{figure}
   \centering
   \includegraphics[width=13cm]{img/systemy_autonomiczne_ogolnie.png}
@@ -70,39 +68,46 @@ Aby usystematyzować i podzielić poziom wpływu systemów na sterowanie pojazde
   % https://aindustryreports.com/2019/05/23/advanced-driver-assistance-system-sensor-market-technological-innovations-in-north-america-to-boost-regional-market-attractiveness-through-2026/
 \end{figure}
 
-Na rysunku \ref{fig:kamery_i_radary} daje się zauważyć znaczna liczba kamer i radarów wspomagająca kierowcę. Z przodu i tyłu pojazdu umieszczone są czujniki ultradźwiękowe (oznaczone na czerwono), których zadaniem jest wspomaganie procesu parkowania samochodu poprzed wykrywanie obiektów w bliskim otoczeniu pojazdu.
-Pozostając przy parkowaniu, kamera umieszczona z tyłu pojazdu również wspomaga parkowanie. Co raz popularniejsze są systemy czterech kamer po jednej na każdą krawędź samochodu. Na podstawie obrazu pochodzącego z nich generowany jest obraz samochodu z lotu ptaka.
-Kamery są również używane w systemie asystenta pasa ruchu i detekcji i rozpoznawania znaków drogowych.
+Na rysunku \ref{fig:kamery_i_radary} daje się zauważyć znaczną liczbę kamer i radarów wspomagająca kierowcę. 
+Z przodu i tyłu pojazdu umieszczone są czujniki ultradźwiękowe (oznaczone na czerwono), których zadaniem jest wspomaganie procesu parkowania samochodu poprzez wykrywanie obiektów w bliskim otoczeniu pojazdu.
+Pozostając przy parkowaniu, kamera umieszczona z tyłu pojazdu również wspomaga parkowanie pokazując kierowcy obraz przestrzeni za samochodem. 
+Co raz popularniejsze są systemy czterech kamer -- po jednej na każdą krawędź samochodu. 
+Na podstawie obrazu pochodzącego z nich generowany jest obraz samochodu z lotu ptaka.
+Kamery są również używane w systemie asystenta pasa ruchu oraz detekcji i rozpoznawania znaków drogowych.
 Radary bliskiego zasięgu (jasnozielony) i lidary (ciemnoszary) znalazły zastosowanie w komponentach odpowiedzialnych za sytuacje awaryjne takie jak system unikania kolizji czy detekcja martwego pola.
 Radar dalekiego zasięgu jest używany w tempomacie adaptacyjnym.
 Powszechną techniką jest stosowanie redundancji w krytycznych systemach, co jest regulowane poprzez normy bezpieczeństwa ISO 26262.
-%TODO uwaga j.w. + nie byłbym przekonany, że istnieje coś takiego jak normy ADAS. Są oczywiście normy bezpieczeństwa systemów - słynne ISO 26262 OK
 
-%TODO Przydałoby się podać na podstawie czego opracowana została ta klasyfikacja SAE - źródło OK
+%TODO Tu powinien się zacząć rodział o autonomiczności... (section)
 
 \subsection{Poziom zerowy -- brak autonomiczności}
-Klasyfikacja została opracowana na podstawie \cite{S3}.
 
-Obecnie większość samochodów na drodze zalicznanych jest do tego poziomu. %TODO zaliczanych jest do tego poziomu ? -OK
+Klasyfikacja została opracowana na podstawie \cite{S3}. %TODO poza subsection
+
+Obecnie większość samochodów na drodze zaliczanych jest do tego poziomu. 
 Samochód jest w pełni kontrolowany przez człowieka, chociaż mogą pojawiać się proste systemy, które mogą pomóc kierowcy np. system awaryjnego hamowania. 
 Dopóki bezpośrednio nie wpływa on na tor jazdy, nie jest to system autonomiczny. 
-Innym przykładem jest ABS (\textit{Anti-lock brake system} -- system zapobiegający blokowaniu kół podczas hamowania), który również nie jest systemem, który zapewniałby autonomiczność pojazdowi. %TODO rozwinąc skrót ABS, powt system - OK
-Służy on poprawie bezpieczeństwa i jego działanie opiera się tylko na odczycie danych z czujników niezależnie od aktualnej sytuacji na drodze i wokół pojazdu. System zadziała poprawnie na drodze asfaltowej w przypadku awaryjnego hamowania i pozwoli bezpiecznie ominąć przeszkodę. Praktyka pokazuje, że w przypadku, gdy zajdzie potrzeba nagłego zatrzymania samochodu na oblodzonej drodze lepiej jest, aby system ABS nie zadziałał, ponieważ znacząco wydłuża drogę hamowania. Jako, że samochody poziomu zerowego nie interpretują stanu otoczenia, wspomniany system będzie działał zawsze, niezależnie od tego czy przyniesie to pozytywny efekt. %TODO może Pan bardziej konkretnie napisać o tym (treść) - OK (opisać pozostałe systemy - ESP itd.?)
+Innym przykładem jest ABS (\textit{Anti-lock brake system} -- system zapobiegający blokowaniu kół podczas hamowania), który również nie jest systemem, który zapewniałby autonomiczność pojazdowi.
+Służy on poprawie bezpieczeństwa hamowania i jego działanie opiera się tylko na odczycie danych z czujników niezależnie od aktualnej sytuacji na drodze i wokół pojazdu. 
+System zadziała poprawnie na drodze asfaltowej w przypadku awaryjnego hamowania i pozwoli bezpiecznie ominąć przeszkodę (tj. zapobiega blokadzie kół i~tym samym poślizgowi pojazdu). 
+Praktyka pokazuje, że w przypadku, gdy zajdzie potrzeba nagłego zatrzymania samochodu na oblodzonej drodze lepiej jest, aby system ABS nie zadziałał, ponieważ znacząco wydłuża on drogę hamowania. 
+Jako, że samochody poziomu zerowego nie interpretują stanu otoczenia, wspomniany system będzie działał zawsze, niezależnie od tego czy przyniesie to pozytywny efekt. 
 
+%TODO ESP - może już nie, bo tego to całkiem dużo by było.
 
 \subsection{Poziom pierwszy -- asystenci jazdy}
-%TODO używa Pan słowa "asysta", a mi ono nie pasuje: https://sjp.pwn.pl/sjp/asysta;2441704.html
-%TODO wspomaganie ?
 %to jest kalka z angielskiego, gdzie mamy "driver assists". W polskim pojawiają się asystenci jazdy (jako systemy wspomagające kierowcę), którzy jak rozumiem pełnią asystę. Zmieniam na asystenci jazdy, oczywiście do ew. zmiany
+%TODO no może asystent brzmi ciut lepiej, ale też szału nie ma :). Niech będzie.
 
 Jest to najniższy poziom autonomiczności. 
 Auto posiada pojedynczy system wspomagania kierowcy, taki jak zmienianie kierunku jazdy samochodu lub przyspieszanie (tempomat). 
-%TODO tutaj to słowo "sterowanie" jest mylące. Proszę to jakoś inaczej ująć. Albo podać przykład, bo asystet pasa ruchu chyba też się tu mieści OK
-Przykładem systemu, który jest montowany w samochodach autonomicznych poziomu pierwszego jest adaptacyjny tempomat, czyli system, który zachowuje bezpieczny dystans od poprzedzającego pojazdu. Kierowca kontroluje pozostałe aspekty jazdy samochodem takie jak kierowanie i hamowanie. %TODO przerobić na przykładem.... OK
+Przykładem systemu, który jest montowany w samochodach autonomicznych poziomu pierwszego jest adaptacyjny tempomat, czyli system, który zachowuje bezpieczny dystans od poprzedzającego pojazdu. 
+Kierowca kontroluje pozostałe aspekty jazdy samochodem takie jak kierowanie i hamowanie. 
+
 
 \subsection{Poziom drugi -- częściowa automatyzacja jazdy samochodem}
-Oznacza zaawansowanych asystentów jazdy. %TODO asysty j.w do ew. zmiany OK
-Samochód może sam kontrolować zarówno kierunek jazdy i przyspieszanie oraz hamowanie. %TODO tu może zamiast sterowanie - kierunek jazdy, bo kontrolować sterowanie średnio brzmi  OK
+Oznacza zaawansowanych asystentów jazdy. 
+Samochód może sam kontrolować zarówno kierunek jazdy i przyspieszanie oraz hamowanie. 
 Jest w stanie jechać samodzielnie, lecz wymaga ciągłej obecności kierowcy za kierownicą, który może w~każdej chwili przejąć kontrolę nad samochodem. 
 Obecnie stosowane systemy jazdy autonomicznej takie jak np. Tesla Autopilot montowane w samochodach marki Tesla (rys. \ref{fig:teslas}) kwalifikują się jako poziom drugi.
 
@@ -113,61 +118,57 @@ Obecnie stosowane systemy jazdy autonomicznej takie jak np. Tesla Autopilot mont
   \label{fig:teslas}
   % https://pl.wikipedia.org/wiki/Tesla_Model_S#/media/Plik:2014_Tesla_Motors_Model_S_(rear_view)_Netherlands.jpg
 \end{figure}
-%TODO odniesnie do rysunku w tekście. OK
 
 \subsection{Poziom trzeci}
 
-Poziom trzeci mocno opiera się na poziomie drugim. %TODO styl. jakoś inaczej trzeba tą myśl ująć, bo to źle wygląda jako początek zdania. OK
-Samochód posiada możliwość percepcji otaczającego go środowiska i~na podstawie zgromadzonych informacji samodzielnie podejmować decyzje. %TODO detekcji - percepcji OK
+Granica pomiędzy poziomem trzecim, a drugi jest dość nieostra. 
+Samochód posiada możliwość percepcji otaczającego go środowiska i~na podstawie zgromadzonych informacji samodzielnie podejmować decyzje. 
 System jest jednak wciąż zależny od człowieka, który musi pozostać czujny i być w stanie zareagować, gdy system nie będzie w stanie podjąć decyzji. 
 W~2019r. Audi wprowadziło model A8, który zapowiadano jako pierwszy samochód poziomu trzeciego. 
 System \textit{Traffic Jam Pilot} bazując na danych z lidaru oraz kamer zapewniał autonomiczną jazdę w korkach. 
-Problemem okazał się brak odpowiednich regulacji prawnych. %TODO może brak odpowiednich regulacji prawnych OK
+Problemem okazał się jednak brak odpowiednich regulacji prawnych. 
 W Stanach Zjednoczonych stosowanie tego systemu było zabronione, więc samochód w okrojonej wersji sprzedawano jako pojazd autonomiczny drugiego poziomu. 
-Na rynku europejskim samochód pojawił się z zaimplementowaną funkcjonalnością asystenta jazdy w korku. %TODO sprawdzał Pan w jakich krajach ? -Wiem, że wariant europoejski ma tę funkcjonalność (pewne źródło: Aptiv :).
+Na rynku europejskim samochód pojawił się z zaimplementowaną funkcjonalnością asystenta jazdy w korku.
 
 \subsection{Poziom czwarty}
 
-Poziom czwarty zapewnia poprawną reakcję samochodu w nagłych sytuacjach takich jak np. wypadek lub pęknięcie opony. %TODO trochę niejasne -OK
+Poziom czwarty zapewnia poprawną reakcję samochodu również w nagłych sytuacjach takich jak np. wypadek lub pęknięcie opony. 
 Pojazdy nie wymagają ingerencji człowieka w znakomitej większości sytuacji, jednak kierowca zawsze powinien być w stanie przejąć kontrolę. 
 Podobnie jak w poziomie trzecim problemem okazały się ograniczenia prawne. 
 Samochody te mogą z reguły poruszać się na ograniczonym obszarze. 
 Obecnie w fazie testów są samochody takie jak Waymo lub NAVYA.
 
-\subsection{Poziom piąty - pełna autonomia}
+\subsection{Poziom piąty -- pełna autonomia}
+
 Samochody nie wymagają ingerencji ze strony człowieka. 
 Najprawdopodobniej nie będą wyposażone w kierownicę ani pedały. 
 Będą w stanie jechać gdziekolwiek, system sterowania będzie działał na poziomie doświadczonego kierowcy. 
 Samochody te są obecnie w stanie wczesnych testów, jednak można się spodziewać, że w ciągu najbliższych kilkunastu lat pierwsze w pełni autonomiczne samochody będą pojawiać się na drogach.
-%TODO tu akurat byłbym ostrożny,., -W stanach były z tego co kojarzę autonomiczne UBERy, któryś miał wypadek nawet. A ostatnio Aptiv miał mieć przejazd samochodu po A4 z kierowcą tylko ze względów prawych.. ale nie wyszło też ze względów prawnych.
+
 
 \subsection{Autonomiczne samochody ciężarowe}
 
-Warto zaznaczyć, że ważnym polem do zastosowania systemów autonomicznej jazdy jest transport ciężarowy. %TODO konkretniej, bo transport to też auta osobowe OK
-Systemy wspomagające kierowcę pojawiają się w samochodach ciężarowych analogicznie do samochodów osobowych. %TODO ale niejasne gdzie  OK
-W najbliższych latach planuje się rozwijanie koncepcji autonomicznych samochodów ciężarowych poprzez tworzenie konwojów, w których kierowca znajduje się tylko w pierwszym samochodzie (źródło: \cite{W4})%TODO powt. ciężarówek - lepiej sam. ciężarowy. Przydałoby się źródło (choćby on-line). OK
+Warto zaznaczyć, że ważnym polem do zastosowania systemów autonomicznej jazdy jest transport ciężarowy. 
+Systemy wspomagające kierowcę pojawiają się w samochodach ciężarowych analogicznie do samochodów osobowych. 
+W najbliższych latach planuje się rozwijanie koncepcji autonomicznych samochodów ciężarowych poprzez tworzenie konwojów, w których kierowca znajduje się tylko w pierwszym samochodzie (źródło: \cite{W4}).
 Kolejnym krokiem będzie autonomiczna jazda na dystansie trasy ze wsparciem kierowcy podczas załadunku i rozładunku. 
 Ostatnim krokiem, podobnie jak w przypadku samochodów osobowych, będzie w pełni autonomiczna jazda bez udziału człowieka.
 
 Systemy wizyjne stosowane w ciężarówkach nie odbiegają sposobem pracy od tych używanych w samochodach osobowych.
 
 
-%TODO To by przydało się ująć jedak jako \section, dwa zdania wstępu i potem \subsection dla poszczególnych systemów. Tak jak jest teraz to dziwnie wygląda.
-
-%TODO Tak sobie jeszcze myślę, że oprócz metody konkruencyjnej dobrze by było opisać przykład metody deep AI. Bez istotnych szczegółów, ale pokazać, że tak też się ten problem rozwiązauje.
-
 
 \section{Algorytmy wizyjne w pojazdach autonomicznych}
-W~kolejnych podrozdziałach zostaną opisane algorytmy wizyjne, których zadaniem jest analiza otoczenia samochodu. %TODO detekcja otoczenia dziwnie brzmi. OK
+
+W~kolejnych podrozdziałach zostaną opisane algorytmy wizyjne, których zadaniem jest analiza otoczenia samochodu. 
 W ostatnich latach dynamicznie rozwijającą się dziedziną w systemach wizyjnych i motoryzacji są sieci neuronowe, które są obecnie najczęściej wybierane do implementacji w samochodach. 
-Ze względu na edukacyjny charakter pracy opisane zostaną algorytmy bazujące na klasycznych metodach przetwarzania obrazach cyfrowych oraz oparte na uczeniu głębokim. %TODO mógłby Pan to nieco rozwinąć - to i wątek NN  OK
-W niektórych metodach zostaną użyte proste techniki uczenia maszynowego.
-%TODO To do tego wstępu rozdziału OK
+W pracy opisane zostaną wybrane algorytmy bazujące na klasycznych metodach przetwarzania obrazach cyfrowych oraz oparte na uczeniu głębokim. 
+
 \subsection{Wykrywanie pasa ruchu}
 
 \label{sec:lane_detection}
 
-Wykrywanie pasa ruchu było jednym z pierwszych algorytmów implementowanych w samochodach komenrcyjnych. %TODO niejasne przez kogo OK
+Wykrywanie pasa ruchu było jednym z pierwszych algorytmów implementowanych w samochodach komercyjnych. 
 W trakcie jazdy kluczowym elementem jest utrzymanie samochodu w pasie jezdni niezależnie od stanu nawierzchni, pogody, czy prędkości (rys. \ref{fig:inputimg1}).
 
 \begin{figure}
@@ -176,33 +177,30 @@ W trakcie jazdy kluczowym elementem jest utrzymanie samochodu w pasie jezdni nie
   \caption{Przykładowy obraz wejściowy algorytmu detekcji pasa ruchu}
   \label{fig:inputimg1}
   \end{figure}
-%TODO odnośnik do rysunku + może zamiast jednego mega kilka (4) mniejsze pokazujące różne warunki. - w części praktycznej jest sporo obrazków z różnymi warunkami, nie dodawałbym na razie kolejnych.
 
-W~najczęstszym przypadku wejściem do algorytmu jest obraz z kamery umieszczonej pod pewnym kątem do nawierzchni zamontowanej w okolicy przedniego zderzaka, atrapy chłodnicy lub za lusterkiem wstecznym. %TODO myślę, że za luterkiem też. OK
-W niniejszej pracy, większość przetwarzanych obrazów pochodzi z symulatora Euro Truck Simulator 2, (który dokładniej jest opisany w rozdziale \ref{sec:ets2}), gry komputerowej, która posiada zaawansowaną grafikę, która przypomina otaczającą rzeczywistość, a także udostępnia możliwości programistyczne, które ułatwią stworzenie aplikacji do testowania algorytmów wizyjnych, co jest założeniem niniejszej pracy. %TODO odnośnik to opisu tego Euro Truck z drugiej części pracy OK
+W~najczęstszym przypadku wejściem do algorytmu jest obraz z kamery umieszczonej pod pewnym kątem do nawierzchni zamontowanej w okolicy przedniego zderzaka, atrapy chłodnicy lub za lusterkiem wstecznym.
+W niniejszej pracy, większość przetwarzanych obrazów pochodzi z symulatora Euro Truck Simulator 2, (który dokładniej jest opisany w rozdziale \ref{sec:ets2}), gry komputerowej, która posiada zaawansowaną grafikę, która przypomina otaczającą rzeczywistość, a także udostępnia możliwości programistyczne, które ułatwią stworzenie aplikacji do testowania algorytmów wizyjnych, co jest założeniem niniejszej pracy.
 
-W niniejszym podrozdziale zostanie opisany algorytm z artykułu \cite{T3}. %TODO "sekcja" to nie jest polskie słowo na rozdział/podrozdział. OK
+W niniejszym podrozdziale zostanie opisany algorytm z artykułu \cite{T3}. 
 Autor korzysta w nim z podstawowych operacji przetwarzania obrazów. 
-
-
 
 \begin{figure}
   \centering
   \includegraphics[width=10cm]{img/roi.png}
   \caption{Linie obrazujące granice obszaru poddawanego analizie\cite{T3}}
-  \label{fig:roi}
+  \label{fig:roi} 
   % artykuł
 \end{figure}
 
-Pierwszym krokiem jest wyodrębnienie z obrazu ROI \footnote{ROI (ang.) -- \textit{Region of Interest} -- obszar obrazu poddawany analizie i dalszemu przetwarzaniu} (rys. \label{fig:roi}). %TODO odnośnik do rysunku OK
+Pierwszym krokiem jest wyodrębnienie z obrazu ROI \footnote{ROI (ang.) -- \textit{Region of Interest} -- obszar obrazu poddawany analizie i dalszemu przetwarzaniu} (rys. \ref{fig:roi}). 
 Ma to na celu ograniczenie ilości danych poddawanych analizie, a co bardziej istotne odrzuca te fragmenty obrazu, na których na pewno nie będzie jezdni (powyżej czerwonej linii), a także te gdzie obraz linii mógłby być zakłócony. 
-Warto zauważyć, że pomiędzy liniami - czerwoną i niebieską znajduje się prawie dwa razy więcej długości drogi niż w obszarze pod niebieską linią. Obszar pod niebieską linią jest odrzucany, ponieważ na dużym obszarze obrazu znajduje się niewielki fragment jezdni, co może generować problemy z poprawną detekcją w przypadku linii przerywanej.
-%TODO a jaki jest argument dlaczego nie przed niebieską ? OK
+Warto zauważyć, że pomiędzy liniami -- czerwoną i niebieską znajduje się prawie dwa razy więcej długości drogi niż w obszarze pod niebieską linią. Obszar pod niebieską linią jest odrzucany, ponieważ na dużym obszarze obrazu znajduje się niewielki fragment jezdni, co może generować problemy z poprawną detekcją w przypadku linii przerywanej.
+%TODO OK, choć jak dla mnie argument dyskusyjny
 
-Kolejnym etapem jest ekstrakcja linii rozdzielającej pasy. %TODO no to nie pasów, tylko linii rozdzielająych pasy OK
-W większości krajów mają one kolor biały, rzadziej żółty. 
-Są to kolory, które na drodze inną funkcję niż barwa znaków poziomych, w tym linii. %TODO styl.  OK
-Mając na wejściu obraz RGB\footnote{RGB -- obraz o~trzech składowych barwnych: czerwonej (R), zielonej (G) i~niebieskiej (B)} można zauważyć, że składowe czerwona i zielona mają większe wartości tam gdzie na obrazie są linie w porównaniu do niepomalowanej nawierzchni jezdni. %TODO standardowa nawierzchnia OK
+Kolejnym etapem jest ekstrakcja linii rozdzielających pasy i~pobocze. 
+W większości krajów mają one kolor biały, rzadziej żółty (czasem kolor żółty mają oznaczenia stosowane podczas remontów). 
+Mając na wejściu obraz RGB\footnote{RGB -- obraz o~trzech składowych barwnych: czerwonej (R), zielonej (G) i~niebieskiej (B)} można zauważyć, że składowe czerwona i zielona mają większe wartości tam gdzie na obrazie są linie w porównaniu do nieoznakowanej nawierzchni jezdni. 
+
 W~omawiany artykule zaproponowano następującą metodę segmentacji linii:
 \begin{equation}
 \label{eq:IMij}
@@ -214,7 +212,7 @@ G(i,j)\geq (0.2G_{min}+0.8G_{max})
 0, & wpp.
 \end{matrix}\right.
 \end{equation}
-%TODO u mnie ten footnote nie działa. u mnie również. Ciężko w Latex wstawiać przypisy w równaniach - może uznamy, że skrót jest powszechnie znany w środowisku?
+%TODO wpp - no raczej wiadomo o co chodzi.
 
 \begin{equation}
 \label{eq:Gij}
@@ -275,8 +273,8 @@ Dla każdego piksela w~obrazie $IME$, który został oznaczony jako krawędź, z
 	\end{matrix}
 \end{equation}
 Jeśli jest ona spełniona, wybrany punkt na obrazie $IME$ zostaje uznany jako krawędź pasa jezdni.
-%TODO Napisać co to oznacza w praktyce OK
-W praktyce ma to za zadanie zwiększyć skuteczność algorytmu. Linie oddzielające pasy ruchu z reguły mają na obrazie szerokość większą niż jeden piksel (a taką szerokość mają póki co na obrazie uzyskanym po detekcji krawędzi), więc jeśli choć jeden piksel z ośmiopikselowego otoczenia jest uznawany za krawędź, to rozważany piksel również jest traktowany jako element krawędzi.
+W praktyce ma to za zadanie zwiększyć skuteczność algorytmu. 
+Linie oddzielające pasy ruchu z reguły mają na obrazie szerokość większą niż jeden piksel (a taką szerokość mają póki co na obrazie uzyskanym po detekcji krawędzi), więc jeśli choć jeden piksel z ośmiopikselowego otoczenia jest uznawany za krawędź, to rozważany piksel również jest traktowany jako element krawędzi.
 
 \begin{figure}
   \centering
@@ -285,9 +283,9 @@ W praktyce ma to za zadanie zwiększyć skuteczność algorytmu. Linie oddzielaj
   \label{fig:canny}
 \end{figure}
 
-Do ostatecznego wykrycia linii prostych należy użyć zmodyfikowanej transformaty Hougha( \textit{constraint Hough transform}). 
+Do ostatecznego wykrycia linii prostych należy użyć zmodyfikowanej transformaty Hougha (\textit{constraint Hough transform}). 
 Główna różnica pomiędzy wykorzystywaną, a klasyczną transformatą Hougha polega na tym, że wartości $\rho$ i $\theta$ są skwantowane i pogrupowane. 
-Dzięki takiej modyfikacji nieidealnie proste linie lub takie, które leżą blisko siebie nie będą wykryte wielokrotnie. %TODO styl. zdania... OK
+Dzięki takiej modyfikacji nieidealnie proste linie lub takie, które leżą blisko siebie nie będą wykryte wielokrotnie. 
 
 \begin{figure}
   \centering
@@ -299,9 +297,12 @@ Dzięki takiej modyfikacji nieidealnie proste linie lub takie, które leżą bli
 Czas przetwarzania jednego obrazu RGB o wymiarach 640x480 wynosi 64.5ms.
 
 \subsubsection{Alternatywne podejście}
-Rozwiązanie, które w odróżnieniu do przestawionego wyżej nie korzysta z transformaty Hougha przedstawił Yue Dong w artykule \cite{T6}.
-Linie rozdzielające pasy ruchu można rozpoznać po wysokim kontraście między nimi (\ref{fig:lane_detection2_input}), a nawierzchnią jezdni. Aby dokładnie określić lokalizację pojazdu, należy dokładnie wyznaczyć pozycję linii. 
-Podobnie jak w rozwiązaniu opisywanym w podrozdziale \ref{sec:lane_detection} pierwszym krokiem jest detekcja krawędzi z użycie filtru Canny'ego (\ref{fig:lane_detection2_canny}). W dostępnych bibliotekach wartości progów mogą być dobierane automatycznie, lecz z reguły skutkuje to wykryciem dużej liczby krawędzi nieistotnych z punktu widzenia algorytmu np. samochody poprzedzające.
+
+Rozwiązanie, które w odróżnieniu do przestawionego wyżej nie korzysta z transformaty Hougha, przedstawił Yue Dong w artykule \cite{T6}.
+Linie rozdzielające pasy ruchu można rozpoznać po wysokim kontraście między nimi (\ref{fig:lane_detection2_input}), a nawierzchnią jezdni. 
+Aby określić lokalizację pojazdu, należy dokładnie wyznaczyć pozycję linii. 
+Podobnie jak w rozwiązaniu opisywanym w podrozdziale \ref{sec:lane_detection} pierwszym krokiem jest detekcja krawędzi z użyciem filtru Canny'ego (\ref{fig:lane_detection2_canny}). 
+W dostępnych bibliotekach wartości progów mogą być dobierane automatycznie, lecz z reguły skutkuje to wykryciem dużej liczby krawędzi nieistotnych z punktu widzenia algorytmu np. należących do samochodów poprzedzających.
 
 \begin{figure}[h]
 	\centering
@@ -319,7 +320,8 @@ Podobnie jak w rozwiązaniu opisywanym w podrozdziale \ref{sec:lane_detection} p
 	\caption{\label{fig:details}Obraz wejściowy algorytmu \protect\subref{fig:lane_detection2_input} i obraz po detekcji krawędzi z użyciem filtru Canny'ego \protect\subref{fig:lane_detection2_canny}.\cite{T6}}
 \end{figure}
 
-Orientacja kamery względem drogi implikuje fakt, że linie będą na obrazie skośne. Następnym krokiem po detekcji krawędzi jest więc usunięcie pikseli, które stykają się z innymi pikselami w osi pionowej lub poziomej (rys. \ref{fig:lane_detection2_noise1}).
+Orientacja kamery względem drogi implikuje fakt, że linie będą na obrazie skośne. 
+Następnym krokiem po detekcji krawędzi jest więc usunięcie pikseli, które stykają się z innymi pikselami w osi pionowej lub poziomej (rys. \ref{fig:lane_detection2_noise1}).
 
 \begin{figure}
   \centering
@@ -344,15 +346,18 @@ Kolejnym etapem jest odrzucenie pojedynczych punktów, które nie mają połącz
   \label{fig:lane_detection2_search_area}
 \end{figure}
 
-W następnym kroku wyznaczany jest obszar oraz linia skanu (rys. \ref{fig:lane_detection2_search_area}). Na wspomnianej linii badana jest jasność pikseli (rys. \ref{fig:lane_detection2_intensity}). Zauważalne są dwa duże skoki wartości, które odpowiadają linii na jezdni.
+W następnym kroku wyznaczany jest obszar oraz linia skanu (rys. \ref{fig:lane_detection2_search_area}). 
+Na wspomnianej linii badana jest jasność pikseli (rys. \ref{fig:lane_detection2_intensity}). Zauważalne są dwa duże skoki wartości, które odpowiadają linii na jezdni.
 
 \begin{figure}
   \centering
   \includegraphics[width=7cm]{img/lane_detection2_intensity.png}
-  \caption{Widoczne dwa skoki wartości jasności oznaczjące linie pasa ruchu\cite{T6}}
+  \caption{Widoczne dwa skoki wartości jasności oznaczające linie pasa ruchu\cite{T6}}
   \label{fig:lane_detection2_intensity}
 \end{figure}
-Taka sama operacja jest powtarzana dla ostatniego rzędu pikseli obrazu. Jeśli tam również istnieją dwa maksima, to na podstawie wpółrzędnych wyznaczana jest linia, która oznacza detekcję pasa ruchu (rys. \ref{fig:lane_detection2_result}).
+
+Taka sama operacja jest powtarzana dla ostatniego rzędu pikseli obrazu. 
+Jeśli tam również istnieją dwa maksima, to na podstawie współrzędnych wyznaczana jest linia, która oznacza detekcję pasa ruchu (rys. \ref{fig:lane_detection2_result}).
 
 \begin{figure}
   \centering
@@ -364,17 +369,29 @@ Taka sama operacja jest powtarzana dla ostatniego rzędu pikseli obrazu. Jeśli 
 Metoda jest wrażliwa na linie przerywane lub inne znaki poziome pojawiające się na jezdni. Proponowanym rozwiązaniem jest wprowadzenie śledzenia linii lub pamiętanie poprzednich detekcji w przypadku niewykrycia pasa ruchu.
 W porównaniu do pierwszego opisanego algorytmu, ten wykonuje się szybciej (przetwarzanie obrazu RGB o wymiarach 640x480 trwa 0.12s)
 
-\subsubsection{Rozwiązanie z użyciem deep learningu}
-Rozwiązaniami konkurencyjnymi w stosunku do opartych o algorytmy wizyjne są te bazujące na sztucznej inteligencji. Większość metod klasycznych jest wrażliwa na zmiany jasności, warunki pogodowe, zakłócenia, więc zawodzą, gdy środowisko zewnętrze jest zbyt zmienne. 
-W ostatnich latach metody oparte na DCNN (ang. Deep Convolutional Neural Network - Głębokouczone konwolucyjne sieci neuronowe) przewyższają te oparte na podejściu tradycyjnym w wielu aplikacjach. Przykładem użycia sieci neuronowych jest detekcja linii oddzielających pasy ruchu. Schemat działania systemu opartego o deep learning jest umieszony na rys \ref{fig:lane_detection3_cnn_general}.
+\subsubsection{Rozwiązanie z użyciem metod uczenia głębokiego}
+%TODO tu brakuje \cite w txt - jest tylko pod rysunkami
+
+Rozwiązaniami konkurencyjnymi w stosunku do opartych o algorytmy wizyjne są te bazujące na sztucznej inteligencji. 
+Większość metod klasycznych jest wrażliwa na zmiany jasności, warunki pogodowe, zakłócenia, więc zawodzą, gdy środowisko zewnętrze jest zbyt zmienne. 
+W ostatnich latach metody oparte na DCNN (ang. \textit{Deep Convolutional Neural Networks} - głębokouczone konwolucyjne sieci neuronowe) przewyższają te oparte na podejściu tradycyjnym w wielu aplikacjach. 
+Przykładem użycia sieci neuronowych jest detekcja linii oddzielających pasy ruchu. 
+Schemat działania systemu opartego o uczenie głębokie jest umieszczony na rys. \ref{fig:lane_detection3_cnn_general}.
 \begin{figure}
   \centering
   \includegraphics[width=7cm]{img/lane_detection3_cnn_general.png}
   \caption{Schemat działania aplikacji opartej o DCNN\cite{T6}}
   \label{fig:lane_detection3_cnn_general}
 \end{figure}
- W pierwszym kroku sieć wyznacza pozycję linii na obrazie. Pozostałe dwa etapy opierają się na tradycyjnym podejściu. W typowym użyciu CNN próbkowanie jest używane między innymi w celu umożliwienia znajdowania dużych obiektów. Wadą takiego rozwiązania jest zmniejszenie szczegółowości informacji otrzymanej z sieci.
-Po segmentacji linii kolejnym etapem jest segmentacja semantyczna. Polega ona na określeniu, czym są obiekty wysegmentowane. Opisywane rozwiązanie określa trzy możliwości: linia lewa, linia prawa i nawierzchnia. Ostatnim etapem jest ewentualne grupowanie linii w przypadku elementów przerywanych.
+
+W pierwszym kroku sieć wyznacza pozycję linii na obrazie. 
+Pozostałe dwa etapy opierają się na tradycyjnym podejściu. 
+W typowym użyciu CNN próbkowanie jest używane między innymi w celu umożliwienia znajdowania dużych obiektów. %TODO to jest niejasne - chodzi o zmianę rozdzielczości ?
+Wadą takiego rozwiązania jest zmniejszenie szczegółowości informacji otrzymanej z sieci.
+Po segmentacji linii kolejnym etapem jest segmentacja semantyczna. 
+Polega ona na określeniu, czym są obiekty wysegmentowane. 
+Opisywane rozwiązanie określa trzy możliwości: linia lewa, linia prawa i nawierzchnia. 
+Ostatnim etapem jest ewentualne grupowanie linii w przypadku elementów przerywanych.
 
 \begin{figure}
   \centering
@@ -385,7 +402,7 @@ Po segmentacji linii kolejnym etapem jest segmentacja semantyczna. Polega ona na
 
 Średni czas przetwarzania jednego obrazu o wymiarach 480x360 wynosi 30ms. Jest to wynik porównywalny z algorytmami wizyjnymi.
 
-%TODO Dlaczego zakomentowane ? Artykuł, na którym to jest oparte zawierał pewne luki i nie byłem w stanie dociec o co tak naprawdę autorom chodzi
+%TODO Dlaczego zakomentowane ? Artykuł, na którym to jest oparte zawierał pewne luki i nie byłem w stanie dociec o co tak naprawdę autorom chodzi - TK:OK
 
 %\subsection{Detekcja zakrętów}
 %Podobnym zadaniem jest detekcja pasa ruchu w zakręcie. Kształt zakrzywionej linii może być opisany za pomocą paraboli z równania \ref{eq:ld_1}. Zauważono, że fragment drogi bliżej samochodu z reguły jest prosty, zakrzywienie widać powyżej pewnej odległości, a na obrazie powyżej pewnej wysokości. Równanie \ref{eq:ld2} pokazuje model pasa ruchu, gdzie $y_m$ to współrzędna punktu, w którym prosta przechodzi w krzywą.
@@ -421,7 +438,7 @@ Po segmentacji linii kolejnym etapem jest segmentacja semantyczna. Polega ona na
 %e=\frac{1}{2y_{m}}(b-d) \end{cases}
 %\end{equation}
 
-%TODO Dla zwiększenia objęctości
+%TODO KONIEC CZYTANIA TK
 
 \subsection{Detekcja znaków drogowych}
 
