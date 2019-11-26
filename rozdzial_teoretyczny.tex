@@ -192,11 +192,8 @@ Autor korzysta w nim z podstawowych operacji przetwarzania obrazów.
   % artykuł
 \end{figure}
 
-<<<<<<< HEAD
+
 Pierwszym krokiem jest wyodrębnienie z obrazu ROI \footnote{ROI (ang.) -- \textit{Region of Interest} -- obszar obrazu poddawany analizie i dalszemu przetwarzaniu} (rys. \ref{fig:roi}). 
-=======
-Pierwszym krokiem jest wyodrębnienie z obrazu ROI \footnote{ROI (ang.) -- \textit{Region of Interest} -- obszar obrazu poddawany analizie i dalszemu przetwarzaniu} (rys. \ref{fig:roi}). %TODO odnośnik do rysunku OK
->>>>>>> 77011bd31f411f5beed72d3e95ecdbd62bf838bd
 Ma to na celu ograniczenie ilości danych poddawanych analizie, a co bardziej istotne odrzuca te fragmenty obrazu, na których na pewno nie będzie jezdni (powyżej czerwonej linii), a także te gdzie obraz linii mógłby być zakłócony. 
 Warto zauważyć, że pomiędzy liniami -- czerwoną i niebieską znajduje się prawie dwa razy więcej długości drogi niż w obszarze pod niebieską linią. Obszar pod niebieską linią jest odrzucany, ponieważ na dużym obszarze obrazu znajduje się niewielki fragment jezdni, co może generować problemy z poprawną detekcją w przypadku linii przerywanej.
 %TODO OK, choć jak dla mnie argument dyskusyjny
@@ -448,61 +445,65 @@ Ostatnim etapem jest ewentualne grupowanie linii w przypadku elementów przerywa
 %e=\frac{1}{2y_{m}}(b-d) \end{cases}
 %\end{equation}
 
-%TODO KONIEC CZYTANIA TK
 
 \subsection{Detekcja znaków drogowych}
 
-Innym w swojej naturze zadaniem stawianym przed systemami wizyjnymi w pojazdach autonomicznych jest detekcja i rozpoznawanie znaków drogowych. %TODO i rozpoznawanie OK
+Innym w swojej naturze zadaniem stawianym przed systemami wizyjnymi w pojazdach autonomicznych jest detekcja i rozpoznawanie znaków drogowych. 
 Systemy tego typu pojawiały się dość wcześnie w~samochodach pełniąc jedynie funkcję ostrzegawczo-informacyjną.
-Coraz bardziej dynamicznie rozwijające się systemy wspomagające kierowcę wymagają od podsystemu odpowiedzialnego za detekcję znaków drogowych dużej skuteczności, ponieważ na ich efektach pracy opierają decyzje o sterowaniu pojazdem. %TODO podsystem... powt. detekcja OK
-W przypadku tego zagadnienia istotnym problemem jest brak ujednoliconego zestawu znaków dla całego świata. %TODO w przypadku tego zagadnienia OK
-Obecnie każdy kraj posiada swój zestaw znaków, które w ogólności są podobne, jednak różnice w szczegółach komplikują projektowanie opisywanych systemów. %TODO może komplikują projetkowanie OK
+Coraz bardziej dynamicznie rozwijające się systemy wspomagające kierowcę wymagają od podsystemu odpowiedzialnego za detekcję znaków drogowych dużej skuteczności, ponieważ na efektach ich pracy opierają decyzje o sterowaniu pojazdem. 
+W przypadku tego zagadnienia istotnym problemem jest brak ujednoliconego zestawu znaków dla całego świata. 
+Obecnie każdy kraj posiada swój zestaw znaków, które w ogólności są podobne, jednak różnice w szczegółach komplikują projektowanie opisywanych systemów. 
 Proponowanym rozwiązaniem jest zbudowanie odpowiednio dużej bazy wzorców znaków i~stosowanie określonego zestawu w zależności od konkretnej lokalizacji. 
 
 Rozwiązanie proponowane w~pracy \cite{T2} składa się z dwóch etapów. 
 Pierwszy to detekcja znaku, a drugi to jego klasyfikacja. 
 Do wykrycia znaku drogowego na obrazie pochodzącym z kamery umieszczonej w samochodzie użyto metody \textit{Radial Symmetry Transform} do detekcji znaków ograniczenia prędkości. 
-Obecnie stosowane metody detekcji znaków drogowych bazują na segmentacji koloru lub ekstachowania cech kształtu. %TODO zdanie niejasne OK
+Obecnie stosowane metody detekcji znaków drogowych bazują głównie na segmentacji koloru lub analizie cech kształtu. 
 
 \subsubsection{Symmetry Transform}
 
 Klasyczne detektory kształtu wymagają często zamkniętych konturów. 
 Techniki odporne, takie jak transformata Hougha dla okręgów wymaga dużych nakładów obliczeniowych dla dużych obrazów. 
-Metoda \textit{\textit{fast radial symmetry detector} -- (ang. szybki detektor symetrii radialnej) -- FRSD} może być używana w~czasie rzeczywistym. %TODO a to nie powinno być detektor symetrii radialnej ? OK
+Metoda \textit{\textit{fast radial symmetry detector} -- (ang. szybki detektor symetrii radialnej) -- FRSD} może być używana w~czasie rzeczywistym. 
 Znakomita większość znaków z ograniczeniem prędkości to koło z czerwonym brzegiem i wartością ograniczenia w środku na białym tle. 
 Opisywana metoda detekcji jest kompatybilna ze wszystkimi głównymi metodami klasyfikacji takimi jak np. SVM (ang. \textit{Support Vector Machine} -- maszyna wektorów wspierających). 
-Zaletą użycia opisywanego algorytmu jest fakt, że wraz z informacją o wykrytym znaku podawana jest skala znaku, co znacząco ułatwia klasyfikację, ponieważ niepotrzebne staje się używanie szablonów o wielu rozmiarach dla wielu różnych rozdzielczości. %TODO nie wiem czy główną, czy dodatkową. Ponadto proszę spróbować mniej słowa "metoda". OK
+Zaletą użycia opisywanego algorytmu jest fakt, że wraz z informacją o wykrytym znaku podawana jest skala znaku, co znacząco ułatwia klasyfikację, ponieważ niepotrzebne staje się używanie szablonów o wielu rozmiarach dla wielu różnych rozdzielczości. 
 
-Detektor radialnej symetrii jest wariantem transformaty Hougha dla okręgów. 
-Jest on wykonywany w porządku $kp$, gdzie $k$ oznacza liczbę promieni, które są szukane, a~$p$ liczbę pikseli. Stanowi to różnicę w stosunku do klasycznej transformaty Hougha wykonywanej w porządku $kbp$, gdzie każdy piksel na obrazie krawędzi ,,głosuje'' dla każdego koła z dyskretnego zestawu promieni. $b$ oznacza dyskretyzację zestawu promieni okręgów, które mogą przechodzić przez aktualnie analizowany punkt.
+
+Detektor  symetrii radialnej jest wariantem transformaty Hougha dla okręgów. 
+Jest on wykonywany w porządku $kp$, gdzie $k$ oznacza liczbę promieni, które są szukane, a~$p$ liczbę pikseli. 
+Stanowi to różnicę w stosunku do klasycznej transformaty Hougha wykonywanej w porządku $kbp$, gdzie każdy piksel na obrazie krawędzi ,,głosuje'' dla każdego koła z dyskretnego zestawu promieni. $b$ oznacza dyskretyzację zestawu promieni okręgów, które mogą przechodzić przez aktualnie analizowany punkt.
 
 \begin{figure}
   \centering
   \includegraphics[width=7cm]{img/fsrd1.png}
-  \caption{Algorytm głosowania - dla danego punktu krawędzi środki rodziny krawędzi leżą na lini prostopadłej do krawędzi\cite{T2}}
+  \caption{Algorytm głosowania -- dla danego punktu krawędzi środki rodziny krawędzi leżą na lini prostopadłej do krawędzi\cite{T2}}
   \label{fig:frsd1}
 \end{figure}
 
 FRSD eliminuje czynnik $b$ poprzez pozyskanie informacji o kierunku gradientu z detektora krawędzi Sobela.
 Zamiast sprawdzania każdego możliwego kierunku promienia, sprawdzany jest jedynie kierunek prostopadły do kierunku gradientu, co jest widoczne na rysunku \ref{fig:frsd1}. 
 Powoduje to, że przestrzeń rozwiązań z~trójwymiarowej staje się dwuwymiarowa, co pozwala na używanie algorytmu w czasie rzeczywistym. 
-Operacja detekcji symetrii radialnej może być prosto zrozumiana jako rozważenie wszystkich możliwych okręgów, których dany piksel może być częścią, jeżeli znany jest kierunek krawędzi, to okręgi są szukane tylko na linii prostopadłej do krawędzi (rys. \ref{fig:frsd1}). %TODO to może dać obok tego poprzedniego rysunku. detekcja symetrii radialnej OK
+Operacja detekcji symetrii radialnej może być prosto zrozumiana jako rozważenie wszystkich możliwych okręgów, których dany piksel może być częścią, jeżeli znany jest kierunek krawędzi, to okręgi są szukane tylko na linii prostopadłej do krawędzi (rys. \ref{fig:frsd1}). 
 
 
 
 \begin{figure}
   \centering
   \includegraphics[width=7cm]{img/fsrd2.png}
-  \caption{Działanie FRSD dla okręgu, zauważalne przecięcie średnic skutkuje istnieniem maksimum lokalnego w środku okręgu.\cite{T2}} %TODO Zachowanie - działanie OK
+  \caption{Działanie FRSD dla okręgu, zauważalne przecięcie średnic skutkuje istnieniem maksimum lokalnego w środku okręgu.\cite{T2}} 
   \label{fig:frsd2}
 \end{figure}
-Na rysunku \ref{fig:frsd2} widać działanie algorytmu dla okręgu. Badanie wartości gradientu tylko na kierunku prostopadłym do orientacji gradientu implikuje istnienie maksimum w środku okręgu.
+Na rysunku \ref{fig:frsd2} widać działanie algorytmu dla okręgu. 
+Badanie wartości gradientu tylko na kierunku prostopadłym do orientacji gradientu implikuje istnienie maksimum w środku okręgu.
 
 
-Praktyczna realizacja jest wykonywana na obrazie cyfrowym, więc promień jest skwantowany na kilka przedziałów długości. %TODO niejasne OK
+W~praktyce metoda aplikowana jest do obrazu cyfrowego, więc promień jest skwantowany na kilka przedziałów długości.
 Istotne jest poprawne dobranie ograniczeń na długość promienia. 
 Na rysunku \ref{fig:tsd} po prawej stronie jest widoczny znak ograniczenia prędkości, który powinien zostać wykryty. 
-Daje się zauważyć, że można dobrać odpowiednie zakresy promienia dla znaków, które będą pojawiać się na obrazie z kamery. Można również wyodrębnić obszar, na którym znaki na pewno nie będą się pojawiać (jezdnia przed pojazdem, wyższa część nieba). %TODO to zdanie jest takie dziwne - pełna zgoda OK
+Daje się zauważyć, że można dobrać odpowiednie zakresy promienia dla znaków, które będą pojawiać się na obrazie z kamery. 
+Można również wyodrębnić obszar, na którym znaki na pewno nie będą się pojawiać (jezdnia przed pojazdem, wyższa część nieba). 
+
 \begin{figure}
   \centering
   \includegraphics[width=7cm]{img/znaki1.png}
@@ -537,13 +538,15 @@ Daje się zauważyć, że można dobrać odpowiednie zakresy promienia dla znak�
 	\caption{\label{fig:details}Wyniki detekcji, gdy zakres promieni jest zbyt mały \protect\subref{fig:znaki2} i zbyt duży \protect\subref{fig:znaki3}.\cite{T2}}
 \end{figure}
 
-Wszystkie opisywane operacje są wykonywane na obrazach dyskretnych, więc przestrzeń możliwych długości promieni jest skwantowana. W przypadku, gdy dobrany zakres długości promieni będzie zbyt mały lub zbyt duży, detektor ma gorszą sprawność. Dzieje się tak, ponieważ ewentualne maksima są rozmyte (rys. \ref{fig:znaki2} i rys. \ref{fig:znaki3})
-%TODO Brak opisu tych rysunków. OK 
-%TODO Brak opisu rozwiązania "konkurencyjnego". OK
-%TODO Swoją drogą komentarz co dla innych znaków. - w konkurencyjnym rozwiązaniu - powyższy artykuł był opisany tylko dla okrągłych znaków zakazu.
+Wszystkie opisywane operacje są wykonywane na obrazach dyskretnych, więc przestrzeń możliwych długości promieni jest skwantowana. 
+W przypadku, gdy dobrany zakres długości promieni będzie zbyt mały lub zbyt duży, detektor ma gorszą skuteczność. 
+Dzieje się tak, ponieważ ewentualne maksima są rozmyte (rys. \ref{fig:znaki2} i rys. \ref{fig:znaki3})
 
 \subsubsection{Rozwiązanie alternatywne}
-Rozwiązanie zaproponowane przez I.M. Creusena w \cite{T7} pozwala na detekcję nie tylko znaków zakazu. Dodatkową wartością opisywanego rozwiązania jest korzystanie z dużego zbioru obrazów panoramicznych robionych w odstępach dostępnego w ramach projektu Google Maps. Każde zdjęcia ma do siebie przypisane współrzędne GPS, więc rezultaty detekcji można umieścić np. w bazie nawigacji satelitarnych.
+
+Rozwiązanie zaproponowane przez I.M. Creusena w \cite{T7} pozwala na detekcję nie tylko znaków zakazu. 
+Dodatkową wartością opisywanego podejścia jest korzystanie z dużego zbioru obrazów panoramicznych wykonanych w odstępach czasowych, a dostępnego w ramach projektu Google Maps. 
+Każde zdjęcie ma  przypisane współrzędne GPS, zatem rezultaty detekcji można umieścić np. w bazie nawigacji satelitarnych.
 
 \begin{figure}
   \centering
@@ -554,7 +557,10 @@ Rozwiązanie zaproponowane przez I.M. Creusena w \cite{T7} pozwala na detekcję 
 
 Podobnie jak w przypadku pierwszego opisywanego algorytmu dotyczącego znaków drogowych, ten również składa się z dwóch głównych etapów: detekcji i klasyfikacji.
 
-Zmiana przestrzeni barw jest przydatna w przypadku algorytmów detekcji znaków drogowych, jednak prosta zmiana przestrzeni nie jest wystarczająca, by zbudować system odporny na zmienne warunki. Problem polega na tym, że metody oparte na segmentacji koloru są wrażliwe na jasność tła. Dzieje się tak z powodu zmienności kierunku gradientu w zależności od stosunku jasności znaku do tła. W przypadku ciemnego tła kierunek gradientu jasności jest odwrotny niż w przypadku jasnego tła, chociaż charakter znaku jest identyczny (rys. \ref{fig:sign_detection2_example}).
+Wykorzystanie innej przestrzeni barw jest przydatne w przypadku algorytmów detekcji znaków drogowych, jednak prosta zmiana przestrzeni nie jest wystarczająca, by zbudować system odporny na zmienne warunki.
+Problem polega na tym, że metody oparte na segmentacji koloru są wrażliwe na jasność tła. 
+Dzieje się tak z powodu zmienności kierunku gradientu w zależności od stosunku jasności znaku do tła. 
+W przypadku ciemnego tła kierunek gradientu jasności jest odwrotny niż w przypadku tła jasnego, chociaż charakter znaku jest identyczny (rys. \ref{fig:sign_detection2_example}).
 
 \begin{figure}
   \centering
@@ -563,7 +569,9 @@ Zmiana przestrzeni barw jest przydatna w przypadku algorytmów detekcji znaków 
   \label{fig:sign_detection2_example}
 \end{figure}
 
-Pierwszym krokiem algorytmu jest wybór przestrzeni barw, do której zostanie przekonwertowany obraz. W opisywanym rozwiązaniu zdecydowano się na CIElab. Kolejnie ustalane są kolory odniesienia w danej przestrzeni dla zestawu znaków: czerwony, niebieski, żółty.
+Pierwszym krokiem algorytmu jest wybór przestrzeni barw, do której zostanie przekonwertowany obraz. 
+W opisywanym rozwiązaniu zdecydowano się na CIE Lab. 
+Kolejnie ustalane są kolory odniesienia w danej przestrzeni dla zestawu znaków: czerwony, niebieski, żółty.
 Określona jest różnica pomiędzy kolorem odniesienia, a kolorem piksela obrazu:
 \begin{equation}
 p_t=\left \| \bar{p} - \bar{p_r} \right \|
@@ -571,11 +579,14 @@ p_t=\left \| \bar{p} - \bar{p_r} \right \|
 
 gdzie
 \begin{itemize}
-\item{$\bar{p}$ - oznacza wektor koloru pojedynczego piksela obrazu analizowanego w przestrzeni CIElab}
-\item{$\bar{p_r}$ - oznacza kolor odniesienia w tej samej przestrzeni}
+\item{$\bar{p}$ -- oznacza wektor koloru pojedynczego piksela obrazu analizowanego w przestrzeni CIElab}
+\item{$\bar{p_r}$ -- oznacza kolor odniesienia w tej samej przestrzeni}
 \end{itemize}
 
-Gdy różnica jest obliczona jest interpretowana jako współrzędne biegunowe (bez rozważania kąta), których początkiem współrzędnych jest kolor odniesienia. Rysunek \ref{fig:sign_detection2_result} pokazuje, że połączenie współrzędnych biegunowych i koloru odniesienia daje zadowalające rezultaty. Tło staje się jasne, a obwódki znaków ciemne. Dzieje się tak niezależnie od poziomu jasności tła.
+Jest ona następnie interpretowana jako współrzędne biegunowe (bez rozważania kąta), których początkiem współrzędnych jest kolor odniesienia. 
+Rysunek \ref{fig:sign_detection2_result} pokazuje, że połączenie współrzędnych biegunowych i koloru odniesienia daje zadowalające rezultaty. 
+Tło staje się jasne, a obwódki znaków ciemne. 
+Dzieje się tak niezależnie od poziomu jasności tła.
 
 \begin{figure}
   \centering
@@ -584,10 +595,16 @@ Gdy różnica jest obliczona jest interpretowana jako współrzędne biegunowe (
   \label{fig:sign_detection2_result}
 \end{figure}
 
+%TODO Tak teraz zauważyłem, że w obu metodach klasycznych nie ma nic o rozpoznawaniu - chociaż po 2 zdania dodać.
 
-\subsubsection{Rozwiązanie z użyciem deep learningu}
-Chociaż konwolucyjne sieci neuronowe mają duże możliwości, to obecne aplikacje w polu wykrywania i rozpoznawania znaków drogowych nie są liczne. Przykładem jest propozycja Canyong W. w artykule \cite{T8}. Głównym powodem małej liczby rozwiązań korzystających z SI jest brak baz danych ze znakami. Trenowanie i weryfikacja głębokouczonych konwolucyjnych sieci neuronowych wymaga dużej liczby znaków w bazie danych.
-Jednymi z najpopularniejszych baz danych znaków drogowych są: GTSRB oraz GRSDB w Niemczech oraz KUL w Belgii. W opisywanym artykule, autor do trenowania sieci neuronowej korzysta z sieci niemieckich. Bazy te zawierają obrazy znaków w różnych warunkach: obrócenie znaku, słabe oświetlenie, podobne kolory tła (rys. \ref{fig:sign_detection3_cnn_input}). 
+\subsubsection{Rozwiązanie z użyciem \textit{deep learningu}}
+
+Przykładem zastosowania \textit{deep learningu} jest propozycja Canyong W. opisana w artykule \cite{T8}. 
+Autor zauważa, że głównym wyzwaniem dla twórców metod opartych o sztuczną inteligencję jest brak baz danych ze znakami. 
+Trenowanie i weryfikacja głębokouczonych konwolucyjnych sieci neuronowych wymaga dużej liczby znaków w bazie danych.
+Jednymi z najpopularniejszych baz danych znaków drogowych są: GTSRB oraz GRSDB w Niemczech oraz KUL w Belgii. 
+W opisywanym artykule, autor do trenowania sieci neuronowej korzysta z baz niemieckich. 
+Zawierają one obrazy znaków pozyskane w różnych warunkach: obrócenie znaku, słabe oświetlenie, podobne kolory tła (rys. \ref{fig:sign_detection3_cnn_input}). 
 
 \begin{figure}
   \centering
@@ -596,12 +613,13 @@ Jednymi z najpopularniejszych baz danych znaków drogowych są: GTSRB oraz GRSDB
   \label{fig:sign_detection3_cnn_input}
 \end{figure}
 
-Przed przetworzeniem obrazu przez sieć neuronową jest on poddawany \textit{preprocessingowi}. Polega on na normalizacji wartości pikseli, tak by znajdowały się w przedziale $[0, 0.5]$. Robi się tak, ponieważ sieci neuronowe działają lepiej, gdy surowe wartości danych wejściowych są z zakresu $[0, 1]$. 
+Przed przetworzeniem obrazu przez sieć neuronową jest on poddawany przetwarzaniu wstępnemu. Polega on na normalizacji wartości pikseli, tak by znajdowały się w przedziale $[0, 0.5]$. 
 Zamiast konwersji do skali szarości zdecydowano, że sieć będzie działała w oparciu o pełną informację o kolorze, analogicznie do sposobu detekcji i klasyfikacji znaków przez człowieka.
 
-Sieć neuronowa zbudowana jest (rys. \ref{fig:sign_detection3_cnn_schema})z pięciu warstw konwolucyjnych, trzech warstw fully-connected i warstwy Softmax. Po przetworzeniu obrazu przez warstwy konwolucyjne obraz jest przekazywany na wejście warstwy Softmax.
+Sieć neuronowa zbudowana jest z pięciu warstw konwolucyjnych, trzech warstw w~pełni połączonych i warstwy \textit{Softmax} (rys. \ref{fig:sign_detection3_cnn_schema}). 
+Po przetworzeniu obrazu przez warstwy konwolucyjne obraz jest przekazywany na wejście warstwy \textit{Softmax}.
 
-Po 20 tys. iteracji nauczania dokładność sieci wyniosła 96%.
+Po 20 tys. iteracji uczenia dokładność sieci wyniosła 96 \%.
 
 \begin{figure}
   \centering
@@ -612,18 +630,18 @@ Po 20 tys. iteracji nauczania dokładność sieci wyniosła 96%.
 
 \subsection{Detekcja sygnalizacji świetlnej}
 \label{sec:tl}
-Kolejnym istotnym elementem systemów umieszczanych w pojazdach autonomicznych jest detekcja świateł drogowych.
-%TODO tak się zastanawiam i nie wiem czy światła drogowe to dobra nazwa. Może sygnalizacja świetlna. Bo światła drogowe to w samochodach OK
-Informują one o możliwości przejazdu przez skrzyżowanie lub rondo lub opcji znalezienia się na trasie kolizyjnej w stosunku do innych użytkowników drogi. %TODO powt. możliwości OK
-Sygnalizacja świetlna spotykana jest głównie w miastach, lecz wraz z rozwojem infrastruktury widywana są także w~mniejszych miejscowościach. 
-Słupy z zamontowanymi światłami mogą być widoczne na prawej lub lewej krawędzi jezdni, a także nad nią.
+
+Kolejnym istotnym elementem systemów umieszczanych w pojazdach autonomicznych jest detekcja sygnalizacji świetlnej.
+Prezentuje ona informację o możliwości przejazdu przez skrzyżowanie lub rondo lub opcji znalezienia się na trasie kolizyjnej w stosunku do innych użytkowników drogi. 
+Jest ona spotykana jest głównie w miastach, lecz wraz z rozwojem infrastruktury widywana są także w~mniejszych miejscowościach. 
+Słupy z zamontowanymi światłami mogą być widoczne po prawej lub lewej krawędzi jezdni, a także nad nią.
 
 \subsubsection{Detekcja sygnalizacji świetlnej z użyciem informacji o kolorze i krawędziach}
 
-Sygnalizacja świetlna na świecie jest ustandaryzowana. %TODO światła jw. OK
-Istnieją trzy kolory: czerwony, żółty i zielony. 
+Sygnalizacja świetlna na świecie jest ustandaryzowana.
+Wykorzystywane są trzy kolory: czerwony, żółty i zielony. 
 Każdy kolor niesie za sobą informację: czerwony -- stój, żółty -- przygotuj się do zmiany z zielonego na czerwony lub odwrotnie i~zielony, który oznacza jedź. 
-Jedyną znaną różnicą w stosunku do opisanego standardu jest światło pomarańczowe, występujące jako zamiennik światła żółtego w Stanach Zjednoczonych %TODO zdanie niejasne OK
+Jedyną znaną różnicą w stosunku do opisanego standardu jest światło pomarańczowe, występujące jako zamiennik światła żółtego w Stanach Zjednoczonych.
 
 \begin{figure}
   \centering
@@ -637,8 +655,8 @@ Masako Omachi w artykule \cite{T4} proponuje algorytm, który bazuje na informac
 Istnieją warianty ze strzałkami, lecz opisywany poniżej algorytm służy do detekcji świateł, które w \cite{Kodeks} mają kształt pełnego koła.
 
 Rysunek \ref{fig:tl_input} pokazuje przykład sceny zawierającej światła drogowe. 
-W~opisywanej metodzie przestrzeń barw jest konwertowana do znormalizowanej przestrzeni RGB. 
-Polega ona na zmapowaniu wartości pikseli do przedziału $[0,255]$,a~także ,,rozsunięciu'' wartości pikseli na obrazie tak, by znajdowały się w całym możliwym zakresie wartości:
+W~opisywanej metodzie przestrzeń barw jest konwertowana do znormalizowanej RGB. 
+Polega to na zmapowaniu wartości pikseli do przedziału $[0,255]$,a~także ,,rozsunięciu'' wartości pikseli na obrazie tak, by znajdowały się w całym możliwym zakresie wartości:
 \begin{equation}
 R=\left\{\begin{matrix}
 0, &  s=0\\
@@ -673,7 +691,7 @@ gdzie:
 \end{figure}
 
 Efekt przeniesienia przestrzeni barw do znormalizowanej przestrzeni RGB jest widoczny na rysunku \ref{fig:tl_norm}.
-Następnie, poprzez progowanie każdej ze składowych barwnych uzyskuje się obszary, w których mogą znajdować się elementy sygnalizacji świetlnej. %TODO styl. OK
+Następnie, poprzez progowanie każdej ze składowych barwnych uzyskuje się obszary, w których mogą znajdować się elementy sygnalizacji świetlnej. 
 Decyzja o tym czy piksel należy lub nie do elementu sygnalizacji świetlnej jest podejmowana na podstawie poniższych warunków:
 \begin{equation}
 R>200 \wedge G< 150 \wedge B<150
@@ -699,15 +717,15 @@ Następnym krokiem jest wykrycie krawędzi na obrazie z kandydatami do detekcji 
 Jedną z~opcji jest użycie filtru Sobela. 
 Ostatnim etapem, jako że światła drogowe mają jasno określony kształt, jest użycie transformaty Hougha dla okręgów, by wykryć właściwe elementy sygnalizacji świetlnej. 
 W~artykule stosowana jest zmodyfikowana transformata Hougha do wyszukiwania okręgów, która polega na ustaleniu stałej długości promienia. 
-Klasyczna transformata Hougha jest opisana w podrozdziale \ref{sec:vision_algs}. %TODO sekcji ! OK
+Klasyczna transformata Hougha jest opisana w podrozdziale \ref{sec:vision_algs}.
 
 %\subsection{Wnioski i rezultaty} %TODO to nie powinno być osobne, bo dotyczy tego samego algorytmu. OK
 
 Opisany algorytm detekcji świateł drogowych daje lepsze wyniki niż użycie standardowej przestrzeni barw i klasycznej transformaty Hougha dla okręgów. 
 Porównanie jest zamieszczone w tabeli \ref{tab:tl_results}. 
-Główną zaletą opisywanej metody detekcji sygnalizacji świetlnej jest fakt, że poprawnie odrzuca ona znaki drogowe, które również mają okrągły kształt i jednolite kolory na krawędziach. %TODO słowo "obrazy" nie pasuje OK
-Kolejnym sprawdzanym elementem jest kolor na krawędziach, który powinien być taki sam jak wewnątrz kształtu, co pozwala skutecznie odrzucić np. znaki zakazu. %TODO "bierze" - personifikacja OK
-Problemem, który napotyka algorytm są tylne światła innych pojazdów, które mają jednolity kolor (z reguły czerwony), a także kształt zbliżony do czerwonego światła sygnalizatora. %TODO kształt ? OK
+Główną zaletą opisywanej metody detekcji sygnalizacji świetlnej jest fakt, że poprawnie odrzuca ona znaki drogowe, które również mają okrągły kształt i jednolite kolory na krawędziach.
+Kolejnym sprawdzanym elementem jest kolor na krawędziach, który powinien być taki sam jak wewnątrz kształtu, co pozwala skutecznie odrzucić np. znaki zakazu. 
+Problemem, który napotyka algorytm są tylne światła innych pojazdów, które mają jednolity kolor (z reguły czerwony), a także kształt zbliżony do czerwonego światła sygnalizatora. 
 Przykładowy błąd detekcji jest ukazany na rysunku \ref{fig:tl_err}.
 
 \begin{figure}
@@ -719,7 +737,7 @@ Przykładowy błąd detekcji jest ukazany na rysunku \ref{fig:tl_err}.
 
 \begin{table}[]
 \centering
-\caption{Porównanie algorytmu detekcji świateł opartego na transformacie Hougha i opisanego w pracy\cite{T4}} %TODO W pracy X OK
+\caption{Porównanie algorytmu detekcji świateł opartego na transformacie Hougha i opisanego w pracy\cite{T4}} 
 \begin{tabular}{lllll}
 \cline{1-3}
 \multicolumn{1}{|l|}{}                           & \multicolumn{1}{l|}{Algorytm klasyczny} & \multicolumn{1}{l|}{Algorytm opisany w tym rozdziale} &  &  \\ \cline{1-3}
@@ -729,15 +747,13 @@ Przykładowy błąd detekcji jest ukazany na rysunku \ref{fig:tl_err}.
 \end{tabular}
 \label{tab:tl_results}
 \end{table}
-%TODO a to co jest alg. klasyczy. OK
-
-%TODO konkurencyjna metoda OK
-%TODO NN - są fajnie prace, łatwo Pan znajdzie. OK
 
 \subsubsection{Alternatywne rozwiązanie}
-Inną propozycję zaprezentowano w pracy \cite{T9}. Detekcja sygnalizacji świetlnej odbywa się z użyciem cech Haara.
+
+Inną propozycję zaprezentowano w pracy \cite{T9}. 
+Detekcja sygnalizacji świetlnej odbywa się z użyciem cech Haar'a.
 Większość aplikacji jest oparta o informacje o kolorze, jednakże sprawia to, że systemy mogą nie być odporne na zmienne czynniki takie jak kąt widzenia, intensywność świecenia lub poziom jasności tła.
-Rysunek \ref{fig:traffic_light2_input} pokazuje, że obraz wejściowy mimo przekazywania takiej samej informacji może się znacząco różnić wartościami koloru.
+Rysunek \ref{fig:traffic_light2_input} pokazuje, że obraz wejściowy, mimo przekazywania takiej samej informacji, może się znacząco różnić wartościami koloru.
 
 \begin{figure}
   \centering
@@ -746,7 +762,8 @@ Rysunek \ref{fig:traffic_light2_input} pokazuje, że obraz wejściowy mimo przek
   \label{fig:traffic_light2_input}
 \end{figure}
 
-Cechy Haara są używane aby wykryć sygnalizację świetlną. Metoda korzysta z widocznych różnic w jasności pomiędzy poszczególnymi sektorami obrazka.
+Cechy Haara są używane aby wykryć sygnalizację świetlną. 
+Metoda korzysta z widocznych różnic w jasności pomiędzy poszczególnymi sektorami obrazka.
 Dla określonego regionu wyznaczane są cechy Haara na podstawie masek przedstawionych na rysunku \ref{fig:maski_maseczki}.
 
 \begin{figure}
@@ -758,9 +775,16 @@ Dla określonego regionu wyznaczane są cechy Haara na podstawie masek przedstaw
 
 Cechy Haara zawierają informację o kształcie obiektu i używają różnicy jasności, a nie jasności samej w sobie, więc są odporne na niewielką zmianę kształtu  i pozycji na obrazie.
 
-Różnica jasności w sygnalizatorze jest z reguły taka sama. Istotne jest, aby do ROI zawierającego światła dodać tło. Jest to ważne z punktu widzenia klasyfikatora SVM, któremu dostarcza się zarówno próbek pozytywnych (obrazy ze światłami) oraz negatywnych (samo tło).
+Różnica jasności w sygnalizatorze jest z reguły taka sama. 
+Istotne jest, aby do ROI zawierającego światła dodać tło. 
+Jest to ważne z punktu widzenia klasyfikatora SVM, któremu dostarcza się zarówno próbek pozytywnych (obrazy ze światłami) oraz negatywnych (samo tło).
+%TODO Ten SVM tak nie z gruszki, nie z pietruszki - zdanie wyjaśnienia
+%TODO A jak tak czytam to cały akapit też niejasny - proszę to lepiej ująć.
+%TODO Co jdst wejściem do klasyfikatora ?
 
-Klasyfikator oparty na maszynie wektorów wspierających jest uczony w oparciu o obrazy uzyskane z detekcji za pomocą cech Haara. Zbiór treningowy zawiera zarówno próbki pozytywne i negatywne. SVM uczy się dwóch klas (rys. \ref{fig:traffic_light2_svm}).
+Klasyfikator oparty na maszynie wektorów wspierających jest uczony w oparciu o obrazy uzyskane z detekcji za pomocą cech Haara. 
+Zbiór treningowy zawiera zarówno próbki pozytywne i negatywne. 
+SVM uczy się dwóch klas (rys. \ref{fig:traffic_light2_svm}).
 
 \begin{figure}
   \centering
@@ -769,7 +793,9 @@ Klasyfikator oparty na maszynie wektorów wspierających jest uczony w oparciu o
   \label{fig:traffic_light2_svm}
 \end{figure}
 
-Na wycinku obrazu, który zawiera sygnalizację świetlną przeprowadza się operację binaryzacji. Następnie wykonywane są inne operacje morfologiczne, których celem jest redukcja szumu oraz mocniejsze zaznaczenie sygnalizatora. Seria wykonywanych operacji jest widoczna na rysunku \ref{fig:traffic_light2_morph}.
+Na wycinku obrazu, który zawiera sygnalizację świetlną przeprowadza się operację binaryzacji.
+Następnie wykonywane są inne operacje morfologiczne, których celem jest redukcja szumu oraz mocniejsze zaznaczenie sygnalizatora. 
+Seria wykonywanych operacji jest widoczna na rysunku \ref{fig:traffic_light2_morph}.
 
 \begin{figure}
   \centering
@@ -778,7 +804,8 @@ Na wycinku obrazu, który zawiera sygnalizację świetlną przeprowadza się ope
   \label{fig:traffic_light2_morph}
 \end{figure}
 
-Operacja wykrywania konturów jest wykonywana na obrazie po operacjach morfologicznych. Rezultat detekcji jest umieszczony na rysunku \ref{fig:traffic_light2_result}.
+Operacja wykrywania konturów jest wykonywana na obrazie po operacjach morfologicznych. 
+Rezultat detekcji jest umieszczony na rysunku \ref{fig:traffic_light2_result}.
 
 \begin{figure}
   \centering
@@ -787,13 +814,18 @@ Operacja wykrywania konturów jest wykonywana na obrazie po operacjach morfologi
   \label{fig:traffic_light2_result}
 \end{figure}
 
-\subsubsection{Rozwiązanie z użyciem deep learnigu}
+%TODO NIe bardzo to rozumiem... te kontury tylko do wizualizacji ?
 
-Kombinacja sygnalizatorów świetlnych i znaków drogowych na jezdni pomaga zapobiegać chaosowi. W przypadku samochodów autonomicznych detekcja tych elementów w połączeniu z dobrym sterowaniem nimi pozwoli na znaczne upłynnienie ruchu.
+\subsubsection{Rozwiązanie z użyciem \textit{deep learnigu}}
+
+Kombinacja sygnalizatorów świetlnych i znaków drogowych na jezdni pomaga zapobiegać chaosowi. 
+W przypadku samochodów autonomicznych detekcja tych elementów w połączeniu z dobrym sterowaniem pozwoli na znaczne upłynnienie ruchu.
 Podobnie jak w przypadku znaków drogowych i linii pojawia się problem zmienności warunków otoczenia. 
 W przypadku tradycyjnego podejścia niewielka zmiana parametrów środowiska może powodować błędne detekcje, co jest wysoce niepożądane w przypadku opisywanego systemu.
 W pracy \cite{T10} zaproponowano rozwiązanie opierające się na konwolucyjnej sieci neuronowej.
-Treningowy zbiór danych jest utworzony na podstawie danych zebranych na indyjskich drogach. Preprocessing polega na przeskalowaniu obrazów do rozmiaru 800x600 pikseli. Wybrano pięć klas, do których mogą zostać zakwalifikowane detekcje: światło czerwone, żółte, zielone, jazda w lewo, jazda w prawo. 
+Zbiór uczący został utworzony na podstawie danych zebranych na indyjskich drogach. 
+Przetwarzanie wstępne polega na przeskalowaniu obrazów do rozmiaru 800x600 pikseli. 
+Wybrano pięć klas, do których mogą zostać zakwalifikowane detekcje: światło czerwone, żółte, zielone, jazda w lewo, jazda w prawo. 
 Na każdym ze zdjęć ręcznie zaznaczono typ sygnalizatora, który zawiera (rys. \ref{fig:traffic_light3_labels}).
 
 \begin{figure}
@@ -803,8 +835,10 @@ Na każdym ze zdjęć ręcznie zaznaczono typ sygnalizatora, który zawiera (rys
   \label{fig:traffic_light3_labels}
 \end{figure}
 
-Sieć neuronową zbudowano w oparciu o \textit{transfer learning}, czyli uczenie sieci wstępnie nauczonej. Pozwoliło to na zredukowanie potrzebnego czasu i zasobów na nauczenie sieci od początku. 
-Po 120 tys. iteracji procesu uczenia sieci zakończono uczenie sieci. Przykładowy rezultat detekcji i rozpoznawania sygnalizacji drogowej jest umieszczony na rysunku \ref{fig:traffic_light3_results}.
+Sieć neuronową zbudowano w oparciu o \textit{transfer learning}, czyli douczenie sieci wstępnie nauczonej. 
+Pozwoliło to na zredukowanie potrzebnego czasu i zasobów obliczeniowych. 
+Po 120 tys. iteracji zakończono uczenie sieci. 
+Przykładowy rezultat detekcji i rozpoznawania sygnalizacji drogowej jest umieszczony na rysunku \ref{fig:traffic_light3_results}.
 
 \begin{figure}
   \centering
@@ -813,7 +847,7 @@ Po 120 tys. iteracji procesu uczenia sieci zakończono uczenie sieci. Przykłado
   \label{fig:traffic_light3_results}
 \end{figure}
 
-
+%TODO A podali jakoś procent skuteczności ? Tylko JBC dla ilu klas
 
 
 
@@ -821,7 +855,7 @@ Po 120 tys. iteracji procesu uczenia sieci zakończono uczenie sieci. Przykłado
 \label{sec:car_general}
 
 Istotnym zadaniem stawianym przed algorytmami wizyjnymi stosowanymi w~pojazdach autonomicznych jest wykrycie samochodów w najbliższym otoczeniu pojazdu. 
-Detekcja może być wspierana odczytami z radaru lub lidaru, jednak w~poniższym podrozdziale zostanie opisany algorytm bazujący jedynie na obrazie z kamery. %TODO 1. powt. detekcja, sekcja !, kamery, czy kamer OK, kamery, są algorytmy, które składają obraz z dwóch kamer, ale faktycznie opisywany alg. korzysta z jednej
+Detekcja może być wspierana odczytami z radaru lub lidaru, jednak w~poniższym podrozdziale zostanie opisany algorytm bazujący jedynie na obrazie z pojedynczej kamery.
 Większość współczesnych samochodów widzianych od tyłu zachowuje symetrię względem pionowej osi przechodzącej przez środek pojazdu. 
 
 Pierwszym, wstępnym krokiem jest zbadanie możliwych pozycji samochodów na obrazie i oznaczenie ich jako ROI.
@@ -829,18 +863,18 @@ Dla systemu z~fuzją danych wizyjnych i radarowych może to być zrobione poprze
 Dla systemu, który posiada jedną kamerę, pozycja samochodów musi być wyznaczona tylko na podstawie ruchu samochodów na obrazie w czasie.
 
 Opisywany algorytm korzysta z detektora symetrii, który działa w następujący sposób. 
-Dla każdego piksela wyznaczana jest liczba punktów, która jest wartością bezwzględną z różnicy wartości pikseli, które są równoodległe od ustalonej osi symetrii(równanie \ref{eq:sym_detect}). %TODO niejasne - rysunek - dałem odnośnik do równania w dalszej części tekstu, które lepiej obrazuje sposób działania detektora
-Jest to zwykle robione z użyciem pewnego okna o z góry ustalonym rozmiarze dobieranym tak, aby pasować do rozmiaru samochodów, które mogą znajdować się na obrazie. 
+Dla każdego piksela wyznaczana jest liczba punktów, która jest wartością bezwzględną z różnicy wartości pikseli, które są równoodległe od ustalonej osi symetrii (równanie \ref{eq:sym_detect}). Jest to zwykle robione z użyciem pewnego okna o z góry ustalonym rozmiarze dobieranym tak, aby pasować do rozmiaru samochodów, które mogą znajdować się na obrazie. 
 Będąc świadomym faktu, że samochód im jest dalej od kamery, tym jest mniejszy zastosowano kilka predefiniowanych rozmiarów okien. 
 Wartości wskaźnika symetrii mogą być obliczane dla każdego punktu na obrazie. 
-Piksele z dużą wartością tego wskaźnika są kandydatami do należenia do osi symetrii. %TODO styl. OK
-Wyliczanie wskaźnika symetrii dla każdego punktu na obrazie jest bardzo czasochłonne. Zdecydowano się na jego wyznaczanie tylko na wcześniej określonych poziomych liniach, które pokrywają obszar, na którym mogą znajdować się samochody. %TODO styl. na dwa zdania i zgrabniej OK
+Piksele z dużą wartością tego wskaźnika potencjalnie leżą na osi symetrii pojazdu.
+Wyliczanie wskaźnika symetrii dla każdego punktu na obrazie jest bardzo czasochłonne. 
+Zdecydowano się zatem na jego wyznaczanie tylko na wcześniej określonych poziomych liniach, które pokrywają obszar, na którym mogą znajdować się samochody. 
 Do obliczania wskaźnika symetrii może być użytych kilka cech obrazu takich jak: wartości pikseli w skali szarości, obraz krawędzi, składowa S w przestrzeni barw HSV. 
 Szukanie obrazu samochodu na obrazie w skali szarości jest szybsze, jednak wrażliwe na zmiany oświetlenia (noc, deszcz). 
 Dobrze sprawdza się badanie nasycenia w przestrzeni barw HSV, ponieważ uniezależnia to obraz samochodu od ogólnej jasności otoczenia i~częściowo od pogody.
 
 \subsubsection{Przebieg algorytmu bazującego na operatorze symetrii}
-%TODO To całe to powinnien być podrodział, a to ew. subsub lub paragraph. OK
+
 Pierwszym krokiem jest wygenerowanie obrazu krawędzi na podstawie obrazu w skali szarości lub składowej S przestrzeni barw HSV. 
 W~opisanym algorytmie zaproponowano detektor Canny'ego. 
 Rysunek \ref{fig:car_edge} pokazuje rezultat wykrywania krawędzi dla typowego obrazu zawierającego samochód poprzedzający. 
@@ -855,10 +889,11 @@ Pionowe ograniczenia są ustawione tak, by odpowiadać lewemu i prawemu ogranicz
   \label{fig:car_edge}
 \end{figure}
 
-Jak wspomniano w sekcji \ref{sec:car_general}, w celu zredukowania czasu obliczeń nie każdy piksel w wybranym obszarze jest analizowany. 
+Jak wspomniano w rozdziale \ref{sec:car_general}, w celu zredukowania czasu obliczeń nie każdy piksel w wybranym obszarze jest analizowany. 
 Obliczenia dotyczące symetrii są przeprowadzane tylko dla 15 równoodległych linii skanu (rys. \ref{fig:car_scan_lines1}). 
-Obraz jest przeskalowywany do rozdzielczości 600x480, więc wejściowa rozdzielczość obrazu nie ma znaczenia dla obliczeń. %TODO no pozioma jednak ma.... - chodzi o to, że obraz może być przeskalowany do pewnej założonej rozdzielczości.
-Dzieje się tak ponieważ algorytm wykrywa tylko maksima wzdłuż linii skanu. Autorzy algorytmu zalecają przeskalowanie obrazu do niższej rozdzielczości w celu zredukowania czasu przetwarzania.
+Obraz jest przeskalowywany do rozdzielczości 600x480, więc wejściowa rozdzielczość obrazu nie ma znaczenia dla obliczeń. 
+Dzieje się tak ponieważ algorytm wykrywa tylko maksima wzdłuż linii skanu. 
+Autorzy algorytmu zalecają przeskalowanie obrazu do niższej rozdzielczości w celu zredukowania czasu przetwarzania.
 
 \begin{figure}
   \centering
@@ -891,7 +926,7 @@ S(x,x',y')=\begin{cases}
 \end{itemize}
 
 Szerokość okna powinna być właściwie ustawiona, aby poprawnie wykrywać symetryczne obiekty o różnych rozmiarach. 
-W~trakcie eksperymentów wykazano, że wartości dające poprawne rezultaty $W$ mieszczą się w przedziale $[8,12]$. %TODO optymalne...to nie dobre słowo po AiR w tym kontekście. OK - ciężko znaleźć właściwy wskaźnik jakości
+W~trakcie eksperymentów wykazano, że wartości dające poprawne rezultaty $W$ mieszczą się w przedziale $[8,12]$. 
 
 \begin{figure}
   \centering
@@ -901,9 +936,10 @@ W~trakcie eksperymentów wykazano, że wartości dające poprawne rezultaty $W$ 
 \end{figure}
 
 Na rysunku \ref{fig:car_scan_lines} widać, że w niektórych punktach istnieją maksima, które wskazują, że dany punkt może należeć do osi symetrii. 
-W kolejnym kroku wybiera się maksima i stosuje progowanie, to znaczy wartości maksimów lokalnych poniżej pewnej wartości są odrzucane. %TODO W kolejnym kroku... OK
+W kolejnym kroku wybiera się maksima i stosuje progowanie, to znaczy wartości maksimów lokalnych poniżej pewnej wartości są odrzucane. 
 Zwykle wartości poniżej określonego progu wskazują na małe, symetryczne elementy tła. 
 Progowanie dokonuje się według następującej formuły:
+
 \begin{equation}
 SymPts(x,y)=\begin{cases}
 1 & \text{ gdy } SymVal(x,y)>T\\ 
@@ -940,8 +976,10 @@ Końcowy wynik z zaznaczonymi środkami samochodów jest widoczny na rysunku \re
 \end{figure}
 
 \subsubsection{Alternatywne rozwiązanie}
-Na drodze oprócz detekcji samochodu poprzedzającego przydatny jest również sposób na detekcję samochodu, który znalazł się w martwym polu. W samochodach poziomu zerowego pojawiają się asystenci martwego pola, który informują, że może znajdować się tam samochód.
-Algorytm detekcji zaproponowany w \cite{T11} pozwala wykryć samochody znajdujące się w martwej strefie (rys. \ref{fig:car_detection2_blind_spot2})
+
+Na drodze oprócz detekcji samochodu poprzedzającego przydatny jest również sposób na detekcję samochodu, który znalazł się w martwym polu. 
+W samochodach poziomu zerowego klasyfikacji SAE pojawiają się funkcja asystenta martwego pola, który informuje, że może znajdować się tam samochód.
+Algorytm detekcji zaproponowany w \cite{T11} pozwala wykryć samochody znajdujące się w martwej strefie (rys. \ref{fig:car_detection2_blind_spot2}).
 
 \begin{figure}
   \centering
@@ -950,13 +988,20 @@ Algorytm detekcji zaproponowany w \cite{T11} pozwala wykryć samochody znajdują
   \label{fig:car_detection2_blind_spot2}
 \end{figure}
 
-Obraz pozyskiwany jest z kamer umieszczonych w lusterkach. Następnie jest skalowany do jednej czwartej pierwotnego rozmiaru, aby zredukować czas przetwarzania. 
-Następnym krokiem jest detekcja samochodu, która wykonywana jest periodycznie. Pomiędzy detekcjami auta, wykonywane jest śledzenie z użyciem filtru Kalmana. 
-Wyznaczane jest ROI, gdzie można spodziewać się nadjeżdżającego samochodu. Wycinany jest fragment nieba oraz asfaltu blisko pojazdu.
+Obraz pozyskiwany jest z kamer umieszczonych w lusterkach. 
+Następnie jest skalowany do jednej czwartej pierwotnego rozmiaru, aby zredukować czas przetwarzania. 
+Następnym krokiem jest detekcja samochodu, która wykonywana jest periodycznie. 
+Pomiędzy detekcjami auta, wykonywane jest śledzenie z użyciem filtru Kalmana. 
+Wyznaczane jest ROI, gdzie można spodziewać się nadjeżdżającego samochodu. 
+Wycinany jest fragment nieba oraz asfaltu blisko pojazdu.
 Na wyznaczonym obszarze wykonywana jest detekcja pojazdu z użyciem filtru kaskadowego, który jest szybszy niż klasyfikator SVM.
-Wytrenowano klasyfikator HoG (ang. Histogram of Gradients - histogram gradientów), który daje mniej fałszywych detekcji niż LPB (ang. Local Binary Pattern - lokalny wzór binarny).
-Zbiór treningowy zawierał 7500 próbek pozytywnych oraz 20000 próbek negatywnych. Okno treningowe ma rozmiar 32x32 pikseli. Wykryte pojazdy są śledzone za pomocą filtru Kalmana. Filtr inicjalizuje swój stan na podstawie detekcji samochodu i przewiduje jego pozycję w następnej klatce.
-Aby zwiększyć skuteczność algorytmu stosuje się następujące rozumowanie: jeżeli samochód był wykrywany w poprzednich klatkach, algorytm zakłada, że samochód istnieje, chociaż w aktualnej klatce w przewidywanym obszarze nie został wykryty. Działanie odwrotne jest również stosowane: jeżeli samochód w kilku poprzednich klatkach nie był wykryty, a pojawia się np. w środku ROI, to prawdopodobnie jest to fałszywa detekcja. 
+Wykorzystano deskryptor HOG (ang. \textit{Histogram of Oriented Gradient}s -- histogram zorientowanych gradientów), który daje mniej fałszywych detekcji niż LPB (ang. \textit{Local Binary Pattern} -- lokalny wzór binarny).
+Zbiór treningowy zawierał 7500 próbek pozytywnych oraz 20000 próbek negatywnych. 
+Okno treningowe ma rozmiar 32x32 pikseli. 
+Wykryte pojazdy są śledzone za pomocą filtru Kalmana. 
+Filtr inicjalizuje swój stan na podstawie detekcji samochodu i przewiduje jego pozycję w następnej ramce.
+Aby zwiększyć skuteczność algorytmu, stosuje się następujące rozumowanie: jeżeli samochód był wykrywany w poprzednich klatkach, algorytm zakłada, że samochód istnieje, chociaż w aktualnej klatce w przewidywanym obszarze nie został wykryty. 
+Działanie odwrotne jest również stosowane: jeżeli samochód w kilku poprzednich klatkach nie był wykryty, a pojawia się np. w środku ROI, to prawdopodobnie jest to fałszywa detekcja. 
 
 \begin{figure}
   \centering
@@ -965,26 +1010,28 @@ Aby zwiększyć skuteczność algorytmu stosuje się następujące rozumowanie: 
   \label{fig:car_detection2_result}
 \end{figure}
 
-Średni czas przetwarzania jednej klatki (uwzględniając wykrywanie pojazdu na co piątym obrazie) wyniósł 24.5 ms. Przykładowy rezultate detekcji znajduje się na rysunku \ref{fig:car_detection2_result}.
+Średni czas przetwarzania jednej klatki (uwzględniając wykrywanie pojazdu na co piątym obrazie) wyniósł 24.5 ms. 
+Przykładowy rezultat detekcji znajduje się na rysunku \ref{fig:car_detection2_result}.
 W porównaniu do algorytmu opisanego we wcześniejszym podrozdziale, którego mocną wadą była niska wydajność, dobrym pomysłem wydaje się wykrywanie pojazdów i śledzenie ich na kilku kolejnych klatkach z użyciem np. filtru Kalmana.
 
-%TODO drugie podejście - ciężko o algorytm tradycyjny - opisałem detekcję blind spota, który również zawiera elementy ML
-%TODO podejście NN jw.
-
-%TODO Proszę już nie dopisywać osobnego rodziału, ale gdzieś wspomnieć np. o detekcji pieszych, czy rowerzystów... - z uwagi na "biedniejszy" rozdział o samochodach dodam podrozdział o detekcji pieszych i rowerzystów
-
+%TODO Tu jak dla mnie niejasne jest wyzaczanie tego ROI 32x32...
 
 \subsection{Wykrywanie innych obiektów na drodze}
-Oprócz samochodów na drogach zauważalne są inne obiekty takie jak piesi, rowerzyści lub motocykliści. Aby zapobiegać licznym wypadkom z ich udziałem globalne firmy jak np. Volvo zaproponowały zaawansowane systemy wspomagania kierowcy (ADAS).
-Kamery, radary lub LIDARy są używane w celu zwizualizowania otoczenia pojazdu. Wykrywanie obiektów w czasie rzeczywistym stało się istotną rzeczą, która realnie wpływa na bezpieczeństwo kierowcy i innych użytkowników ruchu.
-Artykuł \cite{T12} sugeruje użycia \textit{SSD} (ang. Single Shot Detector), który pokonuje problemy wspomniane wcześniej, a więc umożliwia detekcję obiektów niewrażliwą na zmienne warunki środowiska.
-Działanie SSD jest oparte na głębokouczonych sieciach neuronowych. Z obrazów wejściowych generuje się macierze cech przy użyciu warstw konwolucyjnych. 
-Jak pokazano na rys. \ref{fig:pedestrian_detect_result} detekor jest w stanie wykryć różne klasy obiektów.
+
+Oprócz samochodów na drogach zauważalne są inne obiekty takie jak piesi, rowerzyści lub motocykliści. 
+Aby zapobiegać licznym wypadkom z ich udziałem globalne firmy jak np. Volvo zaproponowały zaawansowane systemy wspomagania kierowcy (ADAS).
+Kamery, radary lub LIDARy są używane w celu monitorowania otoczenia pojazdu. 
+Wykrywanie obiektów w czasie rzeczywistym stało się istotną funkcjonalnością, która realnie wpływa na bezpieczeństwo kierowcy i innych użytkowników ruchu.
+Artykuł \cite{T12} sugeruje użycie \textit{SSD} (ang. \textit{Single Shot Detector}), który eliminuje problemy wspomniane wcześniej, a więc umożliwia detekcję obiektów niewrażliwą na zmienne warunki środowiska.
+
+Działanie SSD jest oparte na głębokouczonych sieciach neuronowych. 
+Z obrazów wejściowych generuje się macierze cech przy użyciu warstw konwolucyjnych. 
+Jak pokazano na rys. \ref{fig:pedestrian_detect_result} detektor jest w stanie wykryć różne klasy obiektów.
 
 \begin{figure}
   \centering
   \includegraphics[width=7cm]{img/pedestrian_detect_result.png}
-  \caption{Wynik działania systemu opartego o SSD. Wydoczne wykryte różne klasy obiektów \cite{T11}}
+  \caption{Wynik działania systemu opartego o SSD. Widoczne wykryte różne klasy obiektów \cite{T11}}
   \label{fig:pedestrian_detect_result}
 \end{figure}
 
@@ -1000,14 +1047,13 @@ Opisany system znajduje zastosowanie w systemach ADAS (na przykładzie Audi A8 z
 
 \section{Opis wybranych zagadnień i algorytmów przetwarzania obrazu}
 \label{sec:vision_algs}
-W tym podrozdziale zostaną opisane podstawowe algorytmy i zagadanienia dotyczące cyfrowego przetwarzania obrazów, które są używane w zaawansowanych algorytmach wizyjnych w pojazdach autonomicznych. %TODO "sekcja". OK
+W tym podrozdziale zostaną opisane podstawowe algorytmy i zagadanienia dotyczące cyfrowego przetwarzania obrazów, które są używane w zaawansowanych algorytmach wizyjnych w pojazdach autonomicznych. 
 
 \subsection{Transformata Hougha dla okręgów}
 
 Systemy wizyjne w pojazdach autonomicznych często mają za zadanie wykrycie obiektów o kształcie koła. Algorytmem do tego przeznaczonym jest transformata Hougha. 
 Istnieje ona w wersji do detekcji prostych i okręgów. 
 Pod pojęciem uogólniona transformata Hougha należy rozumieć algorytm służący do detekcji dowolnego zadanego konturu.
-%TODO "kryje się" zły styl OK
 
 Okrąg można sparametryzować za pomocą następującego wzoru:
 \begin{equation}
@@ -1025,7 +1071,6 @@ gdzie:
 \caption{Linia w układzie współrzędnych określona za pomocą parametrów $(r, \theta)$}
 \label{fig:hough}
 \end{figure}
-%TODO brak odniesienia w txt ok
 
 Jeżeli promień będzie ustalony, to okrąg zostanie sparametryzowany za pomocą dwóch liczb. 
 Gdy szukamy okręgów o nieznanych promieniach, rośnie złożoność obliczeniowa, ponieważ wymiar przestrzeni parametrów zwiększa się o jeden.
@@ -1047,10 +1092,11 @@ x_0 = x - rcos(\theta)
 y_0 = y - rsin(\theta)
 \end{equation}
 
-Następnie wyznaczana jest przestrzeń Hougha. W niej akumulowane są wartości oznaczające liczbę okręgów, które przechodzą przez dany piksel na obrazie wejściowym. Ten proces nazywa się głosowaniem. 
-Wartości maksymalne w przestrzeni Hougha oznaczają wykryty okrąg.
+Następnie wyznaczana jest przestrzeń Hougha. 
+W niej akumulowane są wartości oznaczające liczbę okręgów, które przechodzą przez dany piksel na obrazie wejściowym.
+Ten proces nazywa się głosowaniem. 
+Wartości maksymalne w przestrzeni Hougha odpowiadają parametrom poszukiwanego okrąg.
 
-%TODO brakuje wyjaśnienia jak działa ta przestrzeń Hougha OK
 
 \subsection{Przestrzenie barw}
 
@@ -1077,12 +1123,12 @@ Dodatkowo, co jest ważne w przypadku systemów wizyjnych, niewielka zmiana pozi
 
 Drugą, ważną przestrzenią barw używaną w cyfrowym przetwarzaniu obrazów jest przestrzeń HSV. 
 Jest ona przedstawiona na rysunku \ref{fig:hsv} za pomocą stożka. 
-Jej główną zaletą jest to, że przy niewielkich zmianach jasności zauważalne są niewielkie zmiany składowej S. %TODO styl. OK
+Jej główną zaletą jest to, że przy niewielkich zmianach jasności zauważalne są niewielkie zmiany składowej S. 
 Pozwala to na uniezależnienie się w pewnym stopniu od czynników takich jak pora dnia lub pogoda.
 
 \subsection{Filtr Canny'ego}
 Podstawowym, dobrze sprawdzającym się detektorem krawędzi, jest filtr Canny'ego \cite{T5}. 
-Cechuje się następującymi właściwościami: %TODO by se przydało źródło (choćby oryginalny artykuł Cannego) OK
+Cechuje się następującymi właściwościami: 
 
 \begin{itemize}
 \item niska liczba fałszywych detekcji krawędzi,
@@ -1092,7 +1138,7 @@ Cechuje się następującymi właściwościami: %TODO by se przydało źródło 
 
 Detektor krawędzi Canny'ego jest algorytmem wieloetapowym:
 \begin{enumerate}
-\item Redukcja szumów z obrazu. Używany jest filtr Gaussa. Przykładowa macierz filtru pokazana jest na rysunku \ref{fig:canny_gauss}. %TODO to jakichkolwiek to przesada - redukcja szumu OK
+\item Redukcja szumów z obrazu. Używany jest filtr Gaussa. Przykładowa macierz filtru pokazana jest na rysunku \ref{fig:canny_gauss}.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8]{img/canny_gauss.png}
@@ -1109,10 +1155,10 @@ G=\sqrt{G_x^2+G_y^2}
 \begin{equation}
 \theta=arctan(\frac{G_y}{G_x})
 \end{equation}
-Kierunek jest kwantyzowany na jeden z czterech możliwych kierunków: \ang{0}, \ang{45}, \ang{90}, \ang{135}.
-%TODO może lepiej kwantyzowany ? OK
+Kierunek jest kwantyzowany do jednej z czterech możliwych wartości: \ang{0}, \ang{45}, \ang{90}, \ang{135}.
 
-\item Wartości gradientu w kierunku prostopadłym do głównego przebiegu wykrytej krawędzi o niemaksymalnych wartościach są usuwane. %TODO dodać w jakim otoczeniu OK
+
+\item Wartości gradientu w kierunku prostopadłym do głównego przebiegu wykrytej krawędzi o niemaksymalnych wartościach są usuwane.
 Ma to na celu usunięcie pikseli, które prawdopodobnie nie są elementem krawędzi. 
 W wyniku tej operacji pozostają tylko cienkie linie jako krawędzie.
 

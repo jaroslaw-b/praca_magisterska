@@ -1,23 +1,30 @@
-\chapter{Opis działania aplikacji i rezultaty}
-%TODO Bardziej informatywny tytuł. ok
-
-%TODO Ogólnie to zacząłbym od koncepcji systemu, omówieniu symulatorów, potem te narzędzia i potem realizacji. OK
+\chapter{Opis i ewaluacja wykonanej aplikacji}
 
 
-Aplikacja, której implementacja jest opisana w tym rozdziale powstała w celu urozmaicenia zajęć prowadzonych na kierunku Automatyka i robotyka. Ma ona za zadanie integrację symulatora jazdy i algorytmów implementowanych przez uczestników zajęć. 
+Aplikacja, której implementacja jest opisana w tym rozdziale powstała w celu urozmaicenia zajęć prowadzonych na kierunku Automatyka i Robotyka. 
+Ma ona za zadanie integrację symulatora jazdy i algorytmów wizyjnych implementowanych przez uczestników zajęć. 
 
-\section{Przegląd symulatorów}
+\section{Przegląd dostępnych symulatorów}
 \label{sec:ets2}
-Na rynku jest dostępnych wiele symulatorów, które wpasowałyby się w ramy niniejszej pracy. Pierwszym przykładem są gry z serii Grand Theft Auto amerykańskiego studia Rockstar. Oferują grafikę na wysokim poziomie, wiernie oddającą rzeczywistość. Na ich niekorzyść przemawia fakt, że wspomniane gry nie zapewniają dobrego wsparcia dla programistów. Dodatkową wadą jest wysokie zużycie zasobów w stusunku do uzyskiwanej jakości obrazu (GTA V) lub niskie zużycie mocy obliczeniowej przy niskiej jakości grafiki (GTA: San Andreas).
-Innym przykładem symulatorów są gry ze studia SCS Software. Obecnie w ofercie są dwie aplikacje: American Truck Simulator oraz Euro Truck Simulator 2. Oba symulatory są oparte na tym samym silniku graficznymm, i oferują podobne możliwości programistyczne. 
+
+Na rynku jest dostępnych wiele symulatorów, które wpasowałyby się w ramy niniejszej pracy.
+Pierwszym przykładem są gry z serii \textit{Grand Theft Auto} amerykańskiego studia Rockstar. 
+Oferują one grafikę na wysokim poziomie, która wiernie oddaje rzeczywistość. 
+Na ich niekorzyść przemawia fakt, że wspomniane gry nie zapewniają dobrego wsparcia dla programistów. 
+Dodatkową wadą jest wysokie zużycie zasobów w stosunku do uzyskiwanej jakości obrazu (GTA V) lub niskie zużycie mocy obliczeniowej przy niskiej jakości grafiki (GTA: San Andreas).
+
+Innym przykładem symulatorów są gry ze studia SCS Software. 
+Obecnie w ofercie są dwie aplikacje: American Truck Simulator oraz Euro Truck Simulator 2. 
+Oba symulatory są oparte na tym samym silniku graficznym i oferują podobne możliwości programistyczne. 
 Aby zwiększyć różnorodność występujących elementów infrastruktury skupiono się na Euro Truck Simulator 2.
-Za grą z czeskiego studia przemawiają następujące argumenty. Z uwagi na charakter niniejszej pracy, interesującymi elementami gry jest wysoka jakość grafiki, wiernie odwzorowująca otaczający świat, w tym zestaw znaków i linii drogowych charakterystycznych dla poszczególnych krajów Europy. 
-Kolejnym elementem który opowiada za wyborem tego symulatora jest otwartość na wszelkie modyfikacje. 
+Za grą z czeskiego studia przemawiają następujące argumenty. 
+Z uwagi na charakter niniejszej pracy, interesującymi elementami gry jest wysoka jakość grafiki, wiernie odwzorowująca otaczający świat, w tym zestaw znaków i linii drogowych charakterystycznych dla poszczególnych krajów Europy. 
+Kolejnym elementem który przemawia za wyborem tego symulatora jest otwartość na wszelkie modyfikacje. 
 Twórcy gry udostępnili API (ang. \textit{Application Programming Interface}), a także konsolę, za pomocą której można na bieżąco modyfikować parametry gry takie jak czas, prędkość gry lub pogodę.
+Gra jest udostępniona na platformie Steam zarówno dla systemu Windows i Linux.
 
 Fakt, że jest to symulator ciężarówki, a nie samochodu osobowego w żaden sposób nie wpływa na podejście do problemu systemów wizyjnych, ponieważ po pierwsze, istnieją aplikacje wspomagające kierowcę samochodu ciężarowego, po drugie jeden z widoków w grze jest umieszczony w miejscu, które znajduje się na wysokości lusterka samochodowego.
 
-Gra jest udostępniona na plaftormie Steam zarówno dla systemu Windows i Linux.
 
 Wspomniana konsola dostępna w grze pozwala na natychmiastową zmianę warunków w symulatorze. 
 Używając następujących komend można zmienić czas, pogodę oraz prędkość gry:
@@ -28,7 +35,11 @@ Używając następujących komend można zmienić czas, pogodę oraz prędkość
 \item warp x -- komenda zmieniająca prędkość gry. W miejsce x należy wpisać współczynnik. Liczba mniejsza od 1 zwolni grę, a większa przyspieszy.
 \end{itemize}
 
-Do stworzenia użyto następujących elementów:
+
+\section{Wykorzystywane narzędzia programistyczne}
+
+
+Do stworzenia aplikacji użyto następujących narzędzi/komponentów:
 \begin{itemize}
 \item Python 3.7 -- język programowania wysokiego poziomu ogólnego przeznaczenia,
 \item gra Euro Truck Simulator 2,
@@ -43,18 +54,15 @@ a także bibliotek:
 \end{itemize}
 
 Aplikacja jest opracowana do działania na systemie Ubuntu 18.04 LTS wraz ze środowiskiem graficznym GNOME.
-%TODO system, system., - ogólnie w rozdziale zredukowałem liczbę tych słów
 
 Jako, że opisywana aplikacja i symulator jest uruchamiany na jednym komputerze, należy zwrócić uwagę na wykorzystanie zasobów. 
 W związku z tym wybranie niskich ustawień jakości grafiki pozwoli na przekazanie zasobów obliczeniowych do aplikacji.
 
-%TODO Ten rozdział proszę przeredagować na omówienie poszczególnych symulatorów + końcowy wybór i uzasadnienie. Zasadniczo bedzie to przeredagowanie istniejęcej treści. ok
-%TODO inna sprawa to wspomnieć o licenji ? ok
 
 \section{Architektura systemu}
 
-Z uwagi na dydaktyczną wartość opisywanej aplikacji ważnym elementem jest łatwość implementacji algorytmów analizy obrazu dla przyszłych użytkowników. %TODO powt. systemu ok
-Z tego powodu zdecydowano się na implementację wieloprocesową, której schemat jest widoczny na rysunku \ref{fig:arch}, w której jeden z procesów jest odpowiedzialny za analizę obrazu i wypracowanie sterowania, a pozostałe za poprawne przechwycenie obrazu z gry i zasymulowanie wypracowanego sterowania w grze. %TODO to wstrzyknięcie średnio pasuje OK
+Z uwagi na dydaktyczną wartość opisywanej aplikacji, ważnym elementem jest łatwość implementacji algorytmów analizy obrazu dla przyszłych użytkowników. 
+Z tego powodu zdecydowano się na implementację wieloprocesową, której schemat jest widoczny na rysunku \ref{fig:arch}, w której jeden z procesów jest odpowiedzialny za analizę obrazu i wypracowanie sterowania, a pozostałe za poprawne przechwycenie obrazu z gry i zasymulowanie wypracowanego sterowania w grze. 
 
 \begin{figure}
   \centering
@@ -63,65 +71,69 @@ Z tego powodu zdecydowano się na implementację wieloprocesową, której schema
   \label{fig:arch}
 \end{figure}
 
-Poszczególne procesy są połączone kolejkami, za pomocą których transportowane są dane pomiędzy nimi. 
+Poszczególne procesy są połączone kolejkami, za pomocą których odbywa się wymiana danych.
 W przypadku opisywanej aplikacji w kolejkach umieszczane są obrazy wejściowe i wyjściowe z procesu $Process$, a także wektor sterowań do procesu $Control$. 
 Szybkość działania aplikacji jest zależna od wielu czynników. 
-Głównym elementem warunkującym jest czas przetwarzania obrazu w bloku $Process$. 
+Głównym elementem wpływającym na ten parametr, jest czas przetwarzania obrazu w bloku $Process$. 
 W~zależności od liczby obrazów czekających na przetworzenie w kolejce zmieniany jest interwał pomiędzy poszczególnymi przechwyceniami obrazu w bloku $Capture$. 
-Uniezależnienie przechwytywania obrazu od zapełnienia kolejki spowodowałoby szybkie jej przepełnienie i zamknięcie aplikacji przez system.  %TODO "zabicie" potoczne OK
+Uniezależnienie przechwytywania obrazu od zapełnienia kolejki spowodowałoby szybkie jej przepełnienie i zamknięcie aplikacji przez system.  
 Końcowe procesy tj. $Display$ i $Control$ nie wymagają wyzwalania w zależności od czasu przetwarzania obrazu, ponieważ wykonują się bardzo szybko (poniżej 10ms).
 
 Używana biblioteka \textit{multiprocessing}\cite{S2} pozwala na tworzenie podprocesów. 
-Istnieją dwie koncepcje zrównoleglania wykonywania operacji na CPU (ang. Central Processing Unit - centalna jednostka przetwarzająca). Przewaga wieloprocesowości nad wielowątkowością jest następująca. Każdy kolejny proces może być wykonywany na osobnym rdzeniu, a istniejące już są wykonywane równolegle. Przeciwnie jest w przypadku wielowątkowości - tworzone są wątki w obrębie jednego procesora. Istotną wadą korzystania z procesów względem wątków jest fakt, ze ich tworzenie jest czasochłonne. W przypadku opisywanej aplikacji nie ma to jednak znaczenia, ponieważ grupa procesów jest tworzona tylko raz przy inicjalizacji.
- %TODO styl + mógłby Pan to nieco rozwinąć OK
+Istnieją dwie koncepcje zrównoleglania wykonywania operacji na CPU (ang. \textit{Central Processing Unit} -- centralna jednostka przetwarzająca). 
+Przewaga wieloprocesowości nad wielowątkowością jest następująca. 
+Każdy kolejny proces może być wykonywany na osobnym rdzeniu, a istniejące już są wykonywane równolegle. 
+Przeciwnie jest w przypadku wielowątkowości --  wątki tworzone są w obrębie jednego procesora. Jednakże istotną wadą korzystania z procesów względem wątków jest fakt, ze ich tworzenie jest czasochłonne. 
+W przypadku opisywanej aplikacji nie ma to jednak znaczenia, ponieważ grupa procesów jest tworzona tylko raz przy inicjalizacji.
 
-%TODO W kolejnych dodać nazwy bloków
-\subsection{Przechwytywanie obrazu}
+\subsection{Przechwytywanie obrazu -- \textit{capture}}
 \label{sec:mechanism}
-Optymalnym rozwiązaniem byłoby przechwytywanie obrazu wprost z pamięci symulatora, lecz póki co API gry tego nie udostępnia. %TODO chyba raczej API tego nie udostępnia. OK
+Optymalnym rozwiązaniem byłoby przechwytywanie obrazu wprost z pamięci symulatora, lecz póki co API gry tego nie udostępnia. 
 W procesie $Capture$ realizowane są dwa podzadania. 
 Pierwsze polega na znalezieniu i aktywowaniu okna symulatora. 
 Ma to na celu zapobiegnięcie przechwycenia obrazu, gdy okno gry jest przysłonięte przez inną aplikację lub zminimalizowane. 
-Następnie, za pomocą biblioteki \texttt{libwnck} odczytanie współrzędnych okna gry (współrzędne górnego rogu, szerokość i wysokość). 
-Dopiero, gdy obraz znajdzie się w kolejce jest z niej pobierany przez kolejny proces i w postaci macierzy o wymiarach 1024x768x3 wysyłany do procesu przetwarzania i analizy obrazu. %TODO styl. - to jest to robione + wkładany (potoczne) OK
+Następnie, za pomocą biblioteki \texttt{libwnck} odczytywane są współrzędnych okna gry (współrzędne górnego rogu, szerokość i wysokość). 
+Dopiero, gdy obraz znajdzie się w kolejce jest z niej pobierany przez kolejny proces i w postaci macierzy o wymiarach 1024x768x3 wysyłany do procesu przetwarzania i analizy obrazu. 
 Jednorazowe przechwycenie okna zajmuje średnio około 10ms.
 
-\subsection{Przetwarzanie i analiza obrazu}
+\subsection{Przetwarzanie i analiza obrazu -- \textit{process}}
 Przetwarzanie i analiza obrazu odbywa się w bloku $Process$.
-Jeśli kolejka wejściowa do procesu nie jest pusta, to obraz jest z niej pobierany, a następnie w zależności od wybranego algorytmu (detekcja linii, detekcja znaków) jest przetwarzany. 
-Poszczególne opisy zaimplementowanych algorytmów znajdują się w rozdziale \ref{sec:implem}. %TODO to się \ref używa OK
-Istotne jest, aby po skończeniu przetwarzania obrazu i wypracowaniu sterowania umieścić w kolejce rezulatat z zaznaczonym wynikiem oraz wektorem sterowań w kolejce. %TODO pot. obróbki, włożyć do kolejki OK
+Jeśli kolejka wejściowa do procesu nie jest pusta, to obraz jest z niej pobierany, a następnie w zależności od wybranego algorytmu (np. detekcja linii, detekcja znaków) jest przetwarzany. 
+Poszczególne opisy zaimplementowanych algorytmów znajdują się w rozdziale \ref{sec:implem}. 
+Istotne jest, aby po skończeniu przetwarzania obrazu i wypracowaniu sterowania umieścić w kolejce rezultat z zaznaczonym wynikiem oraz wektorem sterowań w kolejce. 
 
-\subsection{Symulacja kontrolera}
-Symulacja kontrolera jest sterowana z bloku $Controller$.
+\subsection{Symulacja kontrolera -- \textit{controller}}
 Euro Truck Simulator 2 pozwala użytkownikowi na sterowanie ciężarówką za pomocą licznych kontrolerów. 
 Może to być klawiatura, klawiatura w zestawie z myszką komputerową, kierownica lub gamepad. 
 W systemach UNIX-owych każde urządzenie wejściowe podpięte do komputera jest widoczne jako plik w lokalizacji $\backslash dev\backslash input\backslash $. 
 Urządzenia generują zdarzenia (ang. \textit{event}), które są przesyłane do korzystających z nich aplikacji.
 Biblioteka $uinput$ pozwala na zasymulowanie dowolnego kontrolera i sterowanie nim programowo. 
 Na potrzeby opisywanej aplikacji stworzono kontroler, która posiada trzy osie analogowe: kierownica, pedał gazu i pedał hamulca. 
-Dodatkowo, w~celu umożliwienia programowego wpisywania komend do konsoli, kontroler posiada pełen zestaw klawiszy z układu QWERTY. %TODO kontroler, kontroli OK
-Podczas uruchamiania aplikacji jest inicjalizowany kontroler, tak, aby przed rozpoczęciem właściwej rozgrywki i przetwarzania obrazu gra wykryła poprawnie urządzenie do sterowania. %TODO powt inicjalizacji OK
+Dodatkowo, w~celu umożliwienia programowego wpisywania komend do konsoli, kontroler posiada pełen zestaw klawiszy z układu QWERTY. 
+Podczas uruchamiania aplikacji jest inicjalizowany kontrole tak, aby przed rozpoczęciem właściwej rozgrywki i przetwarzania obrazu gra wykryła poprawnie urządzenie do sterowania. 
 Klasa $Control$ posiada metodę $emit$, która odpowiada za wygenerowanie zdarzenia z odpowiednimi wartościami sterowania. 
-Podczas wykonywania tej metody jest sprawdzane czy okno z grą jest aktywne, ponieważ w przypadku symulowania sterowania przy nieaktywnym oknie, nie będzie ono poprawnie zinterpretowane przez grę. %TODO emitowanie sterowania to też średnie określenie OK
+Podczas wykonywania tej metody jest sprawdzane czy okno z grą jest aktywne, ponieważ w przypadku symulowania sterowania przy nieaktywnym oknie, nie będzie ono poprawnie zinterpretowane przez grę. 
 
 \subsection{Wyświetlanie rezultatów}
 
 Wyświetlanie rezultatów jest opcjonalne. 
-Jest realizowane w osobnym procesie ze względu na ustaloną architekturę systemu, która zakłada podział zadań. Oznacza to, że w bloku $Process$ jest dokonywana tylko analiza obrazu. Ma to na celu zminimalizowanie czasu potrzebnego na przetworzenie pojedynczej klatki. %TODO przeredagować - procesie, procesie, przetwarzanie, przetwarzanie OK
+Jest realizowane w osobnym procesie ze względu na ustaloną architekturę systemu, która zakłada podział zadań. 
+Oznacza to, że w bloku $Process$ jest dokonywana tylko analiza obrazu. 
+Ma to na celu zminimalizowanie czasu potrzebnego na przetworzenie pojedynczej klatki. 
 Wyświetlanie obrazu jest realizowane za pomocą funkcji biblioteki OpenCV $imshow()$.
 
 
 \section{Opis implementacji algorytmów wizyjnych użytych w symulatorze}
 \label{sec:implem}
-W tym rozdziale zostaną opisane algorytmy służące do przetestowania działania aplikacji stworzonej w ramach pracy magisterskiej. %TODO sekcji ! i może bez framework OK
-Cele jakie są postawione przed systemem to: przetwarzanie obrazu w czasie rzeczywistym lub do niego zbliżonym oraz możliwość symulacji kontrolera i sterowanie wirtualnym pojazdem. %TODO to drugie nie do końca jasne OK
+W tym rozdziale zostaną opisane algorytmy służące do przetestowania działania aplikacji stworzonej w ramach pracy magisterskiej. 
+Cele jakie są postawione przed systemem to: przetwarzanie obrazu w czasie rzeczywistym lub do niego zbliżonym oraz możliwość symulacji kontrolera i sterowanie wirtualnym pojazdem. 
 
 \subsection{Algorytm detekcji linii}
 
 W symulatorze Euro Truck Simulator 2 występuję typy dróg z każdego kraju Europy. 
-Zaczynając od szerokich autostrad, poprzez drogi ekspresowe na wąskich i krętych drogach w Alpach kończąc. Zaimplementowany algorytm jest przeznaczony do detekcji linii na drogach, których krzywizna łuku nie jest duża. 
-Przykładowy obraz wejściowy jest widoczny na rysunku \ref{fig:inputimg2}. %TODO lepiej powtórzyć, bo takie odwołanie kilkanaście stron wstecz źle działa. Ten S można zmniejszyć i dać dwa obok siebie. OK
+Zaczynając od szerokich autostrad, poprzez drogi ekspresowe na wąskich i krętych drogach w Alpach kończąc. 
+Zaimplementowany algorytm jest przeznaczony do detekcji linii na drogach, których krzywizna łuku nie jest duża. 
+Przykładowy obraz wejściowy jest widoczny na rysunku \ref{fig:inputimg2}. 
 Pierwszym krokiem jest konwersja przestrzeni barw z RGB do HSV. 
 Wybranie składowej S jako obrazu poddawanego analizie (rys. \ref{fig:alg1_S}) pozwala uniezależnić się od pory dnia i pogody.
 
@@ -139,9 +151,10 @@ Wybranie składowej S jako obrazu poddawanego analizie (rys. \ref{fig:alg1_S}) p
   \label{fig:inputimg2}
 \end{figure}
   
-Założenie, że obszar jezdni może znajdować się tylko na pewnym fragmencie obrazu pozwala zaoszczędzić czas obliczeń. Gdy znana jest orientacja kamery względem samochodu i podłoża można założyć że w górnej partii obrazu i po bokach linie oddzielające pasy ruchu nie będą występować.%TODO styl powt. obszar. OK
+Założenie, że obszar jezdni może znajdować się tylko na pewnym fragmencie obrazu pozwala zaoszczędzić czas obliczeń. 
+Gdy znana jest orientacja kamery względem samochodu i podłoża można założyć że w górnej części obrazu i po bokach linie oddzielające pasy ruchu nie będą występować.
 Po wybraniu ROI otrzymano obraz \ref{fig:alg1_roi}.
-%TODO prosze skomentować na jakiej zasadzie to ROI OK
+
 
 \begin{figure}[h]
 	\centering
@@ -160,14 +173,11 @@ Po wybraniu ROI otrzymano obraz \ref{fig:alg1_roi}.
 \end{figure}
 
 Kolejnym krokiem jest wykrycie krawędzi z użyciem filtru Canny'ego. 
-Progi zostały dobrane eksperymentalnie. %TODO są -> zostały ? OK
+Progi zostały dobrane eksperymentalnie. 
 Należy zwrócić uwagę, że gra pozwala na ustalenie jakości grafiki. 
 W związku z tym, każdorazowo po zmianie ustawień należy dobrać współczynniki filtru na nowo. 
-Wraz ze wzrostem jakości kształty renderowane w grze mają wyraźniejsze krawędzie. %TODO trochę dziwnie to brzmi ok
-Porównanie ustawień niskiej i wysokiej jakości grafiki w grze jest widoczne na rysunku \ref{fig:details1}. %TODO sformułowanie niskie i wysokie ustawienie grafiki jest potoczne OK
-
-
-%TODO może nie w tym miejscu, ale jakaś anaiza komentarz jak ta jakość wypływa na sposób działania algorytmów.OK - przeniesione
+Wraz ze wzrostem jakości kształty renderowane w grze mają bardziej wyraźne krawędzie. 
+Porównanie ustawień niskiej i wysokiej jakości grafiki w grze jest widoczne na rysunku \ref{fig:details1}. 
 
 \begin{figure}
   \centering
@@ -177,15 +187,17 @@ Porównanie ustawień niskiej i wysokiej jakości grafiki w grze jest widoczne n
 \end{figure}
 
 Na obrazie krawędzi, za pomocą transformaty Hougha wykonywana jest detekcji linii prostych. 
-Linie fałszywe (linie nie będące liniami na jezdni) można odrzucić badając ich orientację. %TODO orientację ? OK
+Linie fałszywe (linie nie będące liniami na jezdni) można odrzucić badając ich orientację. 
 Właściwe linie będą pochylone pod odpowiednim kątem. 
-Dla opisywanego przypadku zakresem kąta nachylenia linii jest $\theta < 1.3rad$ dla linii po lewej i $\theta > 2rad$ dla krawędzi prawej. %TODO powt. właściwe OK
+Dla opisywanego przypadku zakresem kąta nachylenia linii jest $\theta < 1.3rad$ dla linii po lewej i $\theta > 2rad$ dla krawędzi prawej. 
 
-W celu zmniejszenia czasu obliczeń i poprawienia sprawności algorytmu założono, że rezultatem powinna być linia dla każdej z krawędzi jezdni. Jeśli wykryto kilka linii, których parametry są zbliżone, dalszej analizie poddawana jest tylko jedna z nich, pierwsza, którą algorytm napotka na liście prostych. Pozostałe, których parametry są zbliżone są pomijane (rys. \ref{fig:alg1_res}).
-%TODO no ale która ? OK
+W celu zmniejszenia czasu obliczeń i poprawienia sprawności algorytmu założono, że rezultatem powinna być linia dla każdej z krawędzi jezdni. 
+Jeśli wykryto kilka linii, których parametry są zbliżone, dalszej analizie poddawana jest tylko jedna z nich, pierwsza, którą algorytm napotka na liście prostych. 
+Pozostałe, których parametry są zbliżone są pomijane (rys. \ref{fig:alg1_res}).
 
-Aby wygenerować sterowanie bada się punkt przecięcia wykrytych linii (biały okrąg na rys. \ref{fig:alg1_res}). Zakładając, że kamera jest ustawiona w osi ciężarówki można przyjąć, że każde odchylenie punktu przecięcia od punku równowagi znajdującego się w osi pojazdu powinno implikować ruch kierownicą.
-%TODO nie za bardzo jasne od czego to odchylenie... OK
+
+Aby wygenerować sterowanie bada się punkt przecięcia wykrytych linii (biały okrąg na rys. \ref{fig:alg1_res}). 
+Zakładając, że kamera jest ustawiona w osi ciężarówki można przyjąć, że każde odchylenie punktu przecięcia od punku równowagi znajdującego się w osi pojazdu powinno implikować ruch kierownicą.
 
 \begin{figure}
   \centering
@@ -195,11 +207,13 @@ Aby wygenerować sterowanie bada się punkt przecięcia wykrytych linii (biały 
 \end{figure}
 
 Średni czas obliczeń potrzebny do przetworzenia jednej klatki wyniósł 59ms, co daje możliwość przetworzenia 17 klatek na sekundę. 
-Jest to wydajność wystarczająca, aby zapewnić stabilność całości algorytmu, ponieważ ciężarówka była w stanie utrzymać się przy stałej prędkości na pasie ruchu długim na ok. 500m. Następnie algorytm traci stabilność.
-%TODO - a potem co ? Gleba ? No mniej więcej tak.
+Jest to wydajność wystarczająca, aby zapewnić stabilność całości algorytmu, ponieważ ciężarówka była w stanie utrzymać się przy stałej prędkości na pasie ruchu długim na ok. 500m. 
+Następnie algorytm traci stabilność.
+%TODO a umie Pan wskazać przyczynę - w sensie czy to wina detekcji lini, czy czegoś innego
 
 \subsection{Sytuacje potencjalnie problematyczne}
-Jak wspomniano rozdziale \ref{sec:lane_detection} wymagane jest poprawne działanie algorytmu przy zmiennych warunkach oświetlenia i pogody. %TODO sekcja ! OK
+
+Jak wspomniano rozdziale \ref{sec:lane_detection} wymagane jest poprawne działanie algorytmu przy zmiennych warunkach oświetlenia i pogody. 
 Symulator oferuje możliwość zmiany tych parametrów poprzez konsolę. 
 Algorytm wykazał skuteczność zarówno przy zmianie godziny gry na późniejszą oraz dodaniu deszczu (rys. \ref{fig:alg1_late} i rys. \ref{fig:alg1_rain})
 
@@ -217,12 +231,10 @@ Algorytm wykazał skuteczność zarówno przy zmianie godziny gry na późniejsz
   \label{fig:alg1_rain}
 \end{figure}
 
-%TODO te rysunki moglby być mniejsze.
-%TODO No i ciekawi mnie co się dzieje po tych 500m, może jakieś demo. No i jaki może być łuk, bo niewielki powinien zadziałać..
 
-\subsection{Algorytm detekcji czerwonych świateł sygnalizacji świetlnej} %TODO tu i niżej uwaga o światłach drogowych OK
+\subsection{Algorytm detekcji czerwonych świateł sygnalizacji świetlnej} 
 
-Kolejnym algorytmem testowym, który został zaimplementowany w ramach pracy jest uproszczona wersja algorytmu opisanego w rozdziale \ref{sec:tl}. %TODO sekcja OK
+Kolejnym algorytmem testowym, który został zaimplementowany w ramach pracy jest uproszczona wersja algorytmu opisanego w rozdziale \ref{sec:tl}. 
 Przykładowy obraz wejściowy znajduje się na rysunku \ref{fig:alg2_input}. 
 Dają się tam zauważyć dwa sygnalizatory świetlne, a także kilka znaków drogowych. 
 Sceneria została dobrana tak, aby jednocześnie sprawdzić odporność algorytmu na znaki zawierające czerwoną barwę.
@@ -236,10 +248,10 @@ R>180 \wedge 0 \geq R<100 \wedge B < 120
 
 gdzie: $R, G, B$ oznaczają wartości składowych w przestrzeni RGB.
 
-Aby zapewnić, że inne obiekty spełniające warunek \ref{eq:tl} wykonano operację progowania, a następnie erozji i dylatacji zwaną również otwarciem morfologicznym. %TODO czegoś tu brakuje. OK
-Otrzymany obraz poddawany jest indeksacji. %TODO poddawany jest indeksacji. OK
-Iterując po każdym z wyznaczonych elementów można sprawdzić jego powierzchnię i proporcje. Muszą one spełniać określone warunki, aby zostać uznane za światło sygnalizatora drogowego: powierzchnia powinna być większa niż 20 pikseli, a także stosunek szerokości do wysokości powinien zawierać się w przedziale $[0.75, 1.25]$.
-%TODO bardziej konkretnie niż pewne. OK
+Aby zapewnić, że inne obiekty spełniające warunek \ref{eq:tl} wykonano operację progowania, a następnie erozji i dylatacji zwaną również otwarciem morfologicznym. %TODO czegoś tu brakuje - nadal czegość brakuje !!!
+Otrzymany obraz poddawany jest indeksacji. 
+Iterując po każdym z wyznaczonych elementów można sprawdzić jego powierzchnię i proporcje. 
+Muszą one spełniać określone warunki, aby zostać uznane za światło sygnalizatora drogowego: powierzchnia powinna być większa niż 20 pikseli, a także stosunek szerokości do wysokości powinien zawierać się w przedziale $[0.75, 1.25]$.
 
 Aby zmodyfikować algorytm tak, by wykrywał światło zielone lub pomarańczowe należy zmienić wartości progów w warunku \ref{eq:tl}. 
 Do indeksacji kandydatów wykorzystano funkcję biblioteki OpenCV $connectedComponentsWithStats()$, która zwraca listę obiektów wraz z ich statystykami.
@@ -260,7 +272,7 @@ Do indeksacji kandydatów wykorzystano funkcję biblioteki OpenCV $connectedComp
 
 \subsection{Sytuacje potencjalnie problematyczne}
 Jak w przypadku każdego z omawianych algorytmów problemem jest zmiana warunków oświetleniowych oraz pogodowych. 
-Nie można jak w przypadku algorytmu detekcji pasa ruchu uniezależnić się od zmian oświetlenia poprzez zastosowanie konwersji do przestrzeni HSV, ponieważ istotną rolę odgrywa tu barwa. %TODO no teoretycznie można - H... nie próbował Pan pewnie. - oczywiście, że teoretycznie można, ale robić progowanie w przestrzeni HSV, gdy interesuje nas barwa chyba mija się z celem, albo będzie przynajmniej równoważne z robieniem tego w RGB.
+Nie można jak w przypadku algorytmu detekcji pasa ruchu uniezależnić się od zmian oświetlenia poprzez zastosowanie konwersji do przestrzeni HSV, ponieważ istotną rolę odgrywa tu barwa. %TODO no teoretycznie można - H... nie próbował Pan pewnie. - oczywiście, że teoretycznie można, ale robić progowanie w przestrzeni HSV, gdy interesuje nas barwa chyba mija się z celem, albo będzie przynajmniej równoważne z robieniem tego w RGB. TK: No nie, tzn. powinno być lepiej, ale to nie ten czas i miejsce.
 Z uwagi na to, że sygnalizatory emitują światło, w czasie warunków słabej widoczności i deszczu algorytm poprawnie wykrywał czerwone światło (rys. \ref{fig:alg2_rain} i rys. \ref{fig:alg2_late}).
 
 \begin{figure}
@@ -273,7 +285,7 @@ Z uwagi na to, że sygnalizatory emitują światło, w czasie warunków słabej 
 \begin{figure}
   \centering
   \includegraphics[width=9cm]{img/alg2_rain.jpg}
-  \caption{Wykryta sygnalizacja świetlna podczas deszczu} %TODO o tu Pan użył sygnalizacja :)
+  \caption{Wykryta sygnalizacja świetlna podczas deszczu} 
   \label{fig:alg2_rain}
 \end{figure}
 
@@ -281,7 +293,7 @@ Z uwagi na to, że sygnalizatory emitują światło, w czasie warunków słabej 
 
 \subsection{Detekcja samochodu poprzedzającego}
 Ostatnim algorytmem, który został zaimplementowany w ramach tej pracy była detekcja samochodów poprzedzających na drodze z użyciem detektora symetrii. 
-Implementacja bazuje na algorytmie opisanym w rozdziale \ref{sec:car_general}. %TODO sekcji ok
+Implementacja bazuje na algorytmie opisanym w rozdziale \ref{sec:car_general}. 
 
 \begin{figure}
   \centering
@@ -290,7 +302,7 @@ Implementacja bazuje na algorytmie opisanym w rozdziale \ref{sec:car_general}. %
   \label{fig:alg3_input}
 \end{figure}
 
-Zaimplementowany algorytm jako argumenty przyjmuje obrazy w skali szarości. %TODO styl. operuje OK
+Zaimplementowany algorytm jako argumenty przyjmuje obrazy w skali szarości. 
 Przykładowy obraz wejściowy jest pokazany na rysunku \ref{fig:alg3_input}. 
 Daje się na nim zauważyć ciężarówkę poprzedzającą samochód. 
 Celem działania algorytmu jest poprawne wykrycie symetrii na tyle naczepy samochodu.
@@ -303,15 +315,14 @@ Celem działania algorytmu jest poprawne wykrycie symetrii na tyle naczepy samoc
 \end{figure}
 
 Pierwszym krokiem jest filtracja z użyciem filtru Canny'ego. 
-Progi filtru są dobierane eksperymentalnie każdorazowo po zmianie ustawień graficznych symulatora. %TODO jak wcześniej - o tych ustawieniech nieco więcej. - ok - jest dodane  w dalszych podrozdziałach. 
+Progi filtru są dobierane eksperymentalnie każdorazowo po zmianie ustawień graficznych symulatora. 
 Efekt filtracji jest widoczny na rysunku \ref{fig:alg3_canny}.
 
-Następnie wyznaczając linie skanu sprawdzana jest symetria obrazów w sposób opisany w rozdziale \ref{sec:car_general}. %TODO sekcji ok
-Na każdej z linii skanu wyznaczane są maksima, które wskazują na istnienie osi symetrii. 
+Następnie dla wybranych linii  sprawdzana jest symetria obrazów w sposób opisany w rozdziale \ref{sec:car_general}.
+Na każdej z linii wyznaczane są maksima, które wskazują na istnienie osi symetrii. 
 Rezultaty detekcji są przedstawione na rysunkach \ref{fig:alg3_res1} i \ref{fig:alg3_res2}. 
 Daje się zauważyć znaczna liczba detekcji fałszywych. 
 Prawdopodobnie wynika to między innymi z faktu, że w symulatorze obiekty infrastruktury mają bardziej równomierny i symetryczny kształt.
-%TODO ogólnie mam wrażenie, że akurat ta metoda jest kiepska. - ale jakże przyjemna w implementacji!
 
 
 \begin{figure}
@@ -328,7 +339,7 @@ Prawdopodobnie wynika to między innymi z faktu, że w symulatorze obiekty infra
   \label{fig:alg3_res2}
 \end{figure}
 
-Sprawdzono również zachowanie algorytmu w trudnych warunkach pogodowych i słabego oświetlenia. 
+Sprawdzono również zachowanie algorytmu w trudnych warunkach pogodowych i przy słabym oświetleniu. 
 Samochód korzysta ze świateł mijania, więc najbliższe otoczenie jest dobrze widoczne (rys. \ref{fig:alg3_rain_late}. 
 W tym przypadku również pojawiają się fałszywe detekcje.
 
@@ -340,19 +351,16 @@ W tym przypadku również pojawiają się fałszywe detekcje.
 \end{figure}
 
 Obliczanie wskaźnika symetrii jest operacją bardzo czasochłonną. 
-Średni czas przetworzenia jednej klatki to 5.45 sekundy. 
-Oprócz dużej ilości obliczeń może to być spowodowane mało wydajną implementacją w Pythonie. 
+Średni czas przetworzenia jednej ramki to 5.45 sekundy. 
+Oprócz dużej liczby obliczeń może to być spowodowane mało wydajną implementacją w Pythonie. 
 Implementacja w języku C++ prawdopodobnie przyniosłaby lepsze efekty.
-%TODO a można to zintegrować z C++ ? -z tego co się orientuję, to możnaby np. napisać oblicznanie wskaźnika symetrii w C++ i potem podpiąć jako bibliotekę do pythona, na pewno byłoby szybciej.
-
-%TODO czy tu było jakieś sterowanie ? Sytuacja podobna jak przy światłach.
 
 \section{Badania wydajności aplikacji}
 
-Istotną rzeczą jest wydajność całej aplikacji. 
+Istotnym parametrem jest wydajność całej aplikacji. 
 Powinna ona działać bez widocznych opóźnień, to znaczy, że po przechwyceniu obrazu z symulatora w możliwie najkrótszym czasie powinno zostać wygenerowane sterowanie. 
-Jest to zapewnione poprzez mechanizm opisany w rozdziale \ref{sec:mechanism}. %TODO sekcja OK
-Eksperymentalnie sprawdzono, że liczba elementów w kolejkach, zwłaszcza w kolejce pomiędzy modułem $Capture$, a $Process$ nie powinna przekraczać 50. %TODO dowiedziono -> sprawdzono OK
+Jest to zapewnione poprzez mechanizm opisany w rozdziale \ref{sec:mechanism}. 
+Eksperymentalnie sprawdzono, że liczba elementów w kolejkach, zwłaszcza w kolejce pomiędzy modułem $Capture$, a $Process$ nie powinna przekraczać 50. 
 Powyżej tej wartości daje się zauważyć widoczne opóźnienie reakcji systemu sterującego samochodem. 
 Na wykresie przedstawiono rozmiar kolejki w kolejnych iteracjach programu podczas działania systemu wizyjnego odpowiedzialnego za detekcję czerwonego światła.
 
@@ -366,21 +374,26 @@ Na wykresie przedstawiono rozmiar kolejki w kolejnych iteracjach programu podcza
 W trakcie implementacji kolejnych systemów wizyjnych używanych w pojazdach autonomicznych należy zwrócić uwagę na optymalizację kodu. 
 Nie powinno się tworzyć wielu kopii obrazu w pamięci, a także, z uwagi na asynchroniczny charakter aplikacji,  używać komend typu $wait()$. 
 Ważnym aspektem, który znacząco poprawił wydajność całości systemu było zastosowanie wektoryzacji, czyli wbudowanej w język programowania metody operowania na macierzach. 
-W przypadku, gdy algorytm ze względu na swoją złożoność wykonywałby się zbyt długo, należy użyć komendy w konsoli symulatora udostępnionej przez twórców, która zmieni prędkość gry -- $warp x$, gdzie $x$ oznacza prędkość (1 - standardowa prędkość rozgrywki).
+W przypadku, gdy algorytm ze względu na swoją złożoność wykonywałby się zbyt długo, należy użyć komendy w konsoli symulatora udostępnionej przez twórców, która zmieni prędkość gry -- $warp x$, gdzie $x$ oznacza prędkość (1 -- standardowa prędkość rozgrywki).
 
-Jak wspominano w poprzednich rozdziałach istotne jest zachowanie balansu w wykorzystaniu zasobów pomiędzy symulatorem Euro Truck Simulator 2, a aplikacją opisaną w tej pracy. Zbyt wysokie ustawienia jakości grafiki mogą spowodować, że przetwarzanie przechwyconych klatek nie będzie wykonywane wystarczająco szybko. Z kolei w przypadku najniższych ustawień jakości grafiki zasoby będą wystarczające do działania aplikacji, lecz może zdarzyć się sytuacja, że jakość grafiki będzie na poziomie, który nie pozwoli na poprawną detekcję znaków lub świateł drogowych (wysokie rozmycie grafiki).
+Jak wspominano w poprzednich rozdziałach istotne jest zachowanie balansu w wykorzystaniu zasobów pomiędzy symulatorem Euro Truck Simulator 2, a aplikacją opisaną w tej pracy. 
+Zbyt wysokie ustawienia jakości grafiki mogą spowodować, że przetwarzanie przechwyconych ramek nie będzie wykonywane wystarczająco szybko. 
+Z kolei w przypadku najniższych ustawień jakości grafiki zasoby będą wystarczające do działania aplikacji, lecz może zdarzyć się sytuacja, że jakość grafiki będzie na poziomie, który nie pozwoli na poprawną detekcję znaków lub świateł drogowych (wysokie rozmycie grafiki).
+
 \section{Ewaluacja systemu}
 
-Celem pracy było stworzenie aplikacji, która będzie w ramach przedmiotu Systemy i Algorytmy Percepcji Pojazdów Autonomicznych prowadzonego na II stopniu studiów stacjonarnych na kierunku Automatyka i Robotyka pozwalała w przyjazny użytkownikowi sposób na implementację i testowanie algorytmów wizyjnych stosowanych w pojazdach autonomicznych. 
+Celem pracy było stworzenie aplikacji, która będzie pozwalała w przyjazny użytkownikowi sposób na implementację i testowanie algorytmów wizyjnych stosowanych w pojazdach autonomicznych -- przykładowo w ramach przedmiotu Systemy i Algorytmy Percepcji Pojazdów Autonomicznych prowadzonego na II stopniu studiów stacjonarnych na kierunku Automatyka i Robotyka . 
 Przykładowe algorytmy zaimplementowane w ramach tej pracy dowodzą, że jest to możliwe. 
-Korzystanie z aplikacji w ramach zajęć jest zamienną formą w stosunku do korzystania ze zbiorów zdjęć np. KITTI \cite{W6}. %TODO ref OK
-Nie jest możliwe wygenerowanie wyników referencyjnych $ground$, aczkolwiek inną formą sprawdzenia czy dany algorytm działa poprawnie jest weryfikacja poprzez zachowanie ciężarówki w symulowanym świecie. %TODO może wygenerowanie wyników referencyjnych (ang. ground). OK
+Korzystanie z aplikacji w ramach zajęć jest zamienną formą w stosunku do korzystania ze zbiorów zdjęć np. KITTI \cite{W6}. 
+Nie jest możliwe wygenerowanie wyników referencyjnych ($ground truth$), aczkolwiek inną formą sprawdzenia czy dany algorytm działa poprawnie jest weryfikacja poprzez zachowanie ciężarówki w symulowanym świecie. 
 Opcjonalne jest generowanie sterowania na podstawie wyników z algorytmów wizyjnych. 
 Końcowy użytkownik może tradycyjnie za pomocą klawiatury lub myszki sterować pojazdem i na bieżąco badać rezultaty osiągane przez algorytm.
 
 Opracowana aplikacja zakłada, że sterowanie generowane jest na podstawie obrazu z bieżącej chwili. Nie ma żadnego elementu nadrzędnego, który koordynowałby działanie zaimplementowanych systemów.
 
-W przypadku bardziej złożonych algorytmów pojawia się problem z wydajnością. Aplikacja nie jest w stanie na bieżąco analizować obrazu i generować sterowania. Zdarzają się sytuacje, że sterowanie jest generowane dla obrazu sprzed kilkuset milisekund, co wprowadza oscylacje pojazdu w przypadku algorytmu detekcji linii.
+W przypadku bardziej złożonych algorytmów pojawia się problem z wydajnością. 
+Aplikacja nie jest w stanie na bieżąco analizować obrazu i generować sterowania. 
+Zdarzają się sytuacje, że sterowanie jest generowane dla obrazu sprzed kilkuset milisekund, co wprowadza oscylacje pojazdu w przypadku algorytmu detekcji linii.
 Proponowanym rozwiązaniem jest wprowadzenie pomijania kilku klatek przechwyconych z symulatora lub większy interwał czasowy pomiędzy klatkami.
 
 Kolejnym etapem rozwoju projektu byłoby stworzenie prostego instalatora, który pobierze i zainstaluje wszystkie potrzebne biblioteki, a także skompiluje zmodyfikowane SDK udostępnione przez twórców. 
@@ -391,23 +404,23 @@ Póki co twórcy gry nie udostępniają takiej możliwości przez SDK.
 
 
 
-%TODO radar, lidar... - nie rozumiem
-
-
 \chapter{Podsumowanie}
-Zgodnie z założeniami zrealizowano cele pracy. 
+
+W ramach pracy podjęto temat możliwości wykorzystania symulacji/gry do tworzenia i~ewaluacji algorytmów stosowanych w~zaawansowanych systemach wspomagania kierowym i pojazdach autonomicznych.
 W części teoretycznej zawarto szerokie porównanie algorytmów wizyjnych stosowanych w pojazdach autonomicznych. 
-Dokonano porównania dwóch wersji działających w tradycyjnym podejściu, a także zweryfikowano działanie metod opartych o głębokie uczenie. Następnie przetestowano ich działanie z użyciem zaimplementowanej aplikacji. %TODO nie podoba mi się ten "framework". OK
+Dokonano porównania dwóch wersji działających w tradycyjnym podejściu, a także zweryfikowano działanie metod opartych o głębokie uczenie. 
+Następnie przetestowano działanie czterech z nich z użyciem zaimplementowanej aplikacji. 
+%TODO kilka zdań o praktyce - tj. o aplikacji
+
 
 Zdaniem autora przygotowany system nadaje się do użycia w ramach zajęć dydaktycznych.
 Pozwala w łatwy sposób modyfikować parametry obrazu takie jak natężenie światła, pogodę oraz liczbę otaczających pojazdów. 
-%TODO no właśnie - nigdzie Pan nie opisał jak to działa - czy wybiera się gdzie się jedzie i inne parametry "świata". Opracowana aplikacja zakłada, że sterowanie generowane jest na podstawie obrazu z bieżącej chwili. Nie ma żadnego elementu nadrzędnego, który koordynowałby działanie zaimplementowanych systemów. - wrzucone wcześniej OK
-%TODO czy można wielokrotnie odtwarzać tą samą "scenę" np. przejazd danym fragmentem... - można poprzez zabawę konsolą, ...albo wczytywanie tego samego zapisu gry.
 
 Znaczącą przewagą systemu nad analizą pojedynczych zdjęć jest możliwość przetestowania algorytmów w sytuacjach dynamicznych. 
-Zaimplementowana możliwość sterowania samochodem w symulatorze z pewnością pozwoli na rozbudowanie i testowanie powstających algorytmów wizyjnych. Symulator pozwala na implementację funkcjonalności analogicznych z rzeczywistymi systemami w pojazdach autonomicznych.
+Zaimplementowana możliwość sterowania samochodem w symulatorze z pewnością pozwoli na rozbudowanie i testowanie powstających algorytmów wizyjnych. 
+Symulator pozwala na implementację funkcjonalności analogicznych z rzeczywistymi systemami w pojazdach autonomicznych.
 
-%TODO ja bym raczej stawiał na funkcjonalnści ok
-Końcowym elementem pracy jest dodatek w postaci instrukcji do ćwiczeń laboratoryjnych oraz pomoc w konfiguracji środowiska. Po wykonaniu instrukcji użytkownik może przystąpić do implementacji systemu wizyjnego.
-%TODO Tu jeszcze wspomienie o części teoretycznej i póżniej o dodatku - o części teoretycznej rozwinięto na początku podsumowania OK
+Końcowym elementem pracy jest dodatek w postaci instrukcji do ćwiczeń laboratoryjnych oraz pomoc w konfiguracji środowiska. 
+Po wykonaniu instrukcji użytkownik może przystąpić do implementacji systemu wizyjnego.
+%TODO ref do tego dodatku
 

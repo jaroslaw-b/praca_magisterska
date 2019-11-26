@@ -1,26 +1,30 @@
 \chapter*{ }
-\section*{Streszczenie Pracy}
+\section*{Streszczenie pracy}
 
 
-W ramach niniejszej pracy stworzono system, który w połączeniu w symulatorem jazdy umożliwi testowanie algorytmów wizyjnych stosowanych w zaawansowanych systemach wspomagania kierowcy i pojazdach autonomicznych.
-W części teoretycznej dokonano ewaluacji algorytmów wizyjnych, zarówno tych korzystających z tradycyjnego przetwarzania obrazów cyfrowych, a także głębokouczonych sieci neuronowych.
+W ramach niniejszej pracy stworzono system, który w połączeniu z symulatorem jazdy umożliwia testowanie algorytmów wizyjnych stosowanych w zaawansowanych systemach wspomagania kierowcy i pojazdach autonomicznych.
+W części teoretycznej przedstawiono szereg algorytmów wizyjnych, zarówno tych korzystających z tradycyjnego przetwarzania obrazów cyfrowych, a także głębokouczonych sieci neuronowych.
 Po krótkiej analizie dostępnych symulatorów jazdy wybrano Euro Truck Simulator 2 czeskiego studia SCS Software.
 Jego przewaga nad innym programami dostępnymi na rynku polega na dużych możliwościach modyfikacji oraz interfejsu programistycznego udostępnianego przed twórców.
 W ramach pracy stworzona została aplikacja w języku Python 3.7.
 Jej architektura jest wieloprocesowa, co oznacza, że każda z głównych funkcjonalności: przechwytywanie i analiza obrazu, generowanie 
 sterowania i opcjonalne wyświetlanie wyników są realizowane równolegle, każda w osobnym procesie.
 Pozwoliło to na zwiększenie wydajności całego systemu, gdyż należy mieć na uwadze fakt, że oprócz działającej aplikacji na stacji roboczej jest uruchomiony symulator jazdy.
-Działanie systemu zaprezentowano poprzez zaimplementowanie i uruchomienie 4 przykładowych algorytmów wizyjnych: wyszukiwanie linii oddzielających pasy ruchu, wykrywania znaków drogowych i sygnalizacji świetlnej oraz detekcja pojazdu poprzedzającego.%TODO wymienić. OK
-Założone cele udało się zrealizować, a także wyznaczono kierunki rozwoju aplikacji na przyszłość.
-%TODO Zdanie podsumowania. OK
+Działanie systemu zaprezentowano poprzez zaimplementowanie i uruchomienie 4 przykładowych algorytmów wizyjnych: wyszukiwanie linii oddzielających pasy ruchu, wykrywania znaków drogowych i sygnalizacji świetlnej oraz detekcja pojazdu poprzedzającego.
+Cele pracy zostały osiągnięte, a~ponadto wskazano dalsze kierunki rozwoju systemu.
 
-\section*{Abstract of thesis}
-There was a system developed as part of this thesis, which together with driving simulator will enable to test vision algorighms used in Advanced Driver Assistance Systems (ADAS).
-In first, theoretical part, there was made an evaluation of vision algorithms, both based on traditional image processing and deep learned convolutional neural networks.
-After short analysis of avalaible driving simulators on the market, there have been Euro Truck Simulator 2 created by Czech studio SCS Software choosen.
-It's advantage over different solutions is that user is able to modyfy it in variety of ways. Moreover there is an API attached to simulator.
-An application was developed with use of Python 3.7.
-It has a multiprocess architecture, that means every of the main functionalities (capturing and analysing image, generating control vector and optional displaying results) are executed concurrently, every in single subprocess.
-It have boosted application's performace. An important thing to consider is that both, developed system and driving simulator are ran on the same computer.
+
+
+\section*{Abstract}
+
+The thesis describes a system, which together with a~driving simulator enables to test vision algorithms used in Advanced Driver Assistance Systems (ADAS).
+In first, theoretical part, there several vision algorithms have been presented, both based on traditional image processing and deep convolutional neural networks.
+After short analysis of the available driving simulators, the Euro Truck Simulator 2 created by Czech studio SCS Software was chosen.
+It's advantage over other solutions is that the user is able to modify it in a variety of ways. 
+Moreover there is an API attached to simulator.
+The main application was developed with use of Python 3.7.
+It has a multiprocess architecture, that means every of the main functionalities (capturing and analysing a video frame, generating control vector and optional results display) are executed concurrently, every in single sub-process.
+This allowed to boost the application's performance. 
+An important thing to consider is that both, the developed system and driving simulator run on the same computer.
 An operation of the developed system was presented by implementing four example vision algorithms: lane, traffic sign, traffic light and preceding vehicle detection. 
-All goals are achieved, and some improvements for future proposed.
+All goals of the thesis have been achieved, and some improvements for future works proposed.
