@@ -54,10 +54,7 @@ W kolejnych podrozdziałach zostaną opisane czujniki stosowane w przemyśle mot
 
 %TODO Dalej opis czujników nie jest w osobnym \section i tekst powyżej się nie zgadza.
 
-\section{Poziomy autonomiczności}
-
-Całość systemów, które wspomagają kierowcę w trakcie jazdy nazwano ADAS (\textit{Advanced Driver Assistance Systems}). 
-Aby usystematyzować i podzielić poziom wpływu systemów na sterowanie pojazdem wprowadzono poziomy autonomiczności jazdy.
+\section{Czujniki w pojazdach autonomicznych}
 
 %TODO to do osobnego section
 \begin{figure}
@@ -78,11 +75,17 @@ Radary bliskiego zasięgu (jasnozielony) i lidary (ciemnoszary) znalazły zastos
 Radar dalekiego zasięgu jest używany w tempomacie adaptacyjnym.
 Powszechną techniką jest stosowanie redundancji w krytycznych systemach, co jest regulowane poprzez normy bezpieczeństwa ISO 26262.
 
-%TODO Tu powinien się zacząć rodział o autonomiczności... (section)
+\section{Poziomy autonomiczności}
 
-\subsection{Poziom zerowy -- brak autonomiczności}
+Całość systemów, które wspomagają kierowcę w trakcie jazdy nazwano ADAS (\textit{Advanced Driver Assistance Systems}). 
+Aby usystematyzować i podzielić poziom wpływu systemów na sterowanie pojazdem wprowadzono poziomy autonomiczności jazdy.
+
+%TODO Tu powinien się zacząć rodział o autonomiczności... (section) OK
+
 
 Klasyfikacja została opracowana na podstawie \cite{S3}. %TODO poza subsection
+
+\subsection{Poziom zerowy -- brak autonomiczności}
 
 Obecnie większość samochodów na drodze zaliczanych jest do tego poziomu. 
 Samochód jest w pełni kontrolowany przez człowieka, chociaż mogą pojawiać się proste systemy, które mogą pomóc kierowcy np. system awaryjnego hamowania. 
@@ -93,11 +96,11 @@ System zadziała poprawnie na drodze asfaltowej w przypadku awaryjnego hamowania
 Praktyka pokazuje, że w przypadku, gdy zajdzie potrzeba nagłego zatrzymania samochodu na oblodzonej drodze lepiej jest, aby system ABS nie zadziałał, ponieważ znacząco wydłuża on drogę hamowania. 
 Jako, że samochody poziomu zerowego nie interpretują stanu otoczenia, wspomniany system będzie działał zawsze, niezależnie od tego czy przyniesie to pozytywny efekt. 
 
-%TODO ESP - może już nie, bo tego to całkiem dużo by było.
+%TODO ESP - może już nie, bo tego to całkiem dużo by było. OK
 
 \subsection{Poziom pierwszy -- asystenci jazdy}
 %to jest kalka z angielskiego, gdzie mamy "driver assists". W polskim pojawiają się asystenci jazdy (jako systemy wspomagające kierowcę), którzy jak rozumiem pełnią asystę. Zmieniam na asystenci jazdy, oczywiście do ew. zmiany
-%TODO no może asystent brzmi ciut lepiej, ale też szału nie ma :). Niech będzie.
+%TODO no może asystent brzmi ciut lepiej, ale też szału nie ma :). Niech będzie. OK
 
 Jest to najniższy poziom autonomiczności. 
 Auto posiada pojedynczy system wspomagania kierowcy, taki jak zmienianie kierunku jazdy samochodu lub przyspieszanie (tempomat). 
@@ -213,7 +216,7 @@ G(i,j)\geq (0.2G_{min}+0.8G_{max})
 0, & wpp.
 \end{matrix}\right.
 \end{equation}
-%TODO wpp - no raczej wiadomo o co chodzi.
+%TODO wpp - no raczej wiadomo o co chodzi. OK
 
 \begin{equation}
 \label{eq:Gij}
@@ -377,9 +380,9 @@ Metoda jest wrażliwa na linie przerywane lub inne znaki poziome pojawiające si
 W porównaniu do pierwszego opisanego algorytmu, ten wykonuje się szybciej (przetwarzanie obrazu RGB o wymiarach 640x480 trwa 0.12s)
 
 \subsubsection{Rozwiązanie z użyciem metod uczenia głębokiego}
-%TODO tu brakuje \cite w txt - jest tylko pod rysunkami
+%TODO tu brakuje \cite w txt - jest tylko pod rysunkami OK
 
-Rozwiązaniami konkurencyjnymi w stosunku do opartych o algorytmy wizyjne są te bazujące na sztucznej inteligencji. 
+Rozwiązaniami konkurencyjnymi w stosunku do opartych o algorytmy wizyjne są te bazujące na sztucznej inteligencji. Przykładem takiego rozwiązania jest algorytm zaprezentowany w \cite{T6}.
 Większość metod klasycznych jest wrażliwa na zmiany jasności, warunki pogodowe, zakłócenia, więc zawodzą, gdy środowisko zewnętrze jest zbyt zmienne. 
 W ostatnich latach metody oparte na DCNN (ang. \textit{Deep Convolutional Neural Networks} - głębokouczone konwolucyjne sieci neuronowe) przewyższają te oparte na podejściu tradycyjnym w wielu aplikacjach. 
 Przykładem użycia sieci neuronowych jest detekcja linii oddzielających pasy ruchu. 
@@ -393,7 +396,7 @@ Schemat działania systemu opartego o uczenie głębokie jest umieszczony na rys
 
 W pierwszym kroku sieć wyznacza pozycję linii na obrazie. 
 Pozostałe dwa etapy opierają się na tradycyjnym podejściu. 
-W typowym użyciu CNN próbkowanie jest używane między innymi w celu umożliwienia znajdowania dużych obiektów. %TODO to jest niejasne - chodzi o zmianę rozdzielczości ?
+W typowym użyciu CNN próbkowanie jest stosowane między innymi w celu umożliwienia znajdowania obiektów, które zajmują większy obszar obrazu. %TODO to jest niejasne - chodzi o zmianę rozdzielczości ? -no mniej więcej, chodziło mi o maxpooling z CNN.
 Wadą takiego rozwiązania jest zmniejszenie szczegółowości informacji otrzymanej z sieci.
 Po segmentacji linii kolejnym etapem jest segmentacja semantyczna. 
 Polega ona na określeniu, czym są obiekty wysegmentowane. 
@@ -542,6 +545,8 @@ Wszystkie opisywane operacje są wykonywane na obrazach dyskretnych, więc przes
 W przypadku, gdy dobrany zakres długości promieni będzie zbyt mały lub zbyt duży, detektor ma gorszą skuteczność. 
 Dzieje się tak, ponieważ ewentualne maksima są rozmyte (rys. \ref{fig:znaki2} i rys. \ref{fig:znaki3})
 
+Rozpoznawanie jest zawsze oparte o wcześniej stworzoną bazę zawierającą znaki drogowe z pewnego terytorium. Klasyfikację poprawną na poziomie 90\% uzyskuje się z metody zwanej \textit{cross correlation}. Innym proponowanym rozwiązaniem jest zastosowanie maszyny wektorów wspierających (SVM).
+
 \subsubsection{Rozwiązanie alternatywne}
 
 Rozwiązanie zaproponowane przez I.M. Creusena w \cite{T7} pozwala na detekcję nie tylko znaków zakazu. 
@@ -595,7 +600,8 @@ Dzieje się tak niezależnie od poziomu jasności tła.
   \label{fig:sign_detection2_result}
 \end{figure}
 
-%TODO Tak teraz zauważyłem, że w obu metodach klasycznych nie ma nic o rozpoznawaniu - chociaż po 2 zdania dodać.
+Klasyfikacja znaków drogowych jest oparta o histogram gradientów (HoG) oraz maszynę wektorów wspierających (SVM). W opisywanym artykule korzystając z tej metody uzyskano skuteczność na poziomie 90\%.
+%TODO Tak teraz zauważyłem, że w obu metodach klasycznych nie ma nic o rozpoznawaniu - chociaż po 2 zdania dodać. OK
 
 \subsubsection{Rozwiązanie z użyciem \textit{deep learningu}}
 
@@ -775,14 +781,15 @@ Dla określonego regionu wyznaczane są cechy Haara na podstawie masek przedstaw
 
 Cechy Haara zawierają informację o kształcie obiektu i używają różnicy jasności, a nie jasności samej w sobie, więc są odporne na niewielką zmianę kształtu  i pozycji na obrazie.
 
-Różnica jasności w sygnalizatorze jest z reguły taka sama. 
+Różnica jasności w obrębie sygnalizatora jest z reguły taka sama dla różnych przypadków i warunków otoczenia. 
 Istotne jest, aby do ROI zawierającego światła dodać tło. 
-Jest to ważne z punktu widzenia klasyfikatora SVM, któremu dostarcza się zarówno próbek pozytywnych (obrazy ze światłami) oraz negatywnych (samo tło).
-%TODO Ten SVM tak nie z gruszki, nie z pietruszki - zdanie wyjaśnienia
-%TODO A jak tak czytam to cały akapit też niejasny - proszę to lepiej ująć.
-%TODO Co jdst wejściem do klasyfikatora ?
 
-Klasyfikator oparty na maszynie wektorów wspierających jest uczony w oparciu o obrazy uzyskane z detekcji za pomocą cech Haara. 
+Jest to ważne z punktu widzenia klasyfikatora SVM (maszyna wektorów wspierających), któremu dostarcza się zarówno próbek pozytywnych (obrazy ze światłami) oraz negatywnych (samo tło).
+%TODO Ten SVM tak nie z gruszki, nie z pietruszki - zdanie wyjaśnienia ok
+%TODO A jak tak czytam to cały akapit też niejasny - proszę to lepiej ująć. ok
+%TODO Co jdst wejściem do klasyfikatora ? cechy haara \/
+
+Klasyfikator oparty na maszynie wektorów wspierających jest uczony w oparciu o cechy Haara uzyskane z obrazów.
 Zbiór treningowy zawiera zarówno próbki pozytywne i negatywne. 
 SVM uczy się dwóch klas (rys. \ref{fig:traffic_light2_svm}).
 
@@ -814,7 +821,10 @@ Rezultat detekcji jest umieszczony na rysunku \ref{fig:traffic_light2_result}.
   \label{fig:traffic_light2_result}
 \end{figure}
 
-%TODO NIe bardzo to rozumiem... te kontury tylko do wizualizacji ?
+%TODO NIe bardzo to rozumiem... te kontury tylko do wizualizacji ? dopisane.
+
+Znając współrzędne konturów na obrazie, a także stosunek szerokości do wysokości sygnalizatora można określić ile pól świeltnych zawiera. 
+Cały obszar sygnalizatora jest dzielony na pola, w których badana jest jasność. Na tej podstawie można określić czy lampa się świeci czy nie.
 
 \subsubsection{Rozwiązanie z użyciem \textit{deep learnigu}}
 
@@ -847,7 +857,7 @@ Przykładowy rezultat detekcji i rozpoznawania sygnalizacji drogowej jest umiesz
   \label{fig:traffic_light3_results}
 \end{figure}
 
-%TODO A podali jakoś procent skuteczności ? Tylko JBC dla ilu klas
+%TODO A podali jakoś procent skuteczności ? Tylko JBC dla ilu klas -Niestety, nie podali, w ogóle ten artykuł chyba nie był zbyt trafionym wyborem.
 
 
 
@@ -984,7 +994,7 @@ Algorytm detekcji zaproponowany w \cite{T11} pozwala wykryć samochody znajdują
 \begin{figure}
   \centering
   \includegraphics[width=7cm]{img/car_detection2_blind_spot.png}
-  \caption{Położenie martwego pola\cite{T11}}
+  \caption{Położenie martwego pola\cite{T12}}
   \label{fig:car_detection2_blind_spot2}
 \end{figure}
 
@@ -995,9 +1005,9 @@ Pomiędzy detekcjami auta, wykonywane jest śledzenie z użyciem filtru Kalmana.
 Wyznaczane jest ROI, gdzie można spodziewać się nadjeżdżającego samochodu. 
 Wycinany jest fragment nieba oraz asfaltu blisko pojazdu.
 Na wyznaczonym obszarze wykonywana jest detekcja pojazdu z użyciem filtru kaskadowego, który jest szybszy niż klasyfikator SVM.
-Wykorzystano deskryptor HOG (ang. \textit{Histogram of Oriented Gradient}s -- histogram zorientowanych gradientów), który daje mniej fałszywych detekcji niż LPB (ang. \textit{Local Binary Pattern} -- lokalny wzór binarny).
+Wykorzystano deskryptor HOG (ang. \textit{Histogram of Oriented Gradients} -- histogram zorientowanych gradientów), który daje mniej fałszywych detekcji niż LPB (ang. \textit{Local Binary Pattern} -- lokalny wzór binarny).
 Zbiór treningowy zawierał 7500 próbek pozytywnych oraz 20000 próbek negatywnych. 
-Okno treningowe ma rozmiar 32x32 pikseli. 
+Okno treningowe ma rozmiar 32x32 pikseli. Oznacza to, że obraz po przeskalowaniu do tego rozmiaru jest elementem zbioru treningowego klasyfikatora kaskadowego.
 Wykryte pojazdy są śledzone za pomocą filtru Kalmana. 
 Filtr inicjalizuje swój stan na podstawie detekcji samochodu i przewiduje jego pozycję w następnej ramce.
 Aby zwiększyć skuteczność algorytmu, stosuje się następujące rozumowanie: jeżeli samochód był wykrywany w poprzednich klatkach, algorytm zakłada, że samochód istnieje, chociaż w aktualnej klatce w przewidywanym obszarze nie został wykryty. 
@@ -1006,7 +1016,7 @@ Działanie odwrotne jest również stosowane: jeżeli samochód w kilku poprzedn
 \begin{figure}
   \centering
   \includegraphics[width=7cm]{img/car_detection2_result.png}
-  \caption{Wynik działania algorytmu wykrywającego pojazd w martwej strefie\cite{T11}}
+  \caption{Wynik działania algorytmu wykrywającego pojazd w martwej strefie\cite{T12}}
   \label{fig:car_detection2_result}
 \end{figure}
 
@@ -1014,7 +1024,7 @@ Działanie odwrotne jest również stosowane: jeżeli samochód w kilku poprzedn
 Przykładowy rezultat detekcji znajduje się na rysunku \ref{fig:car_detection2_result}.
 W porównaniu do algorytmu opisanego we wcześniejszym podrozdziale, którego mocną wadą była niska wydajność, dobrym pomysłem wydaje się wykrywanie pojazdów i śledzenie ich na kilku kolejnych klatkach z użyciem np. filtru Kalmana.
 
-%TODO Tu jak dla mnie niejasne jest wyzaczanie tego ROI 32x32...
+%TODO Tu jak dla mnie niejasne jest wyzaczanie tego ROI 32x32... Klasyfikator kaskadowy potrzebuje mieć na wejściu obrazy niskiej rozdzielczości - niestety nie wgłębiałem się zbyt w jego dokładne działanie.
 
 \subsection{Wykrywanie innych obiektów na drodze}
 

@@ -208,8 +208,8 @@ Zakładając, że kamera jest ustawiona w osi ciężarówki można przyjąć, ż
 
 Średni czas obliczeń potrzebny do przetworzenia jednej klatki wyniósł 59ms, co daje możliwość przetworzenia 17 klatek na sekundę. 
 Jest to wydajność wystarczająca, aby zapewnić stabilność całości algorytmu, ponieważ ciężarówka była w stanie utrzymać się przy stałej prędkości na pasie ruchu długim na ok. 500m. 
-Następnie algorytm traci stabilność.
-%TODO a umie Pan wskazać przyczynę - w sensie czy to wina detekcji lini, czy czegoś innego
+Następnie algorytm traci stabilność. Jest częściowo spowodowane istnieniem pewnego opóźnienia pomiędzy odczytem obrazu, a momentem sterowania pojazdem.
+%TODO a umie Pan wskazać przyczynę - w sensie czy to wina detekcji lini, czy czegoś innego OK
 
 \subsection{Sytuacje potencjalnie problematyczne}
 
@@ -248,7 +248,7 @@ R>180 \wedge 0 \geq R<100 \wedge B < 120
 
 gdzie: $R, G, B$ oznaczają wartości składowych w przestrzeni RGB.
 
-Aby zapewnić, że inne obiekty spełniające warunek \ref{eq:tl} wykonano operację progowania, a następnie erozji i dylatacji zwaną również otwarciem morfologicznym. %TODO czegoś tu brakuje - nadal czegość brakuje !!!
+Aby zapewnić, że inne obiekty spełniające warunek \ref{eq:tl}, które nie są elementami sygnalizatora świetlnego, nie zostaną błędnie wykryte, wykonano operację progowania, a następnie erozji i dylatacji zwaną również otwarciem morfologicznym. %TODO czegoś tu brakuje - nadal czegość brakuje !!! OK
 Otrzymany obraz poddawany jest indeksacji. 
 Iterując po każdym z wyznaczonych elementów można sprawdzić jego powierzchnię i proporcje. 
 Muszą one spełniać określone warunki, aby zostać uznane za światło sygnalizatora drogowego: powierzchnia powinna być większa niż 20 pikseli, a także stosunek szerokości do wysokości powinien zawierać się w przedziale $[0.75, 1.25]$.
@@ -409,18 +409,20 @@ Póki co twórcy gry nie udostępniają takiej możliwości przez SDK.
 W ramach pracy podjęto temat możliwości wykorzystania symulacji/gry do tworzenia i~ewaluacji algorytmów stosowanych w~zaawansowanych systemach wspomagania kierowym i pojazdach autonomicznych.
 W części teoretycznej zawarto szerokie porównanie algorytmów wizyjnych stosowanych w pojazdach autonomicznych. 
 Dokonano porównania dwóch wersji działających w tradycyjnym podejściu, a także zweryfikowano działanie metod opartych o głębokie uczenie. 
-Następnie przetestowano działanie czterech z nich z użyciem zaimplementowanej aplikacji. 
-%TODO kilka zdań o praktyce - tj. o aplikacji
 
+W części opisowej projektu najpierw scharakteryzowano, a następnie uzasadniono wybór wieloprocesowej architektury systemu.
+Kolejno przetestowano działanie wybranych algorytmów wizyjnych z użyciem aplikacji. Jeden z nich (detekcja pasa ruchu) był sprawdzany w sytuacji ruchu symulowanego pojazdu i w ograniczonym zakresie był w stanie poprawnie kierować samochodem. Pozostałe algorytmy były testowane w warunkach statycznych, bez generowania sterowania.
 
-Zdaniem autora przygotowany system nadaje się do użycia w ramach zajęć dydaktycznych.
+%TODO kilka zdań o praktyce - tj. o aplikacji OK
+
+Zdaniem autora przygotowana aplikacja nadaje się do użycia w ramach zajęć dydaktycznych.
 Pozwala w łatwy sposób modyfikować parametry obrazu takie jak natężenie światła, pogodę oraz liczbę otaczających pojazdów. 
 
 Znaczącą przewagą systemu nad analizą pojedynczych zdjęć jest możliwość przetestowania algorytmów w sytuacjach dynamicznych. 
 Zaimplementowana możliwość sterowania samochodem w symulatorze z pewnością pozwoli na rozbudowanie i testowanie powstających algorytmów wizyjnych. 
 Symulator pozwala na implementację funkcjonalności analogicznych z rzeczywistymi systemami w pojazdach autonomicznych.
 
-Końcowym elementem pracy jest dodatek w postaci instrukcji do ćwiczeń laboratoryjnych oraz pomoc w konfiguracji środowiska. 
+Końcowym elementem pracy jest dodatek w postaci instrukcji (\ref{cha:appendix}) do ćwiczeń laboratoryjnych oraz pomoc w konfiguracji środowiska. 
 Po wykonaniu instrukcji użytkownik może przystąpić do implementacji systemu wizyjnego.
-%TODO ref do tego dodatku
+%TODO ref do tego dodatku OK
 
